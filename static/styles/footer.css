@@ -1,0 +1,18 @@
+.footer-svg {
+    width: 30px;
+    /*height: 24px;*/
+}
+
+.footer {
+    z-index: 1000;
+    width: 100%;
+    text-align: center;
+}
+
+.footer-container {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 35px;
+    padding-left: 50px;
+}

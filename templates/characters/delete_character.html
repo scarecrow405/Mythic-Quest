@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Mythic Quest - Delete Character{% endblock %}
+
+{% block main_content %}
+    <h1>Delete Character</h1>
+    <p>Are you sure you want to delete the character "{{ object.nickname }}"?</p>
+    <p>It will be deleted forever!</p>
+
+    <form method="post" action="{% url 'delete_character' pk=object.id %}">
+        {% csrf_token %}
+        <button type="submit">Yes, Delete</button>
+        <a href="{% url 'details_character' pk=object.id %}">Back to Edit</a>
+    </form>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Mythic Quest - Character Fight{% endblock %}
+
+{% block main_content %}
+
+    <div class="character-fight-main-box">
+        <div class="card bg-dark character-fight-custom-main">
+            <div class="card text-white character-fight-custom-header">
+                <h4 class="card-header character-fight-custom-font home-header">Fight</h4>
+            </div>
+            <div class="card-body text-white character-fight-custom-card-body">
+                <div class="character-info">
+                    <div class="character-fight-left">
+                        <h5 class="character-fight-character-nickname">{{ character.nickname }}</h5>
+                        <img src="{% static character.image_path %}" alt="{{ character.nickname }} Image"
+                             class="img-fluid">
+
+                        <div class="px-2 d-flex justify-content-between character-fight-character-level">
+                            <p>Level:</p>
+                            <p>{{ character.level }}</p>
+                        </div>
+                        <div class="px-2 d-flex justify-content-between character-fight-character-level">
+                            <p>Rating:</p>
+                            <p>{{ character.rating|floatformat:0 }}</p>
+                        </div>
+                    </div>
+
+                    <div class="character-fight-center">
+                        <div class="ml-auto ">
+                            Winner: {{ winner }}!
+
+                            <a href="#" class="">
+                                <button class="character-fight-edit-button">Dungeon</button>
+                            </a>
+                            <a href="#">
+                                <button class=" character-fight-edit-button">Tavern</button>
+                            </a>
+                            <a href="{% url 'details_character' pk=character.id %}">
+                                <button class="character-fight-edit-button">My Character</button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="character-fight-left">
+                        <h5 class="character-fight-character-nickname">{{ enemy.nickname }}</h5>
+                        <img src="{% static enemy.image_path %}" alt="{{ enemy.nickname }} Image"
+                             class="img-fluid">
+
+                        <div class="px-2 d-flex justify-content-between character-fight-character-level">
+                            <p>Level:</p>
+                            <p>{{ enemy.level }}</p>
+                        </div>
+                        <div class="px-2 d-flex justify-content-between character-fight-character-level">
+                            <p>Rating:</p>
+                            <p>{{ enemy.rating|floatformat:0 }}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+{% endblock %}

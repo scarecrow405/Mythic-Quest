@@ -1,0 +1,34 @@
+.signin-card-body {
+    background-color: #190909;
+}
+
+.signin-h3 {
+    display: flex;
+    justify-content: center;
+}
+
+.signin-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    z-index: 2000;
+}
+
+.signin-container div ul li {
+    color: red !important;
+}
+
+.signin-custom-button {
+    background-color: #E6B57D;
+    color: black;
+    border: 3.5px solid darkgoldenrod;
+    font-weight: bold;
+}
+
+.signin-custom-button:hover {
+    background-color: #4A940DFF;
+    color: white;
+    border: 3.5px solid #dea10d;
+    transition: opacity 0.2s ease-in-out;
+}

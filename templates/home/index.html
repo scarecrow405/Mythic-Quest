@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Mythic Quest - Home{% endblock %}
+
+{% block main_content %}
+
+    {% if character %}
+        <div class="index-main-box">
+            <div class="card bg-dark index-custom-main">
+                <div class="card text-white index-custom-header">
+                    <h4 class="card-header index-custom-font home-header">Your Character</h4>
+                </div>
+                <div class="card-body text-white index-custom-card-body">
+                    <div class="character-info">
+                        <div class="index-left">
+                            <h5 class="index-character-nickname">{{ character.nickname }}</h5>
+                            <img src="{% static character.image_path %}" alt="{{ character.nickname }} Image"
+                                 class="img-fluid">
+
+                            <div class="px-2 d-flex justify-content-between index-character-level">
+                                <p>Level:</p>
+                                <p>{{ character.level }}</p>
+                            </div>
+                            <div class="px-2 d-flex justify-content-between index-character-level">
+                                <p>Rating:</p>
+                                <p>{{ character_rating|floatformat:0 }}</p>
+                            </div>
+                        </div>
+
+                        <div class="index-right">
+                            <div class="ml-auto ">
+                                <a href="#" class="">
+                                    <button class="details-character-edit-button">Dungeon</button>
+                                </a>
+                                <a href="#">
+                                    <button class=" details-character-edit-button">Tavern</button>
+                                </a>
+                                <a href="{% url 'details_character' pk=character.id %}">
+                                    <button class="details-character-edit-button">My Character</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="index-enemy-characters text-white">
+                <ul>
+                    ENEMY CHARACTERS:
+                    {% for enemy in enemy_characters %}
+                        <li class="index-each-enemy">
+                            Nickname: {{ enemy.nickname }} - Rating: {{ enemy.rating|floatformat:0 }}
+                            <a href="{% url 'fight_character' pk=character.id pk2=enemy.id %}"
+                               class="btn btn-primary">Fight</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        {# TODO: Move this to another template and redirect there if no characters #}
+    {% else %}
+        <h4 class="card-header index-custom-font home-header">Welcome to Mythic Quest</h4>
+        <div class="card-body text-white index-custom-card-body">
+            <h5 class="card-title">Create Your Character</h5>
+            <p class="card-text">You haven't created a character yet. Create one now to start your
+                adventure!</p>
+            <a href="{% url 'create_character' %}" class="btn btn-block mt-3 custom-button">Create
+                Character</a>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,106 @@
+.index-custom-header {
+    background-color: #C73F19 !important;
+}
+
+.index-custom-font {
+    font-family: "Kelly Slab", sans-serif;
+}
+
+.index-custom-card-body {
+    padding-bottom: 20px;
+    background-color: rgb(0, 0, 0);
+}
+
+.index-character-stats {
+    border: 2px solid grey;
+    box-shadow: rgb(72, 49, 2) 0 0 3px;
+}
+
+.index-character-level {
+    border: 2px solid grey;
+    box-shadow: rgb(72, 49, 2) 0 0 3px;
+}
+
+.index-character-nickname {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-top: 3.5px solid black;
+    border-bottom: 3.5px solid black;
+    border-radius: 15px;
+    background-color: #e1b239;
+    color: black;
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-size: 16px;
+    box-shadow: rgb(101, 69, 3) 0 2px 4px;
+}
+
+.index-left {
+    max-width: 35%;
+}
+
+.index-left img {
+    border: 3px groove goldenrod;
+    box-shadow: rgb(72, 49, 2) 0 5px 15px;
+    border-radius: 10px;
+}
+
+.index-right {
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: 320px 430px;
+    background-position: center center;
+    width: 400px;
+    height: 400px;
+    padding-left: 30px;
+    padding-right: 100px;
+    padding-top: 140px;
+    padding-bottom: 105px;
+    color: black;
+
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 570;
+
+}
+
+.index-right div p {
+    margin: 0;
+    border-color: yellowgreen;
+}
+
+.index-right div:last-child {
+    margin-top: 25px !important;
+    color: orangered;
+    font-weight: bold;
+}
+
+.index-right div:nth-child(2) {
+    margin-bottom: 30px;
+}
+
+.index-main-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10em;
+}
+
+.index-custom-main {
+    width: 45%;
+}
+
+.index-enemy-characters {
+    /*display: flex;*/
+    /*justify-content: center;*/
+    border: 3px black solid;
+    width: 40%;
+    height: auto;
+    background-color: black !important;
+}
+
+.index-each-enemy {
+    list-style: decimal;
+    border: 2px grey solid;
+    padding: 3px;
+}

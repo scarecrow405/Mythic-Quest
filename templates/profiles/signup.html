@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Mythic Quest - Signup{% endblock %}
+
+{% block main_content %}
+    <div class="container signup-container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="card bg-dark signup-custom-card">
+                    <div class="card text-white custom-header">
+                        <h3 class="card-header custom-font signup-h3">Sign Up</h3>
+                    </div>
+
+                    <div class="card-body text-white signup-card-body">
+
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        <form method="post" action="{% url 'signup' %}">
+                            {% csrf_token %}
+                            <div class="form-group signup-custom-form">
+                                {{ form.as_p }}
+                            </div>
+                            <div class="mt-4">
+                                <button type="submit" class="btn btn-block mt-3 signup-custom-button">Sign Up</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

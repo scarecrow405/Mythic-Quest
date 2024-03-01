@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Mythic Quest - Character Edit{% endblock %}
+
+{% block main_content %}
+    <div class="edit-character-container">
+        <div class="edit-character-header-box w-100 d-flex justify-content-center align-items-center p-2">
+            <h4 class="m-0">Edit Your Character</h4>
+        </div>
+
+        <div class="p-2">
+            <div class="edit-character-form-info">
+                <form id="edit-character-form" action="{% url 'edit_character' pk=object.id %}" method="post">
+                    <label for="username">Character Nickname:</label>
+                    <input type="text" name="nickname" id="nickname"
+                           class="form-control custom-color custom-border-golden"
+                           required value="{{ object.nickname }}">
+                    <input type="hidden" name="character_type" id="character-type">
+                    {% csrf_token %}
+                </form>
+            </div>
+
+            {% if form.errors %}
+                {% for error in form.errors.values %}
+                    <p class="alert-warning alert-dismissible fade show" role="alert">
+                        {{ error }}
+                    </p class="alert-warning alert-dismissible fade show" role="alert">
+                {% endfor %}
+            {% endif %}
+
+
+            <div class="edit-character-gender-selector">
+                <div class="edit-character-male">
+                    <a class="make-hover" href="#" onclick="selectCharacter('img/male-warrior.jpg', event)">
+                        <img src="{% static 'img/male-warrior.jpg' %}"
+                             alt="Male Character"
+                             class="character-image" id="male-character">
+                    </a>
+                </div>
+                <div class="edit-character-female">
+                    <a class="make-hover" href="#" onclick="selectCharacter('img/female-warrior.jpg', event)">
+                        <img src="{% static 'img/female-warrior.jpg' %}"
+                             alt="Female Character"
+                             class="character-image" id="female-character">
+                    </a>
+                </div>
+            </div>
+            <input value="Save Changes" form="edit-character-form" type="submit"
+                   class="btn custom-button edit-character-button">
+        </div>
+
+    </div>
+
+    {# Java Script #}
+    <script>
+        function selectCharacter(characterType, event) {
+            event.preventDefault();
+            const selectedImage = event.target.closest('.character-image');
+            const isSelected = selectedImage.classList.contains('selected');
+
+            // Remove the 'selected' class from all images
+            const images = document.querySelectorAll('.character-image');
+            images.forEach(function (image) {
+                image.classList.remove('selected');
+                image.style.opacity = '0.5'; // Set opacity to 60%
+            });
+
+            if (!isSelected) {
+                // Add the 'selected' class and set opacity to 100% if the image is not already selected
+                selectedImage.classList.add('selected');
+                selectedImage.style.opacity = '1'; // Set opacity to 100%
+                // Update the character type input field
+                document.getElementById('character-type').value = characterType;
+            } else {
+                // If the image is already selected, clear the character type input field
+                document.getElementById('character-type').value = '';
+            }
+        }
+    </script>
+{% endblock %}

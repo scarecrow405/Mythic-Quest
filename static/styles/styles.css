@@ -1,0 +1,33 @@
+@import url("base.css");
+@import url('navigation.css');
+@import url('footer.css');
+
+/*Profile*/
+@import url('signup.css');
+@import url('signin.css');
+
+/*Character*/
+@import url('create-character.css');
+@import url('details-character.css');
+@import url('edit-character.css');
+
+/*Home*/
+@import url('index.css');
+
+/*Fight*/
+@import url('character_fight.css');
+
+
+/*Main Buttons*/
+.custom-button {
+    background-color: #E6B57D;
+    color: black;
+    border: 3.5px solid darkgoldenrod;
+    font-weight: bold;
+}
+
+.custom-button:hover {
+    background-color: #C73F19;
+    color: white;
+    transition: opacity 0.2s ease-in-out;
+}

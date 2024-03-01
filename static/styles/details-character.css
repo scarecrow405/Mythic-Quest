@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+
+.right {
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: 320px 430px;
+    background-position: center center;
+    width: 400px;
+    height: 400px;
+    padding-left: 105px;
+    padding-right: 105px;
+    padding-top: 85px;
+    padding-bottom: 105px;
+    color: black;
+
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 570;
+
+}
+
+.right div p {
+    margin: 0;
+    border-color: yellowgreen;
+}
+
+.right div:last-child {
+    margin-top: 25px !important;
+    color: orangered;
+    font-weight: bold;
+}
+
+.right div:nth-child(2) {
+    margin-bottom: 30px;
+}
+
+.character-info {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.left {
+    max-width: 17%;
+}
+
+.left img {
+    border: 3px groove goldenrod;
+    box-shadow: rgb(72, 49, 2) 0 5px 15px;
+    border-radius: 10px;
+}
+
+.custom-color {
+    background: rgb(255, 172, 5);
+    background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
+}
+
+.details-character-stats {
+    border: 2px solid grey;
+    box-shadow: rgb(72, 49, 2) 0 0 3px;
+}
+
+.details-character-edit-button {
+    padding: 15px;
+    border: 3px solid black;
+    border-radius: 30px;
+    background-color: #936100;
+    color: whitesmoke;
+    box-shadow: rgb(72, 49, 2) 0 5px 15px;
+    width: 160px;
+    height: 60px;
+    font-size: 16px;
+}
+
+.details-character-edit-button:hover {
+    font-weight: bold;
+    background-color: #ffac05;
+    transition: 0.1s;
+    transform: scale(1.05);
+    color: black;
+}
+
+.details-character-main {
+    border-radius: 30px;
+    border: 5px solid goldenrod;
+    box-shadow: rgb(0, 0, 0) 5px 10px 20px;
+}
+
+.details-character-nickname {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-top: 3.5px solid black;
+    border-bottom: 3.5px solid black;
+    border-radius: 15px;
+    background-color: #e1b239;
+    color: black;
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-size: 16px;
+    box-shadow: rgb(101, 69, 3) 0 2px 4px;
+}

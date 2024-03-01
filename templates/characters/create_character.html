@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Mythic Quest - Character Select{% endblock %}
+
+{% block main_content %}
+    <div class="container create-character-container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="card bg-dark">
+                    <div class="card text-white custom-header">
+                        <h4 class="card-header custom-font create-character-h4">Select Your
+                            Character</h4>
+                    </div>
+                    <div class="card-body text-white custom-card-body">
+                        <form method="post" action="{% url 'create_character' %}">
+                            {% csrf_token %}
+                            <div class="character-images create-character-chr-container">
+
+                                <a class="make-hover" href="#" onclick="selectCharacter('male', event)">
+                                    <img src="{% static 'img/male-warrior.jpg' %}"
+                                         alt="Male Character"
+                                         class="character-image" id="male-character">
+                                </a>
+
+                                <a class="make-hover" href="#" onclick="selectCharacter('female', event)">
+                                    <img src="{% static 'img/female-warrior.jpg' %}"
+                                         alt="Female Character"
+                                         class="character-image" id="female-character">
+                                </a>
+                            </div>
+                        
+                            {% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                        <li{% if message.tags %}
+                                            class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+                            <div class="form-group">
+                                <label for="username">Character Nickname:</label>
+
+                                <input type="text" name="nickname" id="nickname"
+                                       class="form-control mb-3 custom-color custom-border-golden"
+                                       required>
+                            </div>
+
+                            <input type="hidden" name="character_type" id="character-type">
+                            <button type="submit" class="btn btn-block mt-3 custom-button">Create Character</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Java Script #}
+    <script>
+        function selectCharacter(characterType, event) {
+            event.preventDefault();
+            const selectedImage = event.target.closest('.character-image');
+            const isSelected = selectedImage.classList.contains('selected');
+
+            // Remove the 'selected' class from all images
+            const images = document.querySelectorAll('.character-image');
+            images.forEach(function (image) {
+                image.classList.remove('selected');
+                image.style.opacity = '0.5'; // Set opacity to 60%
+            });
+
+            if (!isSelected) {
+                // Add the 'selected' class and set opacity to 100% if the image is not already selected
+                selectedImage.classList.add('selected');
+                selectedImage.style.opacity = '1'; // Set opacity to 100%
+                // Update the character type input field
+                document.getElementById('character-type').value = characterType;
+            } else {
+                // If the image is already selected, clear the character type input field
+                document.getElementById('character-type').value = '';
+            }
+        }
+    </script>
+
+{% endblock %}

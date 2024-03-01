@@ -1,0 +1,33 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    /*height: 100vh;*/
+    /*width: 100vw;*/
+}
+
+.container-fluid {
+    height: 100%;
+    padding: 0;
+}
+
+.background-image {
+    background-size: cover;
+    background-position: center center;
+    /*height: 100vh;*/
+    /*background-repeat: repeat-y;*/
+}
+
+
+.base-main-body-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}

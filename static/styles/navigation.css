@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+.navigation-site-name {
+    font-family: "Josefin Sans", sans-serif;
+    padding-top: 9px;
+}
+
+.navigation-site-name:hover {
+    color: gold !important;
+}
+
+.navigation-form-authenticated {
+    display: flex;
+}
+
+.nav-item form li {
+    display: block;
+
+}

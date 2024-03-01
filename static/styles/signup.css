@@ -1,0 +1,55 @@
+.signup-card-body {
+    background-color: #190909;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-h3 {
+    display: flex;
+    justify-content: center;
+}
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    z-index: 2000;
+}
+
+.signup-container div ul li {
+    color: red !important;
+}
+
+.signup-custom-button {
+    background-color: #E6B57D;
+    color: black;
+    border: 3.5px solid darkgoldenrod;
+    font-weight: bold;
+}
+
+.signup-custom-button:hover {
+    background-color: rgb(74, 148, 13);
+    color: white;
+    border: 3.5px solid #dea10d;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.signup-custom-card {
+    width: 100%;
+}
+
+.signup-custom-form p {
+
+}
+
+#username,
+#email,
+#pass1,
+#pass2 {
+    color: black;
+    border: 3.5px solid darkgoldenrod;
+    font-weight: bold;
+    background: rgb(255, 172, 5);
+    background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
+}
