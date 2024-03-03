@@ -31,6 +31,8 @@
                     <div class="character-fight-center">
                         <div class="ml-auto ">
                             Winner: {{ winner }}!
+                            Gained Gold: {{ gained_gold }}
+                            Exp Won: {{ gained_exp }}
 
                             <a href="#" class="">
                                 <button class="character-fight-edit-button">Dungeon</button>
@@ -40,6 +42,9 @@
                             </a>
                             <a href="{% url 'details_character' pk=character.id %}">
                                 <button class="character-fight-edit-button">My Character</button>
+                            </a>
+                            <a href="{% url 'index' %}">
+                                <button class="details-character-edit-button">Back to Home</button>
                             </a>
                         </div>
                     </div>

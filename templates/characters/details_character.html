@@ -28,9 +28,16 @@
                     {% endfor %}
 
                 </div>
+
                 <div class="ml-auto">
                     <a href="{% url 'edit_character' pk=object.id %}">
                         <button class="details-character-edit-button">Edit Character</button>
+                    </a>
+
+                </div>
+                <div class="ml-auto">
+                    <a href="{% url 'index' %}">
+                        <button class="details-character-edit-button">Back to Home</button>
                     </a>
 
                 </div>

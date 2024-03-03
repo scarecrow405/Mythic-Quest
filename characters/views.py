@@ -57,17 +57,30 @@ class CharacterDetailsView(LoginRequiredMixin, DetailView):
 
         character = self.get_object()
 
+        # Adds K if gold is greater than 10 000
+        def get_character_stat(character_stat):
+            if 9_999 >= character_stat >= 1_000:
+                return f"{str(character_stat)[0]}.{str(character_stat)[1]}K"
+            elif 99_999 >= character_stat >= 10_000:
+                return f"{str(character_stat)[:2]}K"
+            elif 999_999 >= character_stat >= 100_000:
+                return f"{str(character_stat)[:3]}K"
+            elif 99_999_999 >= character_stat >= 1_000_000:
+                return f"{str(character_stat)[0]}.{str(character_stat)[1]}M"
+            return character_stat
+
         # Add hero stats to the context
         context['character_stats'] = {
-            'level': character.level,
-            'experience': character.experience,
-            'health': character.health,
-            'strength': character.strength,
-            'agility': character.agility,
-            'damage': character.damage,
-            'armor': character.armor,
-            'gold': character.gold
+            'level': get_character_stat(character.level),
+            'experience': get_character_stat(character.experience),
+            'health': get_character_stat(character.health),
+            'strength': get_character_stat(character.strength),
+            'agility': get_character_stat(character.agility),
+            'damage': get_character_stat(character.damage),
+            'armor': get_character_stat(character.armor),
+            'gold': get_character_stat(character.gold)
         }
+
         context["character_rating"] = character.rating
 
         return context
@@ -203,10 +216,13 @@ class CharacterFightView(LoginRequiredMixin, View):
             return render(request, 'home/index.html', {})
 
         winner = character if character.rating > enemy.rating else enemy
+        gained_exp = 0
+        gained_gold = 0
 
         if winner == character:
             # Gain EXP
-            character.experience += fight_experience_gain(character.level, enemy.level)
+            gained_exp = fight_experience_gain(character.level, enemy.level)
+            character.experience += gained_exp
 
             # Gain LVL
             current_level = character.level
@@ -217,13 +233,53 @@ class CharacterFightView(LoginRequiredMixin, View):
                 all_stats_increase(character)
 
             # Gain Gold
-            character.gold += gold_gained(character.level)
+            gained_gold = gold_gained(character.level)
+            character.gold += gained_gold
             character.save()
 
         context = {
             'character': character,
             'enemy': enemy,
             'winner': character if winner == character else enemy,
+            'gained_gold': gained_gold,
+            'gained_exp': gained_exp
         }
 
         return render(request, 'characters/character_fight.html', context)
+
+
+class EnemyCharacterDetailsView(LoginRequiredMixin, DetailView):
+    model = Character
+    template_name = 'characters/details_enemy_character.html'
+    context_object_name = 'character'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        character = self.get_object()
+        user_character = Character.objects.get(user=self.request.user)
+
+        def get_character_stat(character_stat):
+            if 9_999 >= character_stat >= 1_000:
+                return f"{str(character_stat)[0]}.{str(character_stat)[1]}K"
+            elif 99_999 >= character_stat >= 10_000:
+                return f"{str(character_stat)[:2]}K"
+            elif 999_999 >= character_stat >= 100_000:
+                return f"{str(character_stat)[:3]}K"
+            elif 99_999_999 >= character_stat >= 1_000_000:
+                return f"{str(character_stat)[0]}.{str(character_stat)[1]}M"
+            return character_stat
+
+        # Add hero stats to the context
+        context['character_stats'] = {
+            'level': get_character_stat(character.level),
+            'health': get_character_stat(character.health),
+            'strength': get_character_stat(character.strength),
+            'agility': get_character_stat(character.agility),
+            'damage': get_character_stat(character.damage),
+            'armor': get_character_stat(character.armor),
+        }
+        context["character_rating"] = character.rating
+        context["user_character"] = user_character
+
+        return context

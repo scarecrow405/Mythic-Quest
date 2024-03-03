@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Mythic Quest - Contact Form{% endblock %}
+
+{% block main_content %}
+    <div class="contact-form-border">
+        <div class="contact-container">
+            <form action="https://api.web3forms.com/submit" method="post" class="contact-center">
+                <div class="contact-title">
+                    <h2>Get in touch</h2>
+                    <hr>
+                </div>
+
+                <input type="hidden" name="access_key" value="a83b4459-ef3a-4f97-a17d-315a4c2bb764">
+                <input type="text" name="name" placeholder="Name" class="contact-inputs" required>
+                <input type="email" name="email" placeholder="Email Address" class="contact-inputs" required>
+                <textarea name="message" placeholder="Message" class="contact-inputs" required></textarea>
+                <button type="submit">Submit <img class="contact-arrow" src="{% static 'img/right-arrow.png' %}">
+                </button>
+            </form>
+
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

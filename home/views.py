@@ -1,5 +1,6 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import TemplateView
 
@@ -53,3 +54,14 @@ class HomeViewWithoutCharacter(LoginRequiredMixin, TemplateView):
     #         'character2': enemy,
     #         'winner': winner,
     #     }
+
+
+class ContactViewForm(TemplateView):
+    template_name = 'home/contact-form.html'
+
+    def post(self, request, *args, **kwargs):
+        email = request.POST.get('email')
+        print(request.body)
+        if email != request.user.email:
+            messages.error(request, "The email you entered does not match your logged-in email.")
+            return redirect('contact_form')

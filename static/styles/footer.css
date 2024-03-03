@@ -16,3 +16,14 @@
     height: 35px;
     padding-left: 50px;
 }
+
+.contact-link {
+    color: white;
+    margin-left: 100px;
+
+}
+
+.contact-link:hover {
+    color: whitesmoke;
+    text-decoration: underline;
+}

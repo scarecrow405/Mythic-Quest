@@ -55,7 +55,7 @@
     height: 400px;
     padding-left: 30px;
     padding-right: 100px;
-    padding-top: 140px;
+    /*padding-top: 140px;*/
     padding-bottom: 105px;
     color: black;
 
@@ -71,7 +71,7 @@
 }
 
 .character-fight-center div:last-child {
-    margin-top: 25px !important;
+    /*margin-top: 25px !important;*/
     color: orangered;
     font-weight: bold;
 }

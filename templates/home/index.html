@@ -54,6 +54,8 @@
                             Nickname: {{ enemy.nickname }} - Rating: {{ enemy.rating|floatformat:0 }}
                             <a href="{% url 'fight_character' pk=character.id pk2=enemy.id %}"
                                class="btn btn-primary">Fight</a>
+                            <a href="{% url 'details_enemy_character' pk=enemy.id %}"
+                               class="btn btn-primary">Details</a>
                         </li>
                     {% endfor %}
                 </ul>
