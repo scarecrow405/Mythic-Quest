@@ -12,22 +12,21 @@
                     <h2>Get in touch</h2>
                     <hr>
                 </div>
-
                 <input type="hidden" name="access_key" value="a83b4459-ef3a-4f97-a17d-315a4c2bb764">
-                <input type="text" name="name" placeholder="Name" class="contact-inputs" required>
-                <input type="email" name="email" placeholder="Email Address" class="contact-inputs" required>
+
+                {#                {# Anti-Spam #}
+                <div class="h-captcha" data-captcha="true"></div>
+
+                <input type="text" name="name" placeholder="Full Name" class="contact-inputs"
+                       required>
+                <input type="email" name="email" placeholder="Email Address" class="contact-inputs"
+                       value="{{ user_email }}" required>
                 <textarea name="message" placeholder="Message" class="contact-inputs" required></textarea>
                 <button type="submit">Submit <img class="contact-arrow" src="{% static 'img/right-arrow.png' %}">
                 </button>
             </form>
-
-            {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
         </div>
     </div>
+
+    <script src="https://web3forms.com/client/script.js" async defer></script>
 {% endblock %}

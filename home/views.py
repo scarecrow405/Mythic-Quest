@@ -34,34 +34,28 @@ class HomeViewWithCharacter(LoginRequiredMixin, TemplateView):
             context['character_rating'] = character.rating
             context['enemy_characters'] = enemy_characters
         except Character.DoesNotExist:
-            pass
+            all_characters = Character.objects.order_by('-rating')
+            context['all_characters'] = all_characters
         return context
 
 
-class HomeViewWithoutCharacter(LoginRequiredMixin, TemplateView):
-    pass
-    # def get(self, request, pk, pk2):
-    #     try:
-    #         character = Character.objects.get(pk=pk)
-    #         enemy = Character.objects.get(pk=pk2)
-    #     except Character.DoesNotExist:
-    #         return render(request, 'home/index.html')
-    #
-    #     winner = character
-    #
-    #     context = {
-    #         'character1': character,
-    #         'character2': enemy,
-    #         'winner': winner,
-    #     }
+class HomeViewWithoutCharacter(TemplateView):
+    template_name = 'home/index-without-character.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        all_characters = Character.objects.order_by('-rating')
+        context['all_characters'] = all_characters
+
+        return context
 
 
-class ContactViewForm(TemplateView):
+class ContactViewForm(LoginRequiredMixin, TemplateView):
     template_name = 'home/contact-form.html'
 
-    def post(self, request, *args, **kwargs):
-        email = request.POST.get('email')
-        print(request.body)
-        if email != request.user.email:
-            messages.error(request, "The email you entered does not match your logged-in email.")
-            return redirect('contact_form')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        context['user_email'] = user.email
+        return context

@@ -9,6 +9,7 @@
 /*Character*/
 @import url('create-character.css');
 @import url('details-character.css');
+@import url('details-enemy-character.css');
 @import url('edit-character.css');
 
 /*Home*/

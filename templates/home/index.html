@@ -54,7 +54,7 @@
                             Nickname: {{ enemy.nickname }} - Rating: {{ enemy.rating|floatformat:0 }}
                             <a href="{% url 'fight_character' pk=character.id pk2=enemy.id %}"
                                class="btn btn-primary">Fight</a>
-                            <a href="{% url 'details_enemy_character' pk=enemy.id %}"
+                            <a href="{% url 'details_character' pk=enemy.id %}"
                                class="btn btn-primary">Details</a>
                         </li>
                     {% endfor %}
@@ -71,6 +71,19 @@
                 adventure!</p>
             <a href="{% url 'create_character' %}" class="btn btn-block mt-3 custom-button">Create
                 Character</a>
+        </div>
+        <div class="index-enemy-characters text-white">
+            <ul>
+                ENEMY CHARACTERS:
+                {% for character in all_characters %}
+                    <li class="index-each-enemy">
+                        Lvl{{ character.level }}: {{ character.nickname }} -
+                        Rating: {{ character.rating|floatformat:0 }}
+                        <a href="{% url 'details_character' pk=character.id %}"
+                           class="btn btn-primary">Details</a>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
     {% endif %}
 {% endblock %}

@@ -56,6 +56,8 @@ class CharacterDetailsView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
 
         character = self.get_object()
+        is_user_gm = self.request.user.groups.filter(name='Game Master').exists() or self.request.user.is_superuser
+        is_user_in_own_profile = self.request.user == character.user
 
         # Adds K if gold is greater than 10 000
         def get_character_stat(character_stat):
@@ -82,6 +84,8 @@ class CharacterDetailsView(LoginRequiredMixin, DetailView):
         }
 
         context["character_rating"] = character.rating
+        context["is_user_gm"] = is_user_gm
+        context["is_user_in_own_profile"] = is_user_in_own_profile
 
         return context
 
@@ -91,13 +95,25 @@ class CharacterEditView(LoginRequiredMixin, UpdateView):
     form_class = CharacterEditForm
     template_name = 'characters/edit_character.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        owner = self.get_object().user
+
+        context['owner'] = owner
+        return context
+
     def get_success_url(self):
         return reverse('details_character', kwargs={'pk': self.object.pk})
 
     def form_valid(self, form):
         if self.request.method == 'POST':
             character = form.save(commit=False)
-            character.user = self.request.user
+
+            # Character = plamenchoto's character
+            # character.user = plamenchoto
+            # self.request.user = plamenatron
+            # character.user = self.request.user
+
             character_type = self.request.POST.get("character_type", "")
 
             if not character_type:
@@ -215,7 +231,13 @@ class CharacterFightView(LoginRequiredMixin, View):
         except Character.DoesNotExist:
             return render(request, 'home/index.html', {})
 
-        winner = character if character.rating > enemy.rating else enemy
+        if character.rating > enemy.rating:
+            winner = character
+        elif character.rating < enemy.rating:
+            winner = character if random.randint(0, 100) == 0 else enemy
+        else:
+            winner = character if random.randint(0, 1) == 0 else enemy
+
         gained_exp = 0
         gained_gold = 0
 
@@ -247,39 +269,38 @@ class CharacterFightView(LoginRequiredMixin, View):
 
         return render(request, 'characters/character_fight.html', context)
 
-
-class EnemyCharacterDetailsView(LoginRequiredMixin, DetailView):
-    model = Character
-    template_name = 'characters/details_enemy_character.html'
-    context_object_name = 'character'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        character = self.get_object()
-        user_character = Character.objects.get(user=self.request.user)
-
-        def get_character_stat(character_stat):
-            if 9_999 >= character_stat >= 1_000:
-                return f"{str(character_stat)[0]}.{str(character_stat)[1]}K"
-            elif 99_999 >= character_stat >= 10_000:
-                return f"{str(character_stat)[:2]}K"
-            elif 999_999 >= character_stat >= 100_000:
-                return f"{str(character_stat)[:3]}K"
-            elif 99_999_999 >= character_stat >= 1_000_000:
-                return f"{str(character_stat)[0]}.{str(character_stat)[1]}M"
-            return character_stat
-
-        # Add hero stats to the context
-        context['character_stats'] = {
-            'level': get_character_stat(character.level),
-            'health': get_character_stat(character.health),
-            'strength': get_character_stat(character.strength),
-            'agility': get_character_stat(character.agility),
-            'damage': get_character_stat(character.damage),
-            'armor': get_character_stat(character.armor),
-        }
-        context["character_rating"] = character.rating
-        context["user_character"] = user_character
-
-        return context
+# class EnemyCharacterDetailsView(LoginRequiredMixin, DetailView):
+#     model = Character
+#     template_name = 'characters/details_enemy_character.html'
+#     context_object_name = 'character'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#
+#         character = self.get_object()
+#         user_character = Character.objects.get(user=self.request.user)
+#
+#         def get_character_stat(character_stat):
+#             if 9_999 >= character_stat >= 1_000:
+#                 return f"{str(character_stat)[0]}.{str(character_stat)[1]}K"
+#             elif 99_999 >= character_stat >= 10_000:
+#                 return f"{str(character_stat)[:2]}K"
+#             elif 999_999 >= character_stat >= 100_000:
+#                 return f"{str(character_stat)[:3]}K"
+#             elif 99_999_999 >= character_stat >= 1_000_000:
+#                 return f"{str(character_stat)[0]}.{str(character_stat)[1]}M"
+#             return character_stat
+#
+#         # Add hero stats to the context
+#         context['character_stats'] = {
+#             'level': get_character_stat(character.level),
+#             'health': get_character_stat(character.health),
+#             'strength': get_character_stat(character.strength),
+#             'agility': get_character_stat(character.agility),
+#             'damage': get_character_stat(character.damage),
+#             'armor': get_character_stat(character.armor),
+#         }
+#         context["character_rating"] = character.rating
+#         context["user_character"] = user_character
+#
+#         return context
