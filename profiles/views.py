@@ -72,6 +72,7 @@ def signout_user(request):
         logout(request)
         return redirect("signin")
     else:
+        logout(request)
         return redirect("signin")
 
 

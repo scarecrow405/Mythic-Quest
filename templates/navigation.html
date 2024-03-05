@@ -16,18 +16,12 @@
             {% if user.is_authenticated %}
                 <ul class="navbar-nav ml-auto navigation-authenticated-nav">
                     <li class="nav-item">
-                        <form class="navigation-form-authenticated" id="logout-form" method="post"
-                              action="{% url 'signout' %}">
-                            {% csrf_token %}
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'index' %}">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <button type="submit" class="btn btn-link nav-link">Sign Out</button>
-                            </li>
-                        </form>
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signout' %}">Sign Out</a>
+                    </li>
+
                 </ul>
 
             {% else %}

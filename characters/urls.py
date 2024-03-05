@@ -1,7 +1,7 @@
 from django.urls import path
 
 from characters.views import create_character, CharacterDetailsView, CharacterEditView, CharacterDeleteView, \
-    CharacterFightView
+    CharacterFightView, character_has_died
 
 urlpatterns = [
     # Your Character
@@ -12,7 +12,5 @@ urlpatterns = [
 
     # Fight Character
     path('fight/<int:pk>/vs/<int:pk2>/', CharacterFightView.as_view(), name='fight_character'),
-
-    # Enemy Character
-    # path('details/<int:pk>/enemy/', EnemyCharacterDetailsView.as_view(), name='details_enemy_character'),
+    path("death-screen/", character_has_died, name="character_has_died"),
 ]

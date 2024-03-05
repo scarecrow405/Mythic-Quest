@@ -30,12 +30,19 @@
                             </div>
                         </div>
 
+                        {# Not enough health ERROR! #}
+                        {% if error_message %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ error_message }}
+                            </div>
+                        {% endif %}
+
                         <div class="index-right">
                             <div class="ml-auto ">
                                 <a href="{% url 'dungeon' %}" class="">
                                     <button class="details-character-edit-button">Dungeon</button>
                                 </a>
-                                <a href="#">
+                                <a href="{% url 'tavern' %}">
                                     <button class=" details-character-edit-button">Tavern</button>
                                 </a>
                                 <a href="{% url 'details_character' pk=character.id %}">

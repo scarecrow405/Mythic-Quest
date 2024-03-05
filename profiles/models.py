@@ -13,7 +13,9 @@ class UserProfile(models.Model):
     user = models.OneToOneField(
         to=User,
         null=True,
-        on_delete=models.CASCADE, )
+        on_delete=models.CASCADE,
+        # primary_key=True,
+    )
 
     username = models.CharField(
         max_length=MAX_USERNAME_LENGTH,

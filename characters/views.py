@@ -33,7 +33,7 @@ def create_character(request):
                 messages.success(request, "Please select a character type!")
                 return render(request, 'characters/create_character.html', {'form': form})
 
-        return redirect('details_character', pk=character.pk)
+        return redirect('index')
 
     else:
         form = CharacterCreationForm()
@@ -77,6 +77,7 @@ class CharacterDetailsView(LoginRequiredMixin, DetailView):
         context['character_stats'] = {
             'level': get_character_stat(character.level),
             'experience': get_character_stat(character.experience),
+            'max_health': get_character_stat(character.max_health),
             'health': get_character_stat(character.health),
             'strength': get_character_stat(character.strength),
             'agility': get_character_stat(character.agility),
@@ -161,6 +162,7 @@ def get_character_level(character_experience):
 
 def all_stats_increase(character) -> None:
     base_increase = {
+        "max_health": 25,
         "health": 25,
         "strength": 12,
         "agility": 7,
@@ -168,6 +170,7 @@ def all_stats_increase(character) -> None:
         "armor": 5
     }
 
+    character.max_health += base_increase.get("max_health") * character.level
     character.health += base_increase.get("health") * character.level
     character.strength += base_increase.get("strength") * character.level
     character.agility += base_increase.get("agility") * character.level
@@ -234,6 +237,10 @@ class CharacterFightView(LoginRequiredMixin, View):
         except Character.DoesNotExist:
             return render(request, 'home/index.html', {})
 
+        # Return character to Tavern to heal.
+        if character.health == 0:
+            return redirect("character_has_died")
+
         if character.rating > enemy.rating:
             winner = character
         elif character.rating < enemy.rating:
@@ -247,33 +254,49 @@ class CharacterFightView(LoginRequiredMixin, View):
         stolen_gold = 0
 
         if winner == character:
-            # Gain EXP
-            gained_exp = fight_experience_gain(character.level, enemy.level)
-            character.experience += gained_exp
+            # Enemy DMG & Your DMG
+            enemy_damage = enemy.damage / 2
+            your_damage = character.damage
 
-            # Gain LVL
-            current_level = character.level
-            character.level = get_character_level(character.experience)
+            # Fight
+            character.health = max(0, character.health - enemy_damage)
+            if character.health > 0:
+                enemy.health = max(0, enemy.health - your_damage)
 
-            # Increase all stats if lvl up!
-            if current_level != character.level:
-                all_stats_increase(character)
+                # Gain EXP
+                gained_exp = fight_experience_gain(character.level, enemy.level)
+                character.experience += gained_exp
 
-            # Gold Stolen
-            if character.level >= enemy.level:
-                stolen_gold_multiplier = max(1, abs(character.level - enemy.level)) / 100
-            else:
-                stolen_gold_multiplier = abs(character.level - enemy.level) / (enemy.level / 2) / 100
+                # Gain LVL
+                current_level = character.level
+                character.level = get_character_level(character.experience)
 
-            stolen_gold_percentage = 1 - stolen_gold_multiplier
-            stolen_gold = ceil(enemy.gold * stolen_gold_multiplier)
+                # Increase all stats if lvl up!
+                if current_level != character.level:
+                    all_stats_increase(character)
 
-            character.gold = ceil(character.gold + stolen_gold)
-            enemy.gold = ceil(enemy.gold * stolen_gold_percentage)
+                # Gold Stolen
+                if character.level >= enemy.level:
+                    stolen_gold_multiplier = max(1, abs(character.level - enemy.level)) / 50
+                else:
+                    stolen_gold_multiplier = abs(character.level - enemy.level) / (enemy.level / 2) / 50
 
-            # Gain Gold
-            gained_gold = gold_gained(character.level)
-            character.gold += gained_gold
+                stolen_gold_percentage = 1 - stolen_gold_multiplier
+                stolen_gold = ceil(enemy.gold * stolen_gold_multiplier)
+
+                character.gold = ceil(character.gold + stolen_gold)
+                enemy.gold = ceil(enemy.gold * stolen_gold_percentage)
+
+                # Gain Gold
+                gained_gold = gold_gained(character.level)
+                character.gold += gained_gold
+        else:
+            enemy_damage = enemy.damage * 1.3
+            your_damage = character.damage / 2
+            # Fight
+            character.health = max(0, character.health - enemy_damage)
+            if character.health > 0:
+                enemy.health = max(0, enemy.health - your_damage)
 
             # Save into DB
             character.save()
@@ -290,38 +313,6 @@ class CharacterFightView(LoginRequiredMixin, View):
 
         return render(request, 'characters/character_fight.html', context)
 
-# class EnemyCharacterDetailsView(LoginRequiredMixin, DetailView):
-#     model = Character
-#     template_name = 'characters/details_enemy_character.html'
-#     context_object_name = 'character'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#
-#         character = self.get_object()
-#         user_character = Character.objects.get(user=self.request.user)
-#
-#         def get_character_stat(character_stat):
-#             if 9_999 >= character_stat >= 1_000:
-#                 return f"{str(character_stat)[0]}.{str(character_stat)[1]}K"
-#             elif 99_999 >= character_stat >= 10_000:
-#                 return f"{str(character_stat)[:2]}K"
-#             elif 999_999 >= character_stat >= 100_000:
-#                 return f"{str(character_stat)[:3]}K"
-#             elif 99_999_999 >= character_stat >= 1_000_000:
-#                 return f"{str(character_stat)[0]}.{str(character_stat)[1]}M"
-#             return character_stat
-#
-#         # Add hero stats to the context
-#         context['character_stats'] = {
-#             'level': get_character_stat(character.level),
-#             'health': get_character_stat(character.health),
-#             'strength': get_character_stat(character.strength),
-#             'agility': get_character_stat(character.agility),
-#             'damage': get_character_stat(character.damage),
-#             'armor': get_character_stat(character.armor),
-#         }
-#         context["character_rating"] = character.rating
-#         context["user_character"] = user_character
-#
-#         return context
+
+def character_has_died(request):
+    return render(request, 'characters/character-has-died.html', {})

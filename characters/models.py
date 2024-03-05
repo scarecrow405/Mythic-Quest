@@ -38,6 +38,7 @@ class Character(models.Model):
     level = models.IntegerField(default=STARTING_LEVEL)
     experience = models.IntegerField(default=STARTING_EXPERIENCE)
     health = models.IntegerField(default=STARTING_HEALTH)
+    max_health = models.IntegerField(default=STARTING_HEALTH)
     strength = models.IntegerField(default=STARTING_STRENGTH)
     agility = models.IntegerField(default=STARTING_AGILITY)
     damage = models.IntegerField(default=STARTING_DAMAGE)
@@ -49,7 +50,7 @@ class Character(models.Model):
         weights = {
             'Level': 1.5,
             'Experience': 1.7,
-            'Health': 1.1,
+            'Max_Health': 1.1,
             'Strength': 1.8,
             'Agility': 1.5,
             'Damage': 1.5,
@@ -65,7 +66,7 @@ class Character(models.Model):
     def save(self, *args, **kwargs):
         character_stats = {
             'Level': self.level,
-            'Health': self.health,
+            'Max_Health': self.max_health,
             'Strength': self.strength,
             'Agility': self.agility,
             'Damage': self.damage,

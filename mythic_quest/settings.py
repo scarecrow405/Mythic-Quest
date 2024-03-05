@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'items',
     'monsters',
     'profiles',
+    'tavern',
 ]
 
 MIDDLEWARE = [

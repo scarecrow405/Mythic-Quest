@@ -14,5 +14,8 @@ urlpatterns = [
     path("character/", include("characters.urls")),
 
     # Monsters
-    path("monster/", include("monsters.urls"))
+    path("monster/", include("monsters.urls")),
+
+    # Tavern
+    path("tavern/", include("tavern.urls"))
 ]

@@ -8,25 +8,34 @@
 {% block main_content %}
     {% if character %}
         <div class="container custom-color p-4 details-character-main">
-            <div class="character-info text-white">
-                <div class="left">
-                    <h5 class="details-character-nickname">{{ character.nickname }}</h5>
-                    <img src="{% static character.image_path %}" alt="{{ character.nickname }} Image"
-                         class="img-fluid">
-                    <div class="px-2 d-flex justify-content-between details-character-stats">
-                        <p>Rating:</p>
-                        <p>{{ character_rating|get_character_rating }}</p>
-                    </div>
+        <div class="character-info text-white">
+            <div class="left">
+                <h5 class="details-character-nickname">{{ character.nickname }}</h5>
+                <img src="{% static character.image_path %}" alt="{{ character.nickname }} Image"
+                     class="img-fluid">
+                <div class="px-2 d-flex justify-content-between details-character-stats">
+                    <p>Rating:</p>
+                    <p>{{ character_rating|get_character_rating }}</p>
                 </div>
+            </div>
 
-                <div class="right">
+            <div class="right">
 
-                    {% for stat, value in character_stats.items %}
-                        <div class="px-2 d-flex justify-content-between details-character-stats">
+                {% for stat, value in character_stats.items %}
+                    {% if stat != "max_health" %}
+                        {% if stat == "health" %}
+                            <div class="px-2 d-flex justify-content-between details-character-stats">
+                            <p>{{ stat|capfirst }}:</p>
+                            <p>{{ character.max_health }} / {{ value }}</p>
+
+                        {% else %}
+                            <div class="px-2 d-flex justify-content-between details-character-stats">
                             <p>{{ stat|capfirst }}:</p>
                             <p>{{ value }}</p>
-                        </div>
-                    {% endfor %}
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                {% endfor %}
 
                 </div>
 
