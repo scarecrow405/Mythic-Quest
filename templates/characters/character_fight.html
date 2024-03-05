@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load custom_tags %}
 
 {% block title %}Mythic Quest - Character Fight{% endblock %}
 
@@ -24,26 +25,27 @@
                         </div>
                         <div class="px-2 d-flex justify-content-between character-fight-character-level">
                             <p>Rating:</p>
-                            <p>{{ character.rating|floatformat:0 }}</p>
+                            <p>{{ character.rating|get_character_rating }}</p>
                         </div>
                     </div>
 
                     <div class="character-fight-center">
                         <div class="ml-auto ">
                             <p>Winner: {{ winner }}!<br>
-                                Gold Gained: {{ gained_gold }}<br>
-                                Exp Won: {{ gained_exp }}
+                                Gold Gained: {{ gained_gold|floatformat:0 }}<br>
+                                Gold Stolen: {{ stolen_gold|floatformat:0 }}<br>
+                                Exp Won: {{ gained_exp|floatformat:0 }}
                             </p>
-                            <a href="#" class="">
+                            <a href="{% url 'dungeon' %}" class="mb-2">
                                 <button class="character-fight-edit-button">Dungeon</button>
                             </a>
-                            <a href="#">
+                            <a href="#" class="mb-2">
                                 <button class=" character-fight-edit-button">Tavern</button>
                             </a>
-                            <a href="{% url 'details_character' pk=character.id %}">
+                            <a href="{% url 'details_character' pk=character.id %}" class="mb-2">
                                 <button class="character-fight-edit-button">My Character</button>
                             </a>
-                            <a href="{% url 'index' %}">
+                            <a href="{% url 'index' %}" class="mb-2">
                                 <button class="details-character-edit-button">Back to Home</button>
                             </a>
                         </div>
@@ -60,11 +62,12 @@
                         </div>
                         <div class="px-2 d-flex justify-content-between character-fight-character-level">
                             <p>Rating:</p>
-                            <p>{{ enemy.rating|floatformat:0 }}</p>
+                            <p>{{ enemy.rating|get_character_rating }}</p>
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
+    </div>
 {% endblock %}

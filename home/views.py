@@ -33,6 +33,7 @@ class HomeViewWithCharacter(LoginRequiredMixin, TemplateView):
             context['character_stats'] = character_stats
             context['character_rating'] = character.rating
             context['enemy_characters'] = enemy_characters
+
         except Character.DoesNotExist:
             all_characters = Character.objects.order_by('-rating')
             context['all_characters'] = all_characters

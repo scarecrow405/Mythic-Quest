@@ -11,5 +11,8 @@ urlpatterns = [
     path("profile/", include("profiles.urls")),
 
     # Characters
-    path("character/", include("characters.urls"))
+    path("character/", include("characters.urls")),
+
+    # Monsters
+    path("monster/", include("monsters.urls"))
 ]

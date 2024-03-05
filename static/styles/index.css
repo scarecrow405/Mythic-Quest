@@ -103,4 +103,13 @@
     list-style: decimal;
     border: 2px grey solid;
     padding: 3px;
+    display: flex;
+}
+
+.index-each-enemy a {
+    align-self: flex-start;
+}
+
+.index-each-enemy a:first-child {
+    margin-left: auto;
 }

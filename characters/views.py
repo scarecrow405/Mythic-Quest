@@ -1,3 +1,5 @@
+from math import ceil
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -228,18 +230,21 @@ class CharacterFightView(LoginRequiredMixin, View):
         try:
             character = Character.objects.get(pk=pk)
             enemy = Character.objects.get(pk=pk2)
+
         except Character.DoesNotExist:
             return render(request, 'home/index.html', {})
 
         if character.rating > enemy.rating:
             winner = character
         elif character.rating < enemy.rating:
-            winner = character if random.randint(0, 100) == 0 else enemy
+            level_multiplier = abs(character.level - enemy.level)
+            winner = character if random.randint(0, 100 * level_multiplier) == 0 else enemy
         else:
             winner = character if random.randint(0, 1) == 0 else enemy
 
         gained_exp = 0
         gained_gold = 0
+        stolen_gold = 0
 
         if winner == character:
             # Gain EXP
@@ -254,17 +259,33 @@ class CharacterFightView(LoginRequiredMixin, View):
             if current_level != character.level:
                 all_stats_increase(character)
 
+            # Gold Stolen
+            if character.level >= enemy.level:
+                stolen_gold_multiplier = max(1, abs(character.level - enemy.level)) / 100
+            else:
+                stolen_gold_multiplier = abs(character.level - enemy.level) / (enemy.level / 2) / 100
+
+            stolen_gold_percentage = 1 - stolen_gold_multiplier
+            stolen_gold = ceil(enemy.gold * stolen_gold_multiplier)
+
+            character.gold = ceil(character.gold + stolen_gold)
+            enemy.gold = ceil(enemy.gold * stolen_gold_percentage)
+
             # Gain Gold
             gained_gold = gold_gained(character.level)
             character.gold += gained_gold
+
+            # Save into DB
             character.save()
+            enemy.save()
 
         context = {
             'character': character,
             'enemy': enemy,
             'winner': character if winner == character else enemy,
             'gained_gold': gained_gold,
-            'gained_exp': gained_exp
+            'gained_exp': gained_exp,
+            'stolen_gold': stolen_gold,
         }
 
         return render(request, 'characters/character_fight.html', context)

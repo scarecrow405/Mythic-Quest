@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Mythic Quest - Dungeon{% endblock %}
+
+
+{% block main_content %}
+    <div class="dungeon-main-container d-flex">
+
+        {% for monster in monsters %}
+            <div class="dungeon-img-container m-3 d-flex flex-column">
+                <h4 class="text-center">
+                    {{ monster.name }}
+                </h4>
+                <img src="{% static monster.image_path %}" width="200px" alt="{{ scarab_beetle.name }}">
+
+                <a href="{% url 'fight_monster' slug=monster.name|first_word %}"
+                   class="btn btn-primary">Attack</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

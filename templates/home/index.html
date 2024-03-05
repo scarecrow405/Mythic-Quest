@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load custom_tags %}
 
 {% block title %}Mythic Quest - Home{% endblock %}
 
@@ -25,13 +26,13 @@
                             </div>
                             <div class="px-2 d-flex justify-content-between index-character-level">
                                 <p>Rating:</p>
-                                <p>{{ character_rating|floatformat:0 }}</p>
+                                <p>{{ character_rating|get_character_rating }}</p>
                             </div>
                         </div>
 
                         <div class="index-right">
                             <div class="ml-auto ">
-                                <a href="#" class="">
+                                <a href="{% url 'dungeon' %}" class="">
                                     <button class="details-character-edit-button">Dungeon</button>
                                 </a>
                                 <a href="#">
@@ -51,7 +52,7 @@
                     ENEMY CHARACTERS:
                     {% for enemy in enemy_characters %}
                         <li class="index-each-enemy">
-                            Nickname: {{ enemy.nickname }} - Rating: {{ enemy.rating|floatformat:0 }}
+                            Lvl{{ enemy.level }}: {{ enemy.nickname }} - Rating: {{ enemy.rating|get_character_rating }}
                             <a href="{% url 'fight_character' pk=character.id pk2=enemy.id %}"
                                class="btn btn-primary">Fight</a>
                             <a href="{% url 'details_character' pk=enemy.id %}"
