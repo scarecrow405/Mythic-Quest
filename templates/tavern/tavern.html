@@ -3,4 +3,13 @@
 {% block title %}Mythic Quest - Tavern{% endblock %}
 
 {% block main_content %}
+    <a href="{% url 'index' %}">
+        <button class="btn btn-primary">Back to Home</button>
+    </a>
+    <br>
+    <form method="post" action="{% url 'heal_for_10_percent' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Heal 10%</button>
+    </form>
+
 {% endblock %}

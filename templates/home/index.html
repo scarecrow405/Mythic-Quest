@@ -7,6 +7,7 @@
 
 {% block main_content %}
 
+
     {% if character %}
         <div class="index-main-box">
             <div class="card bg-dark index-custom-main">
@@ -54,7 +55,17 @@
                 </div>
             </div>
 
-            <div class="index-enemy-characters text-white">
+
+            <div class="index-enemy-characters text-white d-flex justify-content-between flex-column align-items-center">
+
+                {#  ---> Searchbar <--- #}
+                <form method="GET" action="{% url 'index' %}" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search by Nickname"
+                           aria-label="Search"
+                           name="character_nickname" value="">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+
                 <ul>
                     ENEMY CHARACTERS:
                     {% for enemy in enemy_characters %}
@@ -65,10 +76,39 @@
                             <a href="{% url 'details_character' pk=enemy.id %}"
                                class="btn btn-primary">Details</a>
                         </li>
+                    {% empty %}
+                        <li>No characters found.</li>
                     {% endfor %}
                 </ul>
+
+                {# ---> Pagination <---- #}
+                <nav aria-label="Page navigation example" class="d-flex mt-auto">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            {% if enemy_characters.has_previous %}
+                                <a class="page-link" href="?page={{ enemy_characters.previous_page_number }}"
+                                   tabindex="-1">Previous</a>
+                            {% endif %}
+                        </li>
+                        {% for page in paginator_object.page_range %}
+                            {% if page == enemy_characters.number %}
+                                <li class="page-item active"><a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        <li class="page-item">
+                            {% if enemy_characters.has_next %}
+                                <a class="page-link" href="?page={{ enemy_characters.next_page_number }}">Next</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
+
 
         {# TODO: Move this to another template and redirect there if no characters #}
     {% else %}
@@ -94,4 +134,8 @@
             </ul>
         </div>
     {% endif %}
+
+    {# Pagination links #}
+
+
 {% endblock %}

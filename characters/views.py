@@ -279,7 +279,7 @@ class CharacterFightView(LoginRequiredMixin, View):
                 if character.level >= enemy.level:
                     stolen_gold_multiplier = max(1, abs(character.level - enemy.level)) / 50
                 else:
-                    stolen_gold_multiplier = abs(character.level - enemy.level) / (enemy.level / 2) / 50
+                    stolen_gold_multiplier = abs(character.level - enemy.level) / (enemy.level / 2) / 25
 
                 stolen_gold_percentage = 1 - stolen_gold_multiplier
                 stolen_gold = ceil(enemy.gold * stolen_gold_multiplier)
