@@ -34,7 +34,8 @@
                             <p>Winner: {{ winner }}!<br>
                                 Gold Gained: {{ gained_gold|floatformat:0 }}<br>
                                 Gold Stolen: {{ stolen_gold|floatformat:0 }}<br>
-                                Exp Won: {{ gained_exp|floatformat:0 }}
+                                Exp Won: {{ gained_exp|floatformat:0 }}<br>
+                                Win Chance: {{ win_chance|floatformat:2 }}%
                             </p>
                             <a href="{% url 'dungeon' %}" class="mb-2">
                                 <button class="character-fight-edit-button">Dungeon</button>

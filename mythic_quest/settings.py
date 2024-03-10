@@ -111,6 +111,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/profile/signin/'
 
+# Custom error handlers
+handler404 = 'characters.views.handle_404'
+handler403 = 'characters.views.handle_403'
+
 # LOGGING = {
 #     'version': 1,
 #     'disable_existing_loggers': False,

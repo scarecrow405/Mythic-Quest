@@ -15,6 +15,9 @@ class Monster(models.Model):
     damage = models.IntegerField()
     armor = models.IntegerField()
 
+    base_gold_gained = models.IntegerField()
+    base_exp_gained = models.IntegerField()
+
     image_path = models.CharField(
         max_length=MAX_IMAGE_PATH_LENGTH,
         null=True,

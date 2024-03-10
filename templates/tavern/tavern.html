@@ -11,5 +11,15 @@
         {% csrf_token %}
         <button type="submit" class="btn btn-primary">Heal 10%</button>
     </form>
+    <br>
+    <form method="post" action="{% url 'heal_for_50_percent' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Heal 50%</button>
+    </form>
+    <br>
+    <form method="post" action="{% url 'heal_for_100_percent' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Heal 100%</button>
+    </form>
 
 {% endblock %}
