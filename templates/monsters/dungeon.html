@@ -7,18 +7,35 @@
 
 
 {% block main_content %}
-    <div class="dungeon-main-container d-flex">
+    <div class="dungeon-main-container flex-row text-center">
 
-        {% for monster in monsters %}
-            <div class="dungeon-img-container m-3 d-flex flex-column">
-                <h4 class="text-center">
-                    {{ monster.name }}
-                </h4>
-                <img src="{% static monster.image_path %}" width="200px" alt="{{ scarab_beetle.name }}">
+        <div class="card text-white dungeon-custom-header">
+            <h4 class="card-header dungeon-custom-font home-header">Dungeon</h4>
+        </div>
 
-                <a href="{% url 'fight_monster' slug=monster.name|first_word %}"
-                   class="btn btn-primary">Attack</a>
+        <div class="card-body text-white dungeon-custom-card-body">
+            <div class="monster-info">
+                {% for monster in monsters %}
+                    <div class="dungeon-img-container m-3 d-flex flex-column text-white">
+                        <h5 class="dungeon-monster-nickname text-center">{{ monster.name }}</h5>
+
+                        <img src="{% static monster.image_path %}" width="200px" alt="{{ scarab_beetle.name }}">
+
+                        <div class="px-2 d-flex justify-content-between dungeon-monster-level">
+                            <p>Level:</p>
+                            <p>{{ monster.level }}</p>
+                        </div>
+                        <div class="px-2 d-flex justify-content-between dungeon-monster-level">
+                            <p>Rating:</p>
+                            <p>{{ monster.rating|floatformat:0 }}</p>
+                        </div>
+
+                        <a href="{% url 'fight_monster' slug=monster.name|first_word %}"
+                           class="btn btn-primary">Attack</a>
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+        </div>
     </div>
+
 {% endblock %}

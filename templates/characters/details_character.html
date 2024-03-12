@@ -26,7 +26,7 @@
                         {% if stat == "health" %}
                             <div class="px-2 d-flex justify-content-between details-character-stats">
                             <p>{{ stat|capfirst }}:</p>
-                            <p>{{ character.max_health }} / {{ value }}</p>
+                            <p>{{ character.max_health|get_character_rating }} / {{ value }}</p>
 
                         {% else %}
                             <div class="px-2 d-flex justify-content-between details-character-stats">

@@ -1,0 +1,152 @@
+.monster-fight-custom-header {
+    background-color: #C73F19 !important;
+    text-align: center;
+}
+
+.monster-fight-custom-font {
+    font-family: "Kelly Slab", sans-serif;
+}
+
+.monster-fight-custom-card-body {
+    padding-bottom: 20px;
+    background-color: rgb(0, 0, 0);
+}
+
+.monster-info {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.index-monster-stats {
+    border: 2px solid grey;
+    box-shadow: rgb(72, 49, 2) 0 0 3px;
+}
+
+.monster-fight-monster-level {
+    border: 2px solid grey;
+    box-shadow: rgb(72, 49, 2) 0 0 3px;
+}
+
+.monster-fight-monster-nickname {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-top: 3.5px solid black;
+    border-bottom: 3.5px solid black;
+    border-radius: 15px;
+    background-color: #e1b239;
+    color: black;
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-size: 16px;
+    box-shadow: rgb(101, 69, 3) 0 2px 4px;
+}
+
+.monster-fight-left {
+    max-width: 35%;
+}
+
+.monster-fight-left img {
+    border: 3px groove goldenrod;
+    box-shadow: rgb(72, 49, 2) 0 5px 15px;
+    border-radius: 10px;
+}
+
+.monster-fight-center {
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: 320px 430px;
+    background-position: center center;
+    width: 400px;
+    height: 400px;
+    padding-left: 30px;
+    padding-right: 100px;
+    /*padding-top: 140px;*/
+    padding-bottom: 105px;
+    color: black;
+
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 570;
+
+}
+
+.monster-fight-center div p {
+    margin: 0;
+    border-color: yellowgreen;
+}
+
+.monster-fight-center div:last-child {
+    /*margin-top: 25px !important;*/
+    color: orangered;
+    font-weight: bold;
+}
+
+.monster-fight-center div:nth-child(2) {
+    margin-bottom: 30px;
+}
+
+.monster-fight-main-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10em;
+}
+
+.monster-fight-custom-main {
+    width: 60%;
+}
+
+.index-enemy-monsters {
+    /*display: flex;*/
+    /*justify-content: center;*/
+    border: 3px black solid;
+    width: 40%;
+    height: auto;
+    background-color: black !important;
+}
+
+.index-each-enemy {
+    list-style: decimal;
+    border: 2px grey solid;
+    padding: 3px;
+}
+
+.monster-fight-edit-button {
+    padding: 15px;
+    border: 3px solid black;
+    border-radius: 30px;
+    background-color: #936100;
+    color: whitesmoke;
+    box-shadow: rgb(72, 49, 2) 0 5px 15px;
+    width: 160px;
+    height: 60px;
+    font-size: 16px;
+}
+
+.monster-fight-edit-button:hover {
+    font-weight: bold;
+    background-color: #ffac05;
+    transition: 0.1s;
+    transform: scale(1.05);
+    color: black;
+}
+
+.details-monster-edit-button {
+    padding: 15px;
+    border: 3px solid black;
+    border-radius: 30px;
+    background-color: #936100;
+    color: whitesmoke;
+    box-shadow: rgb(72, 49, 2) 0 5px 15px;
+    width: 160px;
+    height: 60px;
+    font-size: 16px;
+}
+
+.details-monster-edit-button:hover {
+    font-weight: bold;
+    background-color: #ffac05;
+    transition: 0.1s;
+    transform: scale(1.05);
+    color: black;
+}

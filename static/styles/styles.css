@@ -15,8 +15,14 @@
 /*Home*/
 @import url('index.css');
 
-/*Fight*/
+/*CharacterFight*/
 @import url('character_fight.css');
+
+/*MonsterFight*/
+@import url('monster-fight.css');
+
+/*Dungeon */
+@import url('dungeon.css');
 
 /*Contact-Form*/
 @import url('contact-form.css');

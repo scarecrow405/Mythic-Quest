@@ -1,0 +1,35 @@
+.dungeon-custom-header {
+    background-color: #C73F19 !important;
+}
+
+.dungeon-custom-font {
+    font-family: "Kelly Slab", sans-serif;
+}
+
+.dungeon-custom-card-body {
+    padding-bottom: 20px;
+    background-color: rgb(0, 0, 0);
+}
+
+.monster-info {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.dungeon-monster-level {
+    border: 2px solid grey;
+    box-shadow: rgb(72, 49, 2) 0 0 3px;
+}
+
+.dungeon-monster-nickname {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-top: 3.5px solid black;
+    border-bottom: 3.5px solid black;
+    border-radius: 15px;
+    background-color: #e1b239;
+    color: black;
+    font-family: "Mochiy Pop P One", sans-serif;
+    font-size: 16px;
+    box-shadow: rgb(101, 69, 3) 0 2px 4px;
+}

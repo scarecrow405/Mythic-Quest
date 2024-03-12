@@ -11,6 +11,10 @@
         {% if user.is_authenticated %}
             <div style="color: white; margin-left: 100px">LOGGED IN!!!</div>
         {% endif %}
+
+        <div class="gold btn-danger ml-4">
+            Gold Owned: {{ user.character.gold }}
+        </div>
     </div>
 </footer>
 

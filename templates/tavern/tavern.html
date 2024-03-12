@@ -16,22 +16,30 @@
         </ul>
     {% endif %}
 
-
     <div class="tavern-buttons-main d-flex flex-row">
-
-        <form method="post" action="{% url 'heal_for_10_percent' %}" class="p-2">
+        <form method="post" action="{% url 'heal_for_10_percent' %}" class="p-2 text-white">
             {% csrf_token %}
-            <button type="submit" class="btn btn-primary">Heal 10%</button>
+            <button type="submit" class="btn btn-primary">
+                Heal 10% <br>
+                Cost: {{ gold_costs.heal_10_percent }} gold
+            </button>
         </form>
         <br>
-        <form method="post" action="{% url 'heal_for_50_percent' %}" class="p-2">
+        <form method="post" action="{% url 'heal_for_50_percent' %}" class="p-2 text-white">
             {% csrf_token %}
-            <button type="submit" class="btn btn-primary">Heal 50%</button>
+            <button type="submit" class="btn btn-primary">
+                Heal 50% <br>
+                Cost: {{ gold_costs.heal_50_percent }} gold
+            </button>
         </form>
         <br>
-        <form method="post" action="{% url 'heal_for_100_percent' %}" class="p-2">
+        <form method="post" action="{% url 'heal_for_100_percent' %}" class="p-2 text-white">
             {% csrf_token %}
-            <button type="submit" class="btn btn-primary">Heal 100%</button>
+            <button type="submit" class="btn btn-primary">
+                Heal 100% <br>
+                Cost: {{ gold_costs.heal_100_percent }} gold
+            </button>
         </form>
     </div>
+
 {% endblock %}

@@ -25,5 +25,34 @@ class Monster(models.Model):
 
     rating = models.IntegerField(default=0)
 
+    def calculate_rating(self, **character_stats):
+        weights = {
+            'Level': 2,
+            'Health': 1.5,
+            'Strength': 2,
+            'Agility': 1.6,
+            'Damage': 1.6,
+            'Armor': 1.301,
+        }
+
+        current_rating = 0
+        for name, amount in character_stats.items():
+            if name in weights:
+                current_rating += weights[name] * amount
+        self.rating = current_rating
+
+    def save(self, *args, **kwargs):
+        character_stats = {
+            'Level': self.level,
+            'Health': self.health,
+            'Strength': self.strength,
+            'Agility': self.agility,
+            'Damage': self.damage,
+            'Armor': self.armor,
+        }
+
+        self.calculate_rating(**character_stats)
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.name

@@ -10,6 +10,13 @@ from monsters.monster_fight_logic import monster_fight
 class DungeonView(LoginRequiredMixin, TemplateView):
     template_name = 'monsters/dungeon.html'
 
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        for monster in context['monsters']:
+            monster.save()
+
+        return self.render_to_response(context)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['monsters'] = Monster.objects.order_by('rating')
@@ -43,9 +50,22 @@ class MonsterFightView(LoginRequiredMixin, View):
         if character.health == 0:
             return redirect("character_has_died")
 
-        winner, gained_exp, gained_gold, stolen_gold, win_chance = monster_fight(character, monster)
+        winner, gained_exp, gained_gold, win_chance, damage_taken = monster_fight(character, monster)
 
-        return render(request, self.template_name)
+        context = {
+            'character': character,
+            'monster': monster,
+            'winner': winner,
+            'gained_gold': gained_gold,
+            'gained_exp': gained_exp,
+            'win_chance': win_chance,
+            'damage_taken': damage_taken
+        }
+
+        return render(request, 'monsters/fight_monster.html', context) if character.health > 0 else redirect(
+            "character_has_died")
+
+        # return render(request, self.template_name)
 
 
 """
