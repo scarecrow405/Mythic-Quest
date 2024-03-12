@@ -82,7 +82,7 @@ class CharacterDetailsView(LoginRequiredMixin, DetailView):
     template_name = 'characters/details_character.html'
     context_object_name = 'character'
 
-    # TODO: Sometimes it's not working or it's loading slow in my browser?
+    # TODO: NEED TO HANDLE EXCEPTIONS WHEN TYPING STRINGS TOO!
     def get(self, request, *args, **kwargs):
         try:
             character = Character.objects.get(pk=kwargs.get('pk'))
