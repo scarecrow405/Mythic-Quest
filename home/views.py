@@ -56,36 +56,33 @@ class HomeViewWithCharacter(LoginRequiredMixin, ListView):
         return context
 
 
-# class HomeViewWithoutCharacter(TemplateView):
-#     template_name = 'home/index-without-character.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#
-#         all_characters = Character.objects.order_by('-rating')
-#         context['all_characters'] = all_characters
-#
-#         return context
-
 class HomeViewWithoutCharacter(ListView):
     queryset = Character.objects.order_by('-rating')
     template_name = 'home/index-without-character.html'
-    paginate_by = 10
 
-    # def get_context_data(self, *args, **kwargs):
-    #     context = super().get_context_data(*args, **kwargs)
-    #     context['character_nickname_pattern'] = self.request.GET.get('character_nickname', '').strip()
-    #     return context
-    #
-    # def get_queryset(self):
-    #     queryset = super().get_queryset()
-    #     return self.search_by_character_nickname(queryset)
-    #
-    # def search_by_character_nickname(self, queryset):
-    #     character_nickname_pattern = self.request.GET.get('character_nickname', '').strip()
-    #     if character_nickname_pattern:
-    #         return queryset.filter(nickname__icontains=character_nickname_pattern)
-    #     return queryset
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+
+        search_query = self.request.GET.get('character_nickname', '').strip()
+
+        page = self.request.GET.get('page', 1)
+
+        all_characters = Character.objects.filter(nickname__icontains=search_query).order_by(
+            '-rating')
+
+        paginated_characters = Paginator(all_characters, 3)
+        if int(page) > paginated_characters.num_pages:
+            page = 1
+
+        paginated_enemy_characters = paginated_characters.page(page)
+
+        context['all_characters'] = paginated_enemy_characters
+
+        context['paginator_object'] = paginated_characters
+        context['page'] = page
+
+        return context
 
 
 class ContactViewForm(LoginRequiredMixin, TemplateView):

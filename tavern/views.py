@@ -37,11 +37,11 @@ def tavern(request):
 
 
 def calculate_gold_cost(character_level, percent_to_heal):
-    base_gold_cost = 10
+    base_gold_cost = 25
     if percent_to_heal == 50:
-        base_gold_cost = 50
+        base_gold_cost = 95 * character_level
     elif percent_to_heal == 100:
-        base_gold_cost = 100
+        base_gold_cost = 170 * character_level
 
     scaling_factor = 4 + (character_level / 10)
 

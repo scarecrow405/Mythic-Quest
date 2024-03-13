@@ -68,12 +68,8 @@ def signin_user(request):
 
 @login_required()
 def signout_user(request):
-    if request.method == "POST":
-        logout(request)
-        return redirect("signin")
-    else:
-        logout(request)
-        return redirect("signin")
+    logout(request)
+    return redirect("signin")
 
 
 @login_required()

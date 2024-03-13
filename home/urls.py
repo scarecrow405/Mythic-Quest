@@ -5,5 +5,6 @@ from home.views import HomeViewWithCharacter, HomeViewWithoutCharacter, ContactV
 urlpatterns = [
     path('', HomeViewWithCharacter.as_view(), name='index'),
     path('public/', HomeViewWithoutCharacter.as_view(), name='index-without-character'),
+
     path('contact-form/', ContactViewForm.as_view(), name='contact-form'),
 ]

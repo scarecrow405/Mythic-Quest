@@ -1,7 +1,5 @@
-from math import ceil
-
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
@@ -12,45 +10,8 @@ from characters.fight_logic import resolve_fight
 from characters.forms import CharacterCreationForm, CharacterEditForm
 from characters.models import Character
 
-import random
-
 from characters.show_character_stats import get_character_stat
 from characters.error_handling import handle_404, handle_403
-
-
-# @login_required
-# def create_character(request):
-#     has_character = Character.objects.filter(user=request.user).exists()
-#     if has_character:
-#         return redirect('details_character', pk=Character.objects.get(user=request.user).pk)
-#
-#     if request.method == 'POST':
-#         form = CharacterCreationForm(request.POST)
-#         if form.is_valid():
-#             character = form.save(commit=False)
-#             character.user = request.user
-#             character.image_path = f'img/{request.POST.get("character_type", "")}-warrior.jpg'
-#
-#             if "male" in character.image_path or "female" in character.image_path:
-#                 character.save()
-#             else:
-#                 messages.success(request, "Please select a character type!")
-#                 return render(request, 'characters/create_character.html', {'form': form})
-#
-#         return redirect('index')
-#
-#     else:
-#         form = CharacterCreationForm()
-#
-#     context = {
-#         'form': form,
-#     }
-#
-#     return render(
-#         request,
-#         'characters/create_character.html',
-#         context
-#     )
 
 
 class CharacterCreateView(LoginRequiredMixin, TemplateView):
@@ -77,7 +38,7 @@ class CharacterCreateView(LoginRequiredMixin, TemplateView):
         return render(request, self.template_name, {'form': form})
 
 
-class CharacterDetailsView(LoginRequiredMixin, DetailView):
+class CharacterDetailsBaseView(DetailView):
     model = Character
     template_name = 'characters/details_character.html'
     context_object_name = 'character'
@@ -116,6 +77,14 @@ class CharacterDetailsView(LoginRequiredMixin, DetailView):
         context["is_user_in_own_profile"] = is_user_in_own_profile
 
         return context
+
+
+class CharacterDetailsView(LoginRequiredMixin, CharacterDetailsBaseView):
+    pass
+
+
+class CharacterDetailsPublicView(CharacterDetailsBaseView):
+    template_name = 'characters/public_details_character.html'
 
 
 class CharacterEditView(LoginRequiredMixin, UpdateView):

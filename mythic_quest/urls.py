@@ -17,5 +17,8 @@ urlpatterns = [
     path("monster/", include("monsters.urls")),
 
     # Tavern
-    path("tavern/", include("tavern.urls"))
+    path("tavern/", include("tavern.urls")),
+
+    # Items
+    path("items/", include("items.urls")),
 ]

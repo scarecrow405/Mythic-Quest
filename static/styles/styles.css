@@ -12,6 +12,9 @@
 @import url('details-enemy-character.css');
 @import url('edit-character.css');
 
+/*Public Part*/
+@import url('public-details-character.css');
+
 /*Home*/
 @import url('index.css');
 

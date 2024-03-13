@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mythic Quest - Potions Shop{% endblock %}
+
+{% block main_content %}
+    <div class="d-flex potions-container" style="border: 3px solid #0c4128; width: 100%;">
+        {% for item in all_items %}
+            <div class="card m-3 flex-wrap potions-card" style="border: 3px solid #e7b50b;">
+
+                <img class="card-img-top" src="{% static item.image_path %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+
+                    <p class="card-text text-white">{{ item.description }}</p>
+                </div>
+                <p style="font-size: 10px; height: 50px"
+                   class="btn-primary btn m-2">Buy Now <br> Price: XXX Gold</p>
+            </div>
+        {% endfor %}
+
+    </div>
+
+
+
+    <style>
+        .potions-container {
+            background: rgb(255, 172, 5);
+            background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
+        }
+
+        .potions-card {
+            background: #af642c;
+        }
+    </style>
+{% endblock %}

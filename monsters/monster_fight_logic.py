@@ -1,5 +1,4 @@
 import random
-from math import ceil
 
 
 def monster_fight(character, monster):
@@ -17,7 +16,6 @@ def monster_fight(character, monster):
 
     gained_exp = 0
     gained_gold = 0
-    stolen_gold = 0
 
     if winner == character:
         # Monster DMG & Your DMG
@@ -41,7 +39,7 @@ def monster_fight(character, monster):
                 all_stats_increase(character)
 
             # Gain Gold
-            gained_gold = gold_gained(character.level)
+            gained_gold = gold_gained(monster.name)
             character.gold += gained_gold
 
     else:
@@ -80,26 +78,20 @@ def calculate_win_chance(character_rating, monster_rating, character_level, mons
     return max(min(base_win_chance, 100), 0)  # Win chance is between 0 and 100%
 
 
-def gold_gained(player_level):
+def gold_gained(monster_name):
     base_gold_gain = {
-        1: (50, 300),
-        2: (80, 400),
-        3: (111, 500),
-        4: (140, 600),
-        5: (210, 700),
-        6: (290, 900),
-        7: (420, 1000),
-        8: (509, 1100),
-        9: (630, 1200),
-        10: (780, 1300),
+        "Scarab Beetle": (100, 300),
+        "Evil Mummy": (500, 1500),
+        "Anubis": (2000, 6000),
+        "Judge the Destroyer": (999999, 99999999),
     }
 
-    base_range = base_gold_gain.get(player_level)
+    base_range = base_gold_gain.get(monster_name)
 
-    min_experience_gain = int(base_range[0])
-    max_experience_gain = int(base_range[1])
+    min_gold_gain = int(base_range[0])
+    max_gold_gain = int(base_range[1])
 
-    gold_gain = random.randint(min_experience_gain, max_experience_gain)
+    gold_gain = random.randint(min_gold_gain, max_gold_gain)
     return gold_gain
 
 

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
 
-.right {
+.public-right {
     display: flex;
     flex-direction: column;
     background-repeat: no-repeat;
@@ -21,52 +21,45 @@
 
 }
 
-.right div p {
+.public-right div p {
     margin: 0;
     border-color: yellowgreen;
 }
 
-.details-make-red {
-    margin-top: 25px !important;
-    color: orangered;
-    font-weight: bold;
-}
-
-.right .public-stats:nth-last-of-type(2) {
+.public-right div:nth-last-of-type(2) {
     margin-top: 25px;
 }
 
-
-.right div:nth-child(2) {
+.public-right div:nth-child(2) {
     margin-bottom: 30px;
 }
 
-.character-info {
+.public-character-info {
     display: flex;
     justify-content: flex-start;
 }
 
-.left {
+.public-left {
     max-width: 17%;
 }
 
-.left img {
+.public-left img {
     border: 3px groove goldenrod;
     box-shadow: rgb(72, 49, 2) 0 5px 15px;
     border-radius: 10px;
 }
 
-.custom-color {
+.public-custom-color {
     background: rgb(255, 172, 5);
     background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
 }
 
-.details-character-stats {
+.public-details-character-stats {
     border: 2px solid grey;
     box-shadow: rgb(72, 49, 2) 0 0 3px;
 }
 
-.details-character-edit-button {
+.public-details-character-edit-button {
     padding: 15px;
     border: 3px solid black;
     border-radius: 30px;
@@ -78,7 +71,7 @@
     font-size: 16px;
 }
 
-.details-character-edit-button:hover {
+.public-details-character-edit-button:hover {
     font-weight: bold;
     background-color: #ffac05;
     transition: 0.1s;
@@ -86,13 +79,13 @@
     color: black;
 }
 
-.details-character-main {
+.public-details-character-main {
     border-radius: 30px;
     border: 5px solid goldenrod;
     box-shadow: rgb(0, 0, 0) 5px 10px 20px;
 }
 
-.details-character-nickname {
+.public-details-character-nickname {
     padding: 10px;
     margin-bottom: 10px;
     border-top: 3.5px solid black;

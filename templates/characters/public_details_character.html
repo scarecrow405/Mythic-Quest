@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load custom_tags %}
+
+{% block title %}Mythic Quest - Public View Character{% endblock %}
+
+{% block main_content %}
+    <div class="container public-custom-color p-4 public-details-character-main">
+        <div class="public-character-info text-white">
+
+            <div class="public-left">
+                <h5 class="public-details-character-nickname">{{ character.nickname }}</h5>
+                <img src="{% static character.image_path %}" alt="{{ character.nickname }} Image"
+                     class="img-fluid">
+                <div class="px-2 d-flex justify-content-between public-details-character-stats">
+                    <p>Rating:</p>
+                    <p>{{ character_rating|get_character_rating }}</p>
+                </div>
+            </div>
+
+            <div class="public-right">
+                {% for stat, value in character_stats.items %}
+                    {% if stat != "max_health" %}
+                        {% if stat == "health" %}
+                            <div class="px-2 d-flex justify-content-between public-details-character-stats">
+                            <p>{{ stat|capfirst }}:</p>
+                            <p>{{ character.max_health|get_character_rating }} / {{ value }}</p>
+                        {% else %}
+                            {% if stat != "gold" %}
+                                <div class="px-2 d-flex justify-content-between public-details-character-stats">
+                                <p>{{ stat|capfirst }}:</p>
+                                <p>{{ value }}</p>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+
+                {# Character Buttons #}
+                <div class="mb-2">
+                    <a href="{% url 'index-without-character' %}">
+                        <button class="public-details-character-edit-button">Back to Home</button>
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .public-right {
+            background-image: url(' {% static 'img/details-banner.png' %}');
+        }
+    </style>
+{% endblock %}
