@@ -5,6 +5,14 @@
 
 {% block title %}Mythic Quest - Dungeon{% endblock %}
 
+{% block background_image %}
+    <style>
+        .background-image {
+            background-image: url('{% static 'img/dungeon/dungeon-background-image2.jpeg' %}');
+        {#background-size: auto 100%;#}{#background-position: center;#}
+        }
+    </style>
+{% endblock %}
 
 {% block main_content %}
     <div class="dungeon-main-container flex-row text-center">

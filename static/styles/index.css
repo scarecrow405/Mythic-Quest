@@ -83,7 +83,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10em;
+    gap: 6em;
 }
 
 .index-custom-main {

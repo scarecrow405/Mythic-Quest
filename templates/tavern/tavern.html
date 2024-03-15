@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Mythic Quest - Tavern{% endblock %}
+
+{% block background_image %}
+    <style>
+        .background-image {
+            background-image: url('{% static 'img/tavern/tavern-background-image2.jpeg' %}');
+        }
+    </style>
+{% endblock %}
 
 {% block main_content %}
     <a href="{% url 'index' %}" class="mb-4">

@@ -11,12 +11,13 @@
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap" rel="stylesheet">
 
-
-    <style>
-        .background-image {
-            background-image: url('{% static 'img/town-square.jpg' %} ');
-        }
-    </style>
+    {% block background_image %}
+        <style>
+            .background-image {
+                background-image: url('{% static 'img/town-square.jpg' %} ');
+            }
+        </style>
+    {% endblock %}
 
 </head>
 
@@ -26,7 +27,7 @@
 
     {% include 'navigation.html' %}
 
-    <div class="container mt-5 base-main-body-container">
+    <div class="mt-5 base-main-body-container">
         {% block main_content %}
         {% endblock %}
     </div>

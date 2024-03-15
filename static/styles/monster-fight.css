@@ -89,16 +89,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10em;
+    /*gap: 10em;*/
 }
 
 .monster-fight-custom-main {
-    width: 60%;
+    width: 56%;
 }
 
 .index-enemy-monsters {
-    /*display: flex;*/
-    /*justify-content: center;*/
     border: 3px black solid;
     width: 40%;
     height: auto;

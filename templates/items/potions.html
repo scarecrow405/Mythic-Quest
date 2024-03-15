@@ -3,24 +3,53 @@
 
 {% block title %}Mythic Quest - Potions Shop{% endblock %}
 
+{% block background_image %}
+    <style>
+        .background-image {
+            background-image: url('{% static 'img/potions/potions-background-image.png' %}');
+        }
+    </style>
+{% endblock %}
+
 {% block main_content %}
     <div class="d-flex potions-container" style="border: 3px solid #0c4128; width: 100%;">
         {% for item in all_items %}
-            <div class="card m-3 flex-wrap potions-card" style="border: 3px solid #e7b50b;">
+            <div class="card d-flex potions-card" style="border: 3px solid #e7b50b;">
 
-                <img class="card-img-top" src="{% static item.image_path %}" alt="Card image cap">
+                <div id="tooltip">
+                    <span id="tooltipText">BUY ME OR SUFFER!</span>
+                    <img class="card-img-top" src="{% static item.image_path %}" alt="Card image cap">
+                </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ item.name }}</h5>
 
                     <p class="card-text text-white">{{ item.description }}</p>
                 </div>
-                <p style="font-size: 10px; height: 50px"
-                   class="btn-primary btn m-2">Buy Now <br> Price: XXX Gold</p>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                    <input type="hidden" name="buy_item" value="1">
+                    {% if item.effect == 'EXP Boost' %}
+                        <button type="submit" name="experience_potion" class="btn-primary btn m-2">
+                            Buy Now <br> Price: {{ item.price }} Gold
+                        </button>
+                    {% endif %}
+                </form>
+
             </div>
         {% endfor %}
 
     </div>
-
+    {% if messages %}
+        <ul class="messages text-danger list-unstyled h2">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
 
     <style>
@@ -31,6 +60,44 @@
 
         .potions-card {
             background: #af642c;
+            margin: 0.7em;
+        }
+
+        #tooltip {
+            position: relative;
+            cursor: pointer;
+            border-bottom: solid;
+        }
+
+        #tooltipText {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            color: red;
+            background-color: black;
+            white-space: nowrap;
+            padding: 10px 15px;
+            border-radius: 7px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #tooltipText::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+            border: 15px solid;
+            border-color: #000 #0000 #0000 #0000;
+        }
+
+        #tooltip:hover #tooltipText {
+            top: -15%;
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 {% endblock %}

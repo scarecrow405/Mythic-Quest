@@ -34,6 +34,7 @@ class Item(models.Model):
     )
 
     boost_amount_percentage = models.IntegerField(default=0)
+    price = models.IntegerField(default=0)
 
     image_path = models.CharField(max_length=255, blank=True, null=True)
 
