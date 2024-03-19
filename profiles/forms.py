@@ -70,3 +70,9 @@ class UserLoginForm(AuthenticationForm):
         widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'form-control mb-3'}))
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control mb-3'}))
+
+
+class UserProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['username', 'email', 'about', 'profile_image']

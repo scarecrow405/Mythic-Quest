@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Mythic Quest - Edit Profile{% endblock %}
+
+{% block main_content %}
+    <div class="profile-edit-container">
+        <form action="{% url 'profile_edit' %}" method="post" class="profile-edit-form" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            {% if profile_image %}
+                <div class="profile-edit-image-container">
+                    <img src="/media/{{ profile_image }}"
+                         alt="Profile Image"
+                         width="100px"
+                         class="profile-image">
+                </div>
+            {% else %}
+                <div class="profile-edit-image-container">
+                    <img src="https://static.vecteezy.com/system/resources/previews/028/569/170/original/single-man-icon-people-icon-user-profile-symbol-person-symbol-businessman-stock-vector.jpg"
+                         alt="Stock Profile Image"
+                         width="100px" style="border-radius: 50%">
+                </div>
+            {% endif %}
+
+            <div class="profile-edit-form-fields">
+                {# ALL FORM FIELDS #}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" class="form-control" value="{{ username }}">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control" value="{{ email }}">
+                </div>
+                <div class="form-group">
+                    <label for="about">About:</label>
+                    <textarea id="about" name="about" class="form-control">{{ about }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="profile_image">Profile Image:</label>
+                    <input type="file" id="profile_image" name="profile_image" class="form-control">
+                </div>
+
+
+                <button class="btn-primary btn">Save Changes</button>
+            </div>
+
+
+        </form>
+    </div>
+
+    <style>
+        .profile-edit-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgb(255, 172, 5);
+            background: linear-gradient(54deg, rgb(183, 142, 70) 0%, rgb(84, 79, 42) 98%, rgb(173, 154, 15) 100%);
+            border-radius: 40px;
+            color: white;
+        }
+
+        #username, #email, #about, #profile_image {
+            width: 350px;
+        }
+
+        .profile-edit-form {
+            width: 500px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+
+        }
+
+        .profile-edit-image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .profile-edit-form-fields {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 90px;
+            border-radius: 50%;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+
+    </style>
+{% endblock %}

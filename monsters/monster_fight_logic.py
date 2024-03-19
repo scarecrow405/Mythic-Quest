@@ -1,5 +1,7 @@
 import random
 
+from characters.get_character_level import get_character_level
+
 
 def monster_fight(character, monster):
     # Calculate Win chance
@@ -19,7 +21,7 @@ def monster_fight(character, monster):
 
     if winner == character:
         # Monster DMG & Your DMG
-        enemy_damage = monster.damage
+        enemy_damage = random.randint(monster.damage, monster.damage * 4)
 
         # Take Damage
         character.health = max(0, character.health - enemy_damage)
@@ -27,7 +29,7 @@ def monster_fight(character, monster):
         # If character still alive
         if character.health > 0:
             # Gain EXP
-            gained_exp = fight_experience_gain(character.level, monster.level)
+            gained_exp = fight_experience_gain(monster.name)
             character.experience += gained_exp
 
             # Gain LVL
@@ -43,7 +45,7 @@ def monster_fight(character, monster):
             character.gold += gained_gold
 
     else:
-        enemy_damage = monster.damage * 2
+        enemy_damage = random.randint(monster.damage * 2, monster.damage * 10)
         # Take Increased Damage if winner is Monster
         character.health = max(0, character.health - enemy_damage)
 
@@ -95,29 +97,20 @@ def gold_gained(monster_name):
     return gold_gain
 
 
-def fight_experience_gain(player_level, monster_level):
+def fight_experience_gain(monster_name):
     base_experience_gain = {
-        1: (10, 30),
-        2: (20, 40),
-        3: (30, 50),
-        4: (40, 60),
-        5: (50, 70),
-        6: (60, 90),
-        7: (70, 100),
-        8: (80, 110),
-        9: (90, 120),
-        10: (100, 130),
+        "Scarab Beetle": (25, 125),
+        "Evil Mummy": (250, 400),
+        "Anubis": (2000, 4000),
+        "Judge the Destroyer": (999999, 9999999),
     }
 
-    base_range = base_experience_gain.get(player_level)
+    base_range = base_experience_gain.get(monster_name)
 
-    level_difference = abs(player_level - monster_level)
-    modifier = max(0, 1 - (level_difference / 10))
+    min_exp_gain = int(base_range[0])
+    max_emp_gain = int(base_range[1])
 
-    min_experience_gain = int(base_range[0] * modifier)
-    max_experience_gain = int(base_range[1] * modifier)
-
-    experience_gain = random.randint(min_experience_gain, max_experience_gain)
+    experience_gain = random.randint(min_exp_gain, max_emp_gain)
     return experience_gain
 
 
@@ -137,24 +130,3 @@ def all_stats_increase(character) -> None:
     character.agility += base_increase.get("agility") * character.level
     character.damage += base_increase.get("damage") * character.level
     character.armor += base_increase.get("armor") * character.level
-
-
-def get_character_level(character_experience):
-    level_thresholds = {
-        1: 100,
-        2: 200,
-        3: 400,
-        4: 800,
-        5: 1600,
-        6: 2500,
-        7: 4000,
-        8: 6400,
-        9: 8100,
-        10: 10000,
-    }
-    level = 1
-
-    for lvl, threshold in level_thresholds.items():
-        if character_experience >= threshold:
-            level = lvl
-    return level

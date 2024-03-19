@@ -13,9 +13,10 @@
 
 {% block main_content %}
     <a href="{% url 'index' %}" class="mb-4">
-        <button class="btn btn-primary">Back to Home</button>
+        <button class="m-2 tavern-home-button">Back to Home</button>
     </a>
     <br>
+    {# Error Messages #}
     {% if messages %}
         <ul class="messages alert-warning alert-dismissible fade show">
             {% for message in messages %}
@@ -28,7 +29,7 @@
     <div class="tavern-buttons-main d-flex flex-row">
         <form method="post" action="{% url 'heal_for_10_percent' %}" class="p-2 text-white">
             {% csrf_token %}
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="m-2 tavern-heal-button">
                 Heal 10% <br>
                 Cost: {{ gold_costs.heal_10_percent }} gold
             </button>
@@ -36,7 +37,7 @@
         <br>
         <form method="post" action="{% url 'heal_for_50_percent' %}" class="p-2 text-white">
             {% csrf_token %}
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="m-2 tavern-heal-button">
                 Heal 50% <br>
                 Cost: {{ gold_costs.heal_50_percent }} gold
             </button>
@@ -44,7 +45,7 @@
         <br>
         <form method="post" action="{% url 'heal_for_100_percent' %}" class="p-2 text-white">
             {% csrf_token %}
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="m-2 tavern-heal-button">
                 Heal 100% <br>
                 Cost: {{ gold_costs.heal_100_percent }} gold
             </button>

@@ -30,8 +30,45 @@
                     {% csrf_token %}
                     <input type="hidden" name="item_id" value="{{ item.id }}">
                     <input type="hidden" name="buy_item" value="1">
+
                     {% if item.effect == 'EXP Boost' %}
                         <button type="submit" name="experience_potion" class="btn-primary btn m-2">
+                            Buy Now <br> Price: {{ item.price }} Gold
+                        </button>
+                    {% endif %}
+
+                    {% if item.effect == "Max Health Boost" %}
+                        <button type="submit" name="max_health_potion" class="btn-primary btn m-2">
+                            Buy Now <br> Price: {{ item.price }} Gold
+                        </button>
+                    {% endif %}
+
+                    {% if item.effect == "Strength Boost" %}
+                        <button type="submit" name="strength_potion" class="btn-primary btn m-2">
+                            Buy Now <br> Price: {{ item.price }} Gold
+                        </button>
+                    {% endif %}
+
+                    {% if item.effect == "Agility Boost" %}
+                        <button type="submit" name="agility_potion" class="btn-primary btn m-2">
+                            Buy Now <br> Price: {{ item.price }} Gold
+                        </button>
+                    {% endif %}
+
+                    {% if item.effect == "Damage Boost" %}
+                        <button type="submit" name="damage_potion" class="btn-primary btn m-2">
+                            Buy Now <br> Price: {{ item.price }} Gold
+                        </button>
+                    {% endif %}
+
+                    {% if item.effect == "Armor Boost" %}
+                        <button type="submit" name="armor_potion" class="btn-primary btn m-2">
+                            Buy Now <br> Price: {{ item.price }} Gold
+                        </button>
+                    {% endif %}
+
+                    {% if item.effect == "All Stats Boost" %}
+                        <button type="submit" name="ultra_potion" class="btn-primary btn m-2">
                             Buy Now <br> Price: {{ item.price }} Gold
                         </button>
                     {% endif %}
@@ -39,10 +76,10 @@
 
             </div>
         {% endfor %}
-
     </div>
+
     {% if messages %}
-        <ul class="messages text-danger list-unstyled h2">
+        <ul class="messages list-unstyled h2">
             {% for message in messages %}
                 <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
                     {{ message }}
@@ -51,8 +88,20 @@
         </ul>
     {% endif %}
 
+    {% if messages %}
+        <script>
+            setTimeout(function () {
+                window.location.href = "{% url 'index' %}";
+            }, 3000);
+        </script>
+    {% endif %}
+
 
     <style>
+        .messages {
+            color: red;
+        }
+
         .potions-container {
             background: rgb(255, 172, 5);
             background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);

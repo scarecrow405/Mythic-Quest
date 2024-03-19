@@ -10,6 +10,6 @@
     <form method="post" action="{% url 'delete_character' pk=object.id %}">
         {% csrf_token %}
         <button type="submit">Yes, Delete</button>
-        <a href="{% url 'details_character' pk=object.id %}">Back to Edit</a>
+        <a href="{% url 'details_character' pk=object.id %}">Back to My Character</a>
     </form>
 {% endblock %}

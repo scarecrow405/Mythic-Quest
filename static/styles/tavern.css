@@ -1,0 +1,47 @@
+.tavern-buttons-main {
+    background: rgb(255, 172, 5);
+    background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
+    padding: 3em;
+    border-radius: 60px;
+}
+
+.tavern-home-button {
+    padding: 15px;
+    border: 3px solid black;
+    border-radius: 30px;
+    background-color: #936100;
+    color: whitesmoke;
+    box-shadow: rgb(72, 49, 2) 0 5px 15px;
+    width: 150px;
+    height: 70px;
+    font-size: 16px;
+}
+
+.tavern-home-button:hover {
+    font-weight: bold;
+    background-color: #ffac05;
+    transition: 0.1s;
+    transform: scale(1.05);
+    color: black;
+}
+
+
+.tavern-heal-button {
+    padding: 15px;
+    border: 3px solid black;
+    border-radius: 30px;
+    background-color: #936100;
+    color: whitesmoke;
+    box-shadow: rgb(72, 49, 2) 0 5px 15px;
+    width: 190px;
+    height: 100px;
+    font-size: 16px;
+}
+
+.tavern-heal-button:hover {
+    font-weight: bold;
+    background-color: #ffac05;
+    transition: 0.1s;
+    transform: scale(1.05);
+    color: black;
+}

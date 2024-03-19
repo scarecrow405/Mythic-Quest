@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from profiles.forms import SignupForm, UserLoginForm
+from profiles.forms import SignupForm, UserLoginForm, UserProfileEditForm
 from profiles.models import UserProfile
 
 
@@ -73,10 +73,36 @@ def signout_user(request):
 
 
 @login_required()
-def user_profile(request):
-    pass
+def user_profile_edit(request):
+    profile = request.user.userprofile
+    user = request.user
+    if request.method == "POST":
+        form = UserProfileEditForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            user.username = form.cleaned_data['username']
+            user.email = form.cleaned_data['email']
+
+            user.save()
+            form.save()
+    else:
+        form = UserProfileEditForm(instance=profile)
+
+    username = profile.username
+    email = profile.email
+    about = profile.about
+    profile_image = profile.profile_image
+
+    context = {
+        "form": form,
+        "username": username,
+        "email": email,
+        "about": about,
+        "profile_image": profile_image
+    }
+
+    return render(request, "profiles/profile_edit.html", context)
 
 
 @login_required()
-def user_profile_edit(request):
+def user_profile_delete(request):
     pass

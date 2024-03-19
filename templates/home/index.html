@@ -81,7 +81,9 @@
                     ENEMY CHARACTERS:
                     {% for enemy in enemy_characters %}
                         <li class="index-each-enemy">
-                            Lvl{{ enemy.level }}: {{ enemy.nickname }} - Rating: {{ enemy.rating|get_character_rating }}
+                            Lvl{{ enemy.level }}:
+                            <a href="{% url 'details_character' pk=enemy.id %}">{{ enemy.nickname }}</a> -
+                            Rating: {{ enemy.rating|get_character_rating }}
                             <a href="{% url 'fight_character' pk=character.id pk2=enemy.id %}"
                                class="btn btn-primary">Fight</a>
                             <a href="{% url 'details_character' pk=enemy.id %}"

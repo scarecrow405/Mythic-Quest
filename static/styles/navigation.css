@@ -18,3 +18,9 @@
     display: block;
 
 }
+
+.navigation-user-icon {
+    color: white;
+    margin-top: 5px;
+    cursor: pointer;
+}
