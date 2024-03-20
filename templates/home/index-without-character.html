@@ -16,67 +16,70 @@
 {% block main_content %}
 
     <h4 class="card-header index-custom-font home-header text-white">Welcome to Mythic Quest</h4>
-    <div class="card-body text-white index-custom-card-body">
-        <h5 class="card-title">Create Your Character</h5>
-        <p class="card-text">You either haven't signed in/up or you haven't created a character yet.<br>Sign in/up or
-            create a character now to start your
-            adventure!</p>
-        <a href="{% url 'signin' %}" class="btn btn-block mt-3 custom-button">Sign In</a>
-        <a href="{% url 'signup' %}" class="btn btn-block mt-3 custom-button">Sign Up</a>
-        <a href="{% url 'create_character' %}" class="btn btn-block mt-3 custom-button">Create
-            Character</a>
-    </div>
+    
+    <div class="d-flex">
+        <div class="card-body text-white index-custom-card-body">
+            <h5 class="card-title">Create Your Character</h5>
+            <p class="card-text">You either haven't signed in/up or you haven't created a character yet.<br>Sign in/up
+                or
+                create a character now to start your
+                adventure!</p>
+            <a href="{% url 'signin' %}" class="btn btn-block mt-3 custom-button">Sign In</a>
+            <a href="{% url 'signup' %}" class="btn btn-block mt-3 custom-button">Sign Up</a>
+            <a href="{% url 'create_character' %}" class="btn btn-block mt-3 custom-button">Create
+                Character</a>
+        </div>
 
-    <div class="index-enemy-characters text-white d-flex justify-content-between flex-column align-items-center mt-4 mb-5">
+        <div class="index-enemy-characters text-white d-flex justify-content-between flex-column align-items-center mt-4 mb-5">
 
-        {#  ---> Searchbar <--- #}
-        <form method="GET" action="{% url 'index-without-character' %}" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search by Nickname"
-                   aria-label="Search"
-                   name="character_nickname" value="">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+            {#  ---> Searchbar <--- #}
+            <form method="GET" action="{% url 'index-without-character' %}" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search by Nickname"
+                       aria-label="Search"
+                       name="character_nickname" value="">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
 
-        <ul>
-            All CHARACTERS:
-            {% for character in all_characters %}
-                <li class="index-each-enemy">
-                    Lvl{{ character.level }}: {{ character.nickname }} -
-                    Rating: {{ character.rating|get_character_rating }}
-                    <a href="{% url 'public_details_character' pk=character.id %}"
-                       class="btn btn-primary">Details</a>
-                </li>
-            {% empty %}
-                <li>No characters found.</li>
-            {% endfor %}
-        </ul>
-
-        {# ---> Pagination <---- #}
-        <nav aria-label="Page navigation example" class="d-flex mt-auto">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    {% if all_characters.has_previous %}
-                        <a class="page-link" href="?page={{ all_characters.previous_page_number }}"
-                           tabindex="-1">Previous</a>
-                    {% endif %}
-                </li>
-                {% for page in paginator_object.page_range %}
-                    {% if page == all_characters.number %}
-                        <li class="page-item active"><a class="page-link" href="?page={{ page }}">{{ page }}</a>
-                        </li>
-                    {% else %}
-                        <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a>
-                        </li>
-                    {% endif %}
+            <ul>
+                All CHARACTERS:
+                {% for character in all_characters %}
+                    <li class="index-each-enemy">
+                        Lvl{{ character.level }}: {{ character.nickname }} -
+                        Rating: {{ character.rating|get_character_rating }}
+                        <a href="{% url 'public_details_character' pk=character.id %}"
+                           class="btn btn-primary">Details</a>
+                    </li>
+                {% empty %}
+                    <li>No characters found.</li>
                 {% endfor %}
-                <li class="page-item">
-                    {% if all_characters.has_next %}
-                        <a class="page-link" href="?page={{ all_characters.next_page_number }}">Next</a>
-                    {% endif %}
-                </li>
             </ul>
-        </nav>
+
+            {# ---> Pagination <---- #}
+            <nav aria-label="Page navigation example" class="d-flex mt-auto">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        {% if all_characters.has_previous %}
+                            <a class="page-link" href="?page={{ all_characters.previous_page_number }}"
+                               tabindex="-1">Previous</a>
+                        {% endif %}
+                    </li>
+                    {% for page in paginator_object.page_range %}
+                        {% if page == all_characters.number %}
+                            <li class="page-item active"><a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    <li class="page-item">
+                        {% if all_characters.has_next %}
+                            <a class="page-link" href="?page={{ all_characters.next_page_number }}">Next</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
     </div>
-
-
 {% endblock %}

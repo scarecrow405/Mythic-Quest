@@ -7,7 +7,7 @@
 
 {% block main_content %}
     {% if character %}
-        <div class="container custom-color p-4 details-character-main">
+        <div class="container custom-color p-4 details-character-main d-flex">
         <div class="character-info text-white">
         <div class="left">
             <h5 class="details-character-nickname">{{ character.nickname }}</h5>
@@ -63,7 +63,11 @@
     </div>
 
     {# Character Buttons #}
-    {% include 'characters/character_buttons.html' %}
+    {% if is_user_in_own_profile %}
+        {% include 'characters/character_buttons.html' %}
+    {% else %}
+        {% include 'characters/character_less_buttons.html' %}
+    {% endif %}
 
     </div>
     </div>

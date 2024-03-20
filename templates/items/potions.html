@@ -12,72 +12,80 @@
 {% endblock %}
 
 {% block main_content %}
-    <div class="d-flex potions-container" style="border: 3px solid #0c4128; width: 100%;">
-        {% for item in all_items %}
-            <div class="card d-flex potions-card" style="border: 3px solid #e7b50b;">
+    <div class="potions-everything-container d-flex">
+        <div class="d-flex potions-container" style="border: 3px solid #0c4128; width: 100%;">
+            {% for item in all_items %}
+                <div class="card d-flex potions-card" style="border: 3px solid #e7b50b;">
 
-                <div id="tooltip">
-                    <span id="tooltipText">BUY ME OR SUFFER!</span>
-                    <img class="card-img-top" src="{% static item.image_path %}" alt="Card image cap">
+                    <div id="tooltip">
+                        <span id="tooltipText">BUY ME OR SUFFER!</span>
+                        <img class="card-img-top" src="{% static item.image_path %}" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+
+                        <p class="card-text text-white">{{ item.description }}</p>
+                    </div>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_id" value="{{ item.id }}">
+                        <input type="hidden" name="buy_item" value="1">
+
+                        {% if item.effect == 'EXP Boost' %}
+                            <button type="submit" name="experience_potion" class="btn-primary btn m-2">
+                                Buy Now <br> Price: {{ item.price }} Gold
+                            </button>
+                        {% endif %}
+
+                        {% if item.effect == "Max Health Boost" %}
+                            <button type="submit" name="max_health_potion" class="btn-primary btn m-2">
+                                Buy Now <br> Price: {{ item.price }} Gold
+                            </button>
+                        {% endif %}
+
+                        {% if item.effect == "Strength Boost" %}
+                            <button type="submit" name="strength_potion" class="btn-primary btn m-2">
+                                Buy Now <br> Price: {{ item.price }} Gold
+                            </button>
+                        {% endif %}
+
+                        {% if item.effect == "Agility Boost" %}
+                            <button type="submit" name="agility_potion" class="btn-primary btn m-2">
+                                Buy Now <br> Price: {{ item.price }} Gold
+                            </button>
+                        {% endif %}
+
+                        {% if item.effect == "Damage Boost" %}
+                            <button type="submit" name="damage_potion" class="btn-primary btn m-2">
+                                Buy Now <br> Price: {{ item.price }} Gold
+                            </button>
+                        {% endif %}
+
+                        {% if item.effect == "Armor Boost" %}
+                            <button type="submit" name="armor_potion" class="btn-primary btn m-2">
+                                Buy Now <br> Price: {{ item.price }} Gold
+                            </button>
+                        {% endif %}
+
+                        {% if item.effect == "All Stats Boost" %}
+                            <button type="submit" name="ultra_potion" class="btn-primary btn m-2">
+                                Buy Now <br> Price: {{ item.price }} Gold
+                            </button>
+                        {% endif %}
+                    </form>
+
+
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ item.name }}</h5>
+            {% endfor %}
+        </div>
 
-                    <p class="card-text text-white">{{ item.description }}</p>
-                </div>
+        {# Buttons #}
+        <div class="mt-5 p-3">
+            {% include 'items/items_buttons.html' %}
+        </div>
 
-                <form method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="item_id" value="{{ item.id }}">
-                    <input type="hidden" name="buy_item" value="1">
-
-                    {% if item.effect == 'EXP Boost' %}
-                        <button type="submit" name="experience_potion" class="btn-primary btn m-2">
-                            Buy Now <br> Price: {{ item.price }} Gold
-                        </button>
-                    {% endif %}
-
-                    {% if item.effect == "Max Health Boost" %}
-                        <button type="submit" name="max_health_potion" class="btn-primary btn m-2">
-                            Buy Now <br> Price: {{ item.price }} Gold
-                        </button>
-                    {% endif %}
-
-                    {% if item.effect == "Strength Boost" %}
-                        <button type="submit" name="strength_potion" class="btn-primary btn m-2">
-                            Buy Now <br> Price: {{ item.price }} Gold
-                        </button>
-                    {% endif %}
-
-                    {% if item.effect == "Agility Boost" %}
-                        <button type="submit" name="agility_potion" class="btn-primary btn m-2">
-                            Buy Now <br> Price: {{ item.price }} Gold
-                        </button>
-                    {% endif %}
-
-                    {% if item.effect == "Damage Boost" %}
-                        <button type="submit" name="damage_potion" class="btn-primary btn m-2">
-                            Buy Now <br> Price: {{ item.price }} Gold
-                        </button>
-                    {% endif %}
-
-                    {% if item.effect == "Armor Boost" %}
-                        <button type="submit" name="armor_potion" class="btn-primary btn m-2">
-                            Buy Now <br> Price: {{ item.price }} Gold
-                        </button>
-                    {% endif %}
-
-                    {% if item.effect == "All Stats Boost" %}
-                        <button type="submit" name="ultra_potion" class="btn-primary btn m-2">
-                            Buy Now <br> Price: {{ item.price }} Gold
-                        </button>
-                    {% endif %}
-                </form>
-
-            </div>
-        {% endfor %}
     </div>
-
     {% if messages %}
         <ul class="messages list-unstyled h2">
             {% for message in messages %}

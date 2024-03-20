@@ -14,7 +14,6 @@ class DungeonView(LoginRequiredMixin, TemplateView):
         context = self.get_context_data(**kwargs)
         for monster in context['monsters']:
             monster.save()
-
         return self.render_to_response(context)
 
     def get_context_data(self, **kwargs):
@@ -39,14 +38,39 @@ class MonsterFightView(LoginRequiredMixin, View):
     template_name = 'monsters/fight_monster.html'
 
     def get(self, request, slug):
-        character = request.user.character
+        return redirect('dungeon')
+        # character = request.user.character
+        # monster = self.get_monster(slug)
+        #
+        # if monster is None:
+        #     return redirect('error_404')
+        #
+        # if character.health == 0:
+        #     return redirect("character_has_died")
+        #
+        # # Perform the battle logic
+        # winner, gained_exp, gained_gold, win_chance, damage_taken = self.perform_battle(character, monster)
+        #
+        # # Prepare the context for rendering the template
+        # context = {
+        #     'character': character,
+        #     'monster': monster,
+        #     'winner': winner,
+        #     'gained_gold': gained_gold,
+        #     'gained_exp': gained_exp,
+        #     'win_chance': win_chance,
+        #     'damage_taken': damage_taken
+        # }
+        #
+        # return render(request, 'monsters/fight_monster.html', context)
 
+    def post(self, request, slug):
+        character = request.user.character
         monster_name = get_monster_name(slug)
         monster = Monster.objects.filter(name__exact=monster_name).first()
 
         if monster is None:
             return redirect('error_404')
-
         if character.health == 0:
             return redirect("character_has_died")
 
@@ -64,3 +88,10 @@ class MonsterFightView(LoginRequiredMixin, View):
 
         return render(request, 'monsters/fight_monster.html', context) if character.health > 0 else redirect(
             "character_has_died")
+
+    def get_monster(self, slug):
+        monster_name = get_monster_name(slug)
+        return Monster.objects.filter(name__exact=monster_name).first()
+
+    def perform_battle(self, character, monster):
+        return monster_fight(character, monster)

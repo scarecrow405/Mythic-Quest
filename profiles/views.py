@@ -76,6 +76,7 @@ def signout_user(request):
 def user_profile_edit(request):
     profile = request.user.userprofile
     user = request.user
+
     if request.method == "POST":
         form = UserProfileEditForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
@@ -105,4 +106,41 @@ def user_profile_edit(request):
 
 @login_required()
 def user_profile_delete(request):
-    pass
+    profile = request.user.userprofile
+    user = request.user
+
+    if request.method == "POST":
+        # profile.delete()
+        # user.is_active = False
+        # user.save()
+        return redirect("confirm_profile_delete")
+
+    form = UserProfileEditForm(instance=profile)
+
+    username = profile.username
+    email = profile.email
+    about = profile.about
+    profile_image = profile.profile_image
+
+    context = {
+        "form": form,
+        "username": username,
+        "email": email,
+        "about": about,
+        "profile_image": profile_image
+    }
+
+    return render(request, "profiles/profile_delete.html", context)
+
+
+@login_required()
+def confirm_profile_delete(request):
+    profile = request.user.userprofile
+    user = request.user
+
+    if request.method == "POST":
+        profile.delete()
+        user.is_active = False
+        user.save()
+        return redirect("signup")
+    return render(request, "profiles/confirm_profile_delete.html")

@@ -142,6 +142,45 @@ class CharacterDeleteView(LoginRequiredMixin, DeleteView):
 class CharacterFightView(LoginRequiredMixin, View):
 
     def get(self, request, pk, pk2):
+        return redirect('index')
+        # try:
+        #     character = Character.objects.get(pk=pk)
+        #     enemy = Character.objects.get(pk=pk2)
+        #
+        #     # Check if the user is viewing their own character
+        #     is_own_character = character.user == request.user
+        #
+        #     # Render index page based on whether the user has a character or not
+        #     if is_own_character:
+        #         index_template = 'home/index.html'
+        #     else:
+        #         index_template = 'home/index-without-character.html'
+        #
+        # except Character.DoesNotExist:
+        #     # Render a custom error page if characters are not found
+        #     return redirect('error_404')
+        #
+        # # Return character to Tavern to heal.
+        # if character.health == 0:
+        #     return redirect("character_has_died")
+        #
+        # # Resolve Fight
+        # winner, gained_exp, gained_gold, stolen_gold, win_chance = resolve_fight(character, enemy)
+        #
+        # context = {
+        #     'character': character,
+        #     'enemy': enemy,
+        #     'winner': winner,
+        #     'gained_gold': gained_gold,
+        #     'gained_exp': gained_exp,
+        #     'stolen_gold': stolen_gold,
+        #     'win_chance': win_chance
+        # }
+        #
+        # return render(request, 'characters/character_fight.html', context) if character.health > 0 else redirect(
+        #     "character_has_died")
+
+    def post(self, request, pk, pk2):
         try:
             character = Character.objects.get(pk=pk)
             enemy = Character.objects.get(pk=pk2)
