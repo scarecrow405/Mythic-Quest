@@ -22,7 +22,11 @@ def resolve_fight(character, enemy):
 
     if winner == character:
         # Enemy DMG & Your DMG
-        enemy_damage = enemy.damage / 2
+        if win_chance == 100:
+            enemy_damage = 0
+        else:
+            enemy_damage = enemy.damage / 2
+
         your_damage = character.damage
 
         # Fight

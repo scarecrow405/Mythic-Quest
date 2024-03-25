@@ -4,6 +4,31 @@
 
 {% block title %}Mythic Quest - Character Edit{% endblock %}
 
+{% block background_image %}
+    <style>
+        body.background-image {
+            background-image: url('{% static 'img/town-square.jpg' %} ');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body.background-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(3px);
+            transform: scale(1.5);
+            z-index: -1;
+        }
+    </style>
+{% endblock %}
+
+
 {% block main_content %}
     <div class="edit-character-container">
         <div class="edit-character-header-box w-100 d-flex justify-content-center align-items-center p-2">

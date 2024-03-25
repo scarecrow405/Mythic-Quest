@@ -5,18 +5,21 @@
 /*Profile*/
 @import url('signup.css');
 @import url('signin.css');
+@import url('profile-edit.css');
 
 /*Character*/
 @import url('create-character.css');
 @import url('details-character.css');
 @import url('details-enemy-character.css');
 @import url('edit-character.css');
+@import url('delete-character.css');
 
 /*Public Part*/
 @import url('public-details-character.css');
 
 /*Home*/
 @import url('index.css');
+@import url('index-without-character.css');
 
 /*CharacterFight*/
 @import url('character_fight.css');

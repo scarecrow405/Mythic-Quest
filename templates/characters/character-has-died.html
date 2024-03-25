@@ -5,12 +5,15 @@
 {% block title %}Mythic Quest - Player Died{% endblock %}
 
 {% block main_content %}
-
-    <h4 class="card-header index-custom-font home-header">YOU DIED.</h4>
-    <div class="card-body text-white index-custom-card-body">
-        <h5 class="card-title">Oh no, it seems that your health dropped to 0.</h5>
-        <p class="card-text">Go to the Tavern and heal yourself first!</p>
-        <a href="{% url 'tavern' %}" class="btn btn-block mt-3 custom-button">Go to Tavern</a>
+    <div class="card bg-dark character-fight-custom-main">
+        <div class="card text-white character-fight-custom-header">
+            <h4 class="card-header index-custom-font home-header">YOU DIED.</h4>
+        </div>
+        <div class="card-body text-white index-custom-card-body">
+            <h5 class="card-title">Oh no, it seems that your health dropped to 0.</h5>
+            <p class="card-text">Go to the Tavern and heal yourself first!</p>
+            <a href="{% url 'tavern' %}" class="btn btn-block mt-3 custom-button">Go to Tavern</a>
+        </div>
     </div>
 
 {% endblock %}

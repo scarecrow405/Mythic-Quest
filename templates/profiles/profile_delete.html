@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Mythic Quest - Delete Profile{% endblock %}
+
+{% block background_image %}
+    <style>
+        body.background-image {
+            background-image: url('{% static 'img/town-square.jpg' %} ');
+        }
+    </style>
+{% endblock %}
+
 
 {% block main_content %}
     <div class="profile-edit-container">
@@ -46,12 +56,9 @@
                     {% endif %}
                 </div>
                 <a href="{% url 'confirm_profile_delete' %}">
-                    <button class="btn-primary btn">Delete Profile</button>
+                    <button class="details-character-edit-button">Delete Profile</button>
                 </a>
-
             </div>
-
-
         </form>
     </div>
 
@@ -60,9 +67,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgb(255, 172, 5);
-            background: linear-gradient(54deg, rgb(239, 183, 85) 0%, rgb(148, 140, 74) 98%, rgb(173, 154, 15) 100%);
-            border-radius: 40px;
+            background: transparent;
             color: white;
         }
 

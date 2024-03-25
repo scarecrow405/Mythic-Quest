@@ -1,0 +1,7 @@
+.delete-character-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: black solid 5px;
+}

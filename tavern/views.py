@@ -1,10 +1,12 @@
 from math import ceil
 
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
 
+@login_required
 def tavern(request):
     if request.method == 'POST':
         pass
@@ -37,7 +39,7 @@ def tavern(request):
 
 
 def calculate_gold_cost(character_level, percent_to_heal):
-    base_gold_cost = 25
+    base_gold_cost = 25 * character_level
     if percent_to_heal == 50:
         base_gold_cost = 95 * character_level
     elif percent_to_heal == 100:
@@ -64,6 +66,7 @@ def check_for_errors(request, character, gold_cost, character_max_hp):
         return True
 
 
+@login_required
 def heal_for_10_percent(request):
     if request.method == 'POST':
         character = request.user.character
@@ -88,6 +91,7 @@ def heal_for_10_percent(request):
         return redirect('index')
 
 
+@login_required
 def heal_for_50_percent(request):
     if request.method == 'POST':
         character = request.user.character
@@ -112,6 +116,7 @@ def heal_for_50_percent(request):
         return redirect('index')
 
 
+@login_required
 def heal_for_100_percent(request):
     if request.method == 'POST':
         character = request.user.character

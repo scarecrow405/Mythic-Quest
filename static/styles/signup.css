@@ -29,10 +29,11 @@
 }
 
 .signup-custom-button:hover {
-    background-color: rgb(74, 148, 13);
+    background-color: #602727;
     color: white;
     border: 3.5px solid #dea10d;
     transition: opacity 0.2s ease-in-out;
+    font-weight: bolder;
 }
 
 .signup-custom-card {
@@ -46,7 +47,9 @@
 #username,
 #email,
 #pass1,
-#pass2 {
+#pass2,
+#about,
+#profile_image {
     color: black;
     border: 3.5px solid darkgoldenrod;
     font-weight: bold;

@@ -1,0 +1,43 @@
+.profile-edit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    background: transparent;
+    border: 2px solid rgb(89, 64, 6);
+    border-radius: 40px;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 40px rgba(0, 0, 0, .2);
+}
+
+.profile-edit-form-fields #username,
+.profile-edit-form-fields #email,
+.profile-edit-form-fields #about,
+.profile-edit-form-fields #profile_image {
+    width: 350px;
+    border-radius: 10px;
+}
+
+.profile-edit-form {
+    width: 500px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.profile-edit-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-edit-form-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image {
+    width: 90px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}

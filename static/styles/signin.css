@@ -13,10 +13,12 @@
     width: 100%;
     height: auto;
     z-index: 2000;
+
 }
 
 .signin-container div ul li {
     color: red !important;
+
 }
 
 .signin-custom-button {
@@ -27,8 +29,9 @@
 }
 
 .signin-custom-button:hover {
-    background-color: #4A940DFF;
+    background-color: #602727;
     color: white;
     border: 3.5px solid #dea10d;
     transition: opacity 0.2s ease-in-out;
+    font-weight: bolder;
 }

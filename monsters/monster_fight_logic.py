@@ -21,7 +21,10 @@ def monster_fight(character, monster):
 
     if winner == character:
         # Monster DMG & Your DMG
-        enemy_damage = random.randint(monster.damage, monster.damage * 4)
+        if win_chance == 100:
+            enemy_damage = 0
+        else:
+            enemy_damage = random.randint(monster.damage, monster.damage * 4)
 
         # Take Damage
         character.health = max(0, character.health - enemy_damage)

@@ -1,16 +1,24 @@
 .contact-form-border {
-    background-color: black;
-    border-radius: 20px;
+    /*background-color: black;*/
+    /*border-radius: 20px;*/
     padding-top: 40px;
-    height: 590px;
+    height: 500px;
+    background: transparent;
+    border: 2px solid rgb(89, 64, 6);
+    border-radius: 40px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 3);
 }
 
 .contact-container {
-    height: 70%;
+    height: 80%;
     display: flex;
     align-items: center;
     padding: 30px;
-    margin: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    margin-top: 10px;
 }
 
 .contact-center {
@@ -37,14 +45,15 @@
 }
 
 .contact-inputs {
-    width: 400px;
+    width: 320px;
     height: 50px;
     border: none;
     outline: none;
     padding-left: 25px;
     font-weight: 500;
-    color: grey;
+    color: black;
     border-radius: 50px;
+
 }
 
 .contact-inputs:focus {
@@ -58,23 +67,53 @@
     font-size: 16px;
     color: #fff;
     gap: 10px;
-    border: none;
+    border: #171616 1px solid;
     border-radius: 50px;
     background: linear-gradient(270deg, #ff994f, #fa6d86);
     cursor: pointer;
 }
 
 .contact-center button:hover {
+    transition: ease-in 0.6s;
+    transform: scale(1.02);
     background: linear-gradient(270deg, #af642c, #c53f57);
 }
 
+.contact-center input {
+    box-shadow: black 0 0 20px;
+}
+
 .contact-center textarea {
-    height: 140px;
+    height: 100px;
+    min-height: 50px;
+    max-height: 175px;
     padding-top: 15px;
     border-radius: 20px;
+    box-shadow: black 0 0 20px;
 }
 
 .contact-arrow {
     background: transparent;
     width: 18px;
+}
+
+.name-and-email {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form-content {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+
+}
+
+.contact-form-content button {
+    width: 120px !important;
+}
+
+.contact-title h2 {
+    text-shadow: 1px 1px 2px red, 0 0 1em #4a940d, 0 0 0.2em blue;
 }

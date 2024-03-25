@@ -17,13 +17,23 @@
                 {#                {# Anti-Spam #}
                 <div class="h-captcha" data-captcha="true"></div>
 
-                <input type="text" name="name" placeholder="Full Name" class="contact-inputs"
-                       required>
-                <input type="email" name="email" placeholder="Email Address" class="contact-inputs"
-                       value="{{ user_email }}" required>
-                <textarea name="message" placeholder="Message" class="contact-inputs" required></textarea>
-                <button type="submit">Submit <img class="contact-arrow" src="{% static 'img/right-arrow.png' %}">
-                </button>
+                <div class="contact-form-content">
+                    <div class="name-and-email">
+                        <input type="text" name="name" placeholder="Your Name *" class="contact-inputs"
+                               required>
+                        <input type="email" name="email" placeholder="Your Email *" class="contact-inputs"
+                               value="{{ user_email }}" required>
+
+                        <button type="submit">Submit <img class="contact-arrow"
+                                                          src="{% static 'img/right-arrow.png' %}">
+                        </button>
+                    </div>
+
+                    <div class="text-area">
+                        <textarea name="message" placeholder="Your Message *" class="contact-inputs"
+                                  required></textarea>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
