@@ -20,8 +20,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            backdrop-filter: blur(3px);
-            transform: scale(1.5);
             z-index: -1;
         }
     </style>
@@ -41,8 +39,9 @@
                 <form method="post" action="{% url 'delete_character' pk=object.id %}" class="edit-character-form">
                     {% csrf_token %}
                     <div class="delete-character-buttons">
-                        <button type="submit">Yes, Delete</button>
-                        <a href="{% url 'details_character' pk=object.id %}">Back to My Character</a>
+                        <button type="submit" class="btn custom-button edit-character-button">Yes, Delete</button>
+                        <a href="{% url 'details_character' pk=object.id %}"
+                           class="btn custom-button edit-character-button">Back to My Character</a>
                     </div>
                 </form>
             </div>

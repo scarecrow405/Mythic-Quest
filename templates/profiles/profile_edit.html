@@ -47,6 +47,11 @@
                            value="{{ email }}">
                 </div>
 
+                <div class="form-group">
+                    <label for="profile_image">Profile Image:</label>
+                    <input type="file" id="profile_image" name="profile_image" class="form-control">
+                </div>
+
                 {% if about %}
                     <div class="form-group">
                         <label for="about">About:</label>
@@ -61,15 +66,8 @@
                     </div>
                 {% endif %}
 
-                <div class="form-group">
-                    <label for="profile_image">Profile Image:</label>
-                    <input type="file" id="profile_image" name="profile_image" class="form-control">
-                </div>
-
-
                 <button class="details-character-edit-button">Save Changes</button>
             </div>
-
 
         </form>
     </div>
