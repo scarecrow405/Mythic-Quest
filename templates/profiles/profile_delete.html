@@ -22,14 +22,14 @@
                     <img src="/media/{{ profile_image }}"
                          alt="Profile Image"
                          width="100px"
-                         class="profile-image">
+                         class="profile-image  custom-color custom-border-golden">
                 </div>
             {% else %}
                 <div class="profile-edit-image-container">
                     <img src="https://static.vecteezy.com/system/resources/previews/028/569/170/original/single-man-icon-people-icon-user-profile-symbol-person-symbol-businessman-stock-vector.jpg"
                          alt="Stock Profile Image"
                          width="100px" style="border-radius: 50%"
-                         class="profile-image">
+                         class="profile-image custom-color custom-border-golden">
                 </div>
             {% endif %}
 
@@ -38,20 +38,23 @@
                 {# ALL FORM FIELDS #}
                 <div class="form-group">
                     <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" class="form-control" value="{{ username }}"
+                    <input type="text" id="username" name="username"
+                           class="form-control custom-color custom-border-golden" value="{{ username }}"
                            disabled>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" class="form-control" value="{{ email }}" disabled>
+                    <input type="email" id="email" name="email" class="form-control custom-color custom-border-golden"
+                           value="{{ email }}" disabled>
                 </div>
                 <div class="form-group">
                     {% if about %}
                         <label for="about">About:</label>
-                        <textarea id="about" name="about" class="form-control" disabled>{{ about }}</textarea>
+                        <textarea id="about" name="about" class="form-control custom-color custom-border-golden"
+                                  disabled>{{ about }}</textarea>
                     {% else %}
                         <label for="about">About:</label>
-                        <textarea id="about" name="about" class="form-control"
+                        <textarea id="about" name="about" class="form-control custom-color custom-border-golden"
                                   disabled>Nothing to see here...</textarea>
                     {% endif %}
                 </div>

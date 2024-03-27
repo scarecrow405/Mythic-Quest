@@ -91,14 +91,14 @@
     width: 56%;
 }
 
-.index-enemy-characters {
-    /*display: flex;*/
-    /*justify-content: center;*/
-    border: 3px black solid;
-    width: 40%;
-    height: auto;
-    background-color: black !important;
-}
+/*.index-enemy-characters {*/
+/*    !*display: flex;*!*/
+/*    !*justify-content: center;*!*/
+/*    border: 3px black solid;*/
+/*    width: 40%;*/
+/*    height: auto;*/
+/*    background-color: black !important;*/
+/*}*/
 
 .index-each-enemy {
     list-style: decimal;

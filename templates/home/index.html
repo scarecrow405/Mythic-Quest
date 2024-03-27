@@ -67,10 +67,10 @@
             </div>
 
 
-            <div class="index-enemy-characters text-white d-flex justify-content-between flex-column align-items-center pt-3">
+            <div class="index-enemy-characters text-white d-flex justify-content-between flex-column align-items-center">
 
                 {#  ---> Searchbar <--- #}
-                <form method="GET" action="{% url 'index' %}" class="form-inline my-2 my-lg-0">
+                <form method="GET" action="{% url 'index' %}" class="form-inline my-2 my-lg-0 index-searchbar">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search by Nickname"
                            aria-label="Search"
                            name="character_nickname" value="">
@@ -99,7 +99,7 @@
 
                 {# ---> Pagination <---- #}
                 <nav aria-label="Page navigation example" class="d-flex mt-auto">
-                    <ul class="pagination justify-content-center">
+                    <ul class="pagination justify-content-center aaa">
                         <li class="page-item">
                             {% if enemy_characters.has_previous %}
                                 <a class="page-link" href="?page={{ enemy_characters.previous_page_number }}"
@@ -117,7 +117,7 @@
                         {% endfor %}
                         <li class="page-item">
                             {% if enemy_characters.has_next %}
-                                <a class="page-link" href="?page={{ enemy_characters.next_page_number }}">Next</a>
+                                <a class="page-link " href="?page={{ enemy_characters.next_page_number }}">Next</a>
                             {% endif %}
                         </li>
                     </ul>
