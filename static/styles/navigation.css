@@ -9,6 +9,10 @@
     background-color: rgb(52, 58, 64) !important;
 }
 
+.custom-navigation-color {
+    width: 100%;
+}
+
 .icon-dropdown:hover {
     background-color: rgba(255, 212, 102, 0.36) !important;
 }

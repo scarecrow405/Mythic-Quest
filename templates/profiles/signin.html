@@ -5,43 +5,41 @@
 {% block title %}Mythic Quest - Signin{% endblock %}
 
 {% block main_content %}
-    <div class="container signin-container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-6">
-                <div class="card bg-dark">
-                    <div class="card text-white custom-header">
-                        <h3 class="card-header custom-font signin-h3">Sign In</h3>
-                    </div>
-                    <div class="card-body text-white signin-card-body">
+    <div class="signin-container">
+        <div class="signin-main-container">
+            <div class="bg-dark">
+                <div class="text-white custom-header">
+                    <h3 class="card-header custom-font signin-h3">Sign In</h3>
+                </div>
+                <div class="card-body text-white signin-card-body">
 
-                        {% if messages %}
-                            <ul class="messages">
-                                {% for message in messages %}
-                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
 
-                        <form method="post" action="{% url 'signin' %}">
-                            {% csrf_token %}
-                            <div class="form-group">
+                    <form method="post" action="{% url 'signin' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
 
-                                <label for="username">Username:</label>
-                                <input type="text" name="username" id="username"
-                                       class="form-control mb-3 custom-color custom-border-golden"
-                                       required placeholder="Username">
-                                <label for="password">Password:</label>
-                                <input type="password" name="password" id="password"
-                                       class="form-control mb-3 custom-color custom-border-golden"
-                                       required placeholder="Password">
-                            </div>
-                            <div class="mt-4">
-                                <button type="submit" class="btn btn-block mt-3 signin-custom-button">Login
-                                </button>
-                            </div>
-                        </form>
+                            <label for="username">Username:</label>
+                            <input type="text" name="username" id="username"
+                                   class="form-control mb-3 custom-color custom-border-golden"
+                                   required placeholder="Username">
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" id="password"
+                                   class="form-control mb-3 custom-color custom-border-golden"
+                                   required placeholder="Password">
+                        </div>
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-block mt-3 signin-custom-button">Login
+                            </button>
+                        </div>
+                    </form>
 
-                    </div>
                 </div>
             </div>
         </div>

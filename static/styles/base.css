@@ -7,30 +7,38 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    /*height: 100vh;*/
+    height: 100vh;
     /*width: 100vw;*/
+
 }
 
-.container-fluid {
-    height: 100%;
-    padding: 0;
+.site {
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
 }
 
 .background-image {
-    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    background-size: cover;
     /*height: 100vh;*/
     /*background-repeat: repeat-y;*/
 }
 
 
 .base-main-body-container {
-    padding-left: 170px;
-    padding-right: 170px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    height: 100%;
+
+}
+
+@media only screen and (min-height: 500px) and (max-height: 800px) and
+(min-width: 600px) {
+    margin-top: 0px;
 }

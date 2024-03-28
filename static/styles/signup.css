@@ -12,9 +12,8 @@
 .signup-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 30%;
     height: auto;
-    z-index: 2000;
 }
 
 .signup-container div ul li {
@@ -62,4 +61,26 @@
 .signup-custom-form #pass1:focus,
 .signup-custom-form #pass2:focus {
     border: 3.5px solid rgb(128, 198, 255) !important;
+}
+
+@media screen and (max-width: 600px) {
+    .signup-container {
+        width: 70%;
+    }
+
+}
+
+
+@media screen and (max-width: 800px) {
+    .signup-container {
+        width: 60%;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+    .signup-container {
+        width: 50%;
+    }
+
 }

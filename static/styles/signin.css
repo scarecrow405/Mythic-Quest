@@ -10,9 +10,9 @@
 .signin-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 30%;
     height: auto;
-    z-index: 2000;
+
 
 }
 
@@ -34,4 +34,26 @@
     border: 3.5px solid #dea10d;
     transition: opacity 0.2s ease-in-out;
     font-weight: bolder;
+}
+
+@media screen and (max-width: 600px) {
+    .signin-container {
+        width: 70%;
+    }
+
+}
+
+
+@media screen and (max-width: 800px) {
+    .signin-container {
+        width: 60%;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+    .signin-container {
+        width: 50%;
+    }
+
 }
