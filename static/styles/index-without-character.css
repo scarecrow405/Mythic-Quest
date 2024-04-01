@@ -2,8 +2,19 @@
     gap: 6em !important;
 }
 
+.index-without-character-main {
+    border: 2px black solid;
+    border-radius: 5px;
+}
+
 .idx-no-char-p {
     margin: 0;
+}
+
+.index-no-chars-custom-header {
+    background-color: #C73F19 !important;
+    width: 100%;
+    text-align: center;
 }
 
 .index-without-character-main {
