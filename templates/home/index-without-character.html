@@ -28,9 +28,9 @@
                     create a character now to start your
                     adventure!</p>
                 <div class="no-char-btn-container">
-                    <a href="{% url 'signin' %}" class="index-no-char-btn custom-button">Sign In</a>
-                    <a href="{% url 'signup' %}" class="index-no-char-btn custom-button">Sign Up</a>
-                    <a href="{% url 'create_character' %}" class="index-no-char-btn custom-button">Create
+                    <a href="{% url 'signin' %}" class="index-no-char-btn idx-no-chard-custom-button">Sign In</a>
+                    <a href="{% url 'signup' %}" class="index-no-char-btn idx-no-chard-custom-button">Sign Up</a>
+                    <a href="{% url 'create_character' %}" class="index-no-char-btn idx-no-chard-custom-button">Create
                         Character</a>
                 </div>
             </div>
@@ -39,8 +39,10 @@
             flex-column align-items-center card-body">
 
                 {#  ---> Searchbar <--- #}
-                <form method="GET" action="{% url 'index-without-character' %}" class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search by Nickname"
+                <form method="GET" action="{% url 'index-without-character' %}"
+                      class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2 idx-no-chars-custom-search" type="search"
+                           placeholder="Search by Nickname"
                            aria-label="Search"
                            name="character_nickname" value="">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -55,7 +57,7 @@
                             <span>-</span>
                             <span>Rating: {{ character.rating|get_character_rating }}</span>
                             <a href="{% url 'public_details_character' pk=character.id %}"
-                               class="btn btn-primary">Details</a>
+                               class="btn btn-primary idx-no-chars-details-btn">Details</a>
                         </li>
                     {% empty %}
                         <li>No characters found.</li>

@@ -3,7 +3,9 @@
 }
 
 .index-without-character-main {
-    border: 2px black solid;
+    border-top: 2px black solid;
+    border-left: 2px black solid;
+    border-right: 2px black solid;
     border-radius: 5px;
 }
 
@@ -21,7 +23,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: sandybrown;
     width: 70%;
 
 }
@@ -37,7 +38,11 @@
 }
 
 .index-custom-card-body-no-char {
-    background-color: deeppink;
+    background-color: #190909;
+    border-bottom: 2px black solid;
+    border-right: 2px black solid;
+    border-top: 2px black solid;
+
     width: 45%;
     display: flex;
     flex-direction: column;
@@ -46,9 +51,28 @@
 }
 
 .index-enemy-characters-no-char {
-    background-color: blueviolet;
+    background-color: #190909;
+    border-bottom: 2px black solid;
+    border-left: 2px black solid;
+    border-top: 2px black solid;
+
     width: 45%;
     height: 100%;
+}
+
+.idx-no-chard-custom-button {
+    background-color: #E6B57D;
+    color: black;
+    border: 3.5px solid darkgoldenrod;
+    font-weight: bold;
+}
+
+.idx-no-chard-custom-button:hover {
+    background-color: #602727;
+    color: white;
+    border: 3.5px solid #dea10d;
+    transition: opacity 0.2s ease-in-out;
+    font-weight: bolder;
 }
 
 .no-char-btn-container {
@@ -74,6 +98,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.idx-no-chars-custom-search {
+    color: black;
+    border: 3.5px solid darkgoldenrod;
+    font-weight: bold;
+    background: rgb(255, 172, 5);
+    background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
+}
+
+.idx-no-chars-details-btn {
+    color: black;
+    border: 3.5px solid darkgoldenrod;
+    font-weight: bold;
+    background: rgb(255, 172, 5);
+    background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
+}
+
+.idx-no-chars-details-btn:hover {
+    background-color: #602727 !important;
+    color: white;
+    border: 3.5px solid #dea10d;
+    transition: opacity 0.2s ease-in-out;
+    font-weight: bolder;
 }
 
 .index-each-enemy-no-char span:not(:nth-child(3)) {
