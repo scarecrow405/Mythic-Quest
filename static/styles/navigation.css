@@ -5,12 +5,20 @@
     max-width: 69%;
 }
 
+/*.navigation-move-items-right {*/
+/*    backdrop-filter: blur(20px);*/
+/*    background-color: rgb(103, 115, 128) !important;*/
+/*    text-align: left;*/
+/*    width: 20%;*/
+/*}*/
+
 .navbar-main-color {
     background-color: rgb(52, 58, 64) !important;
 }
 
 .custom-navigation-color {
     width: 100%;
+    z-index: 1;
 }
 
 .icon-dropdown:hover {
@@ -40,5 +48,14 @@
     color: white;
     margin-top: 5px;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 991.30px) {
+    .navigation-move-items-right {
+        backdrop-filter: blur(20px);
+        background-color: rgb(103, 115, 128) !important;
+        text-align: left;
+        width: 20%;
+    }
 }
 

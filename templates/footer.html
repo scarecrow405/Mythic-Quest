@@ -1,9 +1,6 @@
 <footer class="footer-container">
     <div class="d-flex align-items-center">
         <a href="/" class="text-muted text-decoration-none">
-            {#            <svg class="footer-svg">#}
-            {#                <use xlink:href="#bootstrap"></use>#}
-            {#            </svg>#}
         </a>
         <span class="text-white">© 2024 Mythic Quest</span>
         <a href="{% url 'contact-form' %}" class="contact-link">Contact us</a>
@@ -11,10 +8,6 @@
         {% if user.is_authenticated %}
             <div style="color: white; margin-left: 100px">LOGGED IN!!!</div>
         {% endif %}
-
-        <div class="gold btn-danger ml-4">
-            Gold Owned: {{ user.character.gold }}
-        </div>
     </div>
 </footer>
 

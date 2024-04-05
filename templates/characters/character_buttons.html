@@ -1,6 +1,6 @@
 <div class="d-flex flex-column  ml-auto">
     {% if not is_user_in_own_profile %}
-        <div class="mb-2">
+        <div class="mb-1">
             <a href="{% url 'fight_character' pk=user.character.id pk2=character.id %}">
                 <button class="details-character-edit-button">Fight {{ character.name }}</button>
             </a>
@@ -9,35 +9,35 @@
     {% endif %}
 
     {% if is_user_gm or is_user_in_own_profile %}
-        <div class="mb-2">
+        <div class="mb-1">
             <a href="{% url 'edit_character' pk=object.id %}">
                 <button class="details-character-edit-button">Edit Character</button>
             </a>
 
         </div>
-        <div class="mb-2">
+        <div class="mb-1">
             <a href="{% url 'delete_character' pk=object.id %}">
                 <button class="details-character-edit-button">Delete Character</button>
             </a>
         </div>
     {% endif %}
 
-    <div class="mb-2">
+    <div class="mb-1">
         <a href="{% url 'index' %}">
             <button class="details-character-edit-button">Back to Home</button>
         </a>
     </div>
-    <div class="mb-2">
+    <div class="mb-1">
         <a href="{% url 'tavern' %}">
             <button class="details-character-edit-button">Tavern</button>
         </a>
     </div>
-    <div class="mb-2">
+    <div class="mb-1">
         <a href="{% url 'items_potions' %}">
             <button class="details-character-edit-button">Potions Shop</button>
         </a>
     </div>
-    <div class="mb-2">
+    <div class="mb-1">
         <a href="{% url 'dungeon' %}">
             <button class="details-character-edit-button">Dungeon</button>
         </a>

@@ -49,7 +49,7 @@
                 </form>
 
                 <ul class="m-0 p-0 d-flex flex-column gap-1 w-100">
-                    All CHARACTERS:
+                    ALL CHARACTERS:
                     {% for character in all_characters %}
                         <li class="index-each-enemy-no-char">
                             <span>Lvl{{ character.level }}:</span>
@@ -57,7 +57,7 @@
                             <span>-</span>
                             <span>Rating: {{ character.rating|get_character_rating }}</span>
                             <a href="{% url 'public_details_character' pk=character.id %}"
-                               class="btn btn-primary idx-no-chars-details-btn">Details</a>
+                               class="btn idx-char-details-btn btn-on-click-custom">Details</a>
                         </li>
                     {% empty %}
                         <li>No characters found.</li>
@@ -65,8 +65,8 @@
                 </ul>
 
                 {# ---> Pagination <---- #}
-                <nav aria-label="Page navigation example" class="d-flex mt-auto">
-                    <ul class="pagination justify-content-center">
+                <nav aria-label="Page navigation example" class="d-flex mt-auto idx-cho-chars-paginator">
+                    <ul class="pagination justify-content-center ">
                         <li class="page-item">
                             {% if all_characters.has_previous %}
                                 <a class="page-link" href="?page={{ all_characters.previous_page_number }}"
@@ -94,4 +94,5 @@
 
         </div>
     </div>
+
 {% endblock %}

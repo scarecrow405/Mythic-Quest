@@ -38,6 +38,10 @@
     font-weight: bolder;
 }
 
+.signin-custom-button:active {
+    background-color: #a93434;
+}
+
 @media screen and (max-width: 600px) {
     .signin-container {
         width: 70%;

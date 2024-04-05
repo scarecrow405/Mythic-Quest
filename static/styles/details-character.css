@@ -7,12 +7,12 @@
     background-repeat: no-repeat;
     background-size: 320px 430px;
     background-position: center center;
-    width: 400px;
-    height: 400px;
-    padding-left: 105px;
-    padding-right: 105px;
-    padding-top: 85px;
-    padding-bottom: 105px;
+    width: 25em;
+    height: 25em;
+    padding-left: 6.5625em;
+    padding-right: 6.5625em;
+    padding-top: 5.3125em;
+    padding-bottom: 6.5625em;
     color: black;
 
     font-family: "Josefin Sans", sans-serif;
@@ -44,16 +44,36 @@
 .character-info {
     display: flex;
     justify-content: flex-start;
+    gap: 1em;
+}
+
+.left-and-right-container {
+    display: flex;
+    flex-direction: row;
 }
 
 .left {
-    max-width: 17%;
+    max-width: 28.7%;
+}
+
+.left-2 {
+    max-width: 28.7%;
+}
+
+.left-2 img {
+    border: 3px groove goldenrod;
+    box-shadow: rgb(72, 49, 2) 0 5px 15px;
+    border-radius: 10px;
 }
 
 .left img {
     border: 3px groove goldenrod;
     box-shadow: rgb(72, 49, 2) 0 5px 15px;
     border-radius: 10px;
+}
+
+.details-char-custom-btns {
+    padding-left: 7em;
 }
 
 .custom-color {
@@ -67,15 +87,14 @@
 }
 
 .details-character-edit-button {
-    padding: 15px;
     border: 3px solid black;
-    border-radius: 30px;
+    border-radius: 1.875em;
     background-color: #936100;
     color: whitesmoke;
     box-shadow: rgb(72, 49, 2) 0 5px 15px;
-    width: 160px;
-    height: 60px;
-    font-size: 16px;
+    width: 12em;
+    height: 3.75em;
+    font-size: 1em;
 }
 
 .details-character-edit-button:hover {
@@ -90,6 +109,7 @@
     border-radius: 30px;
     border: 5px solid goldenrod;
     box-shadow: rgb(0, 0, 0) 5px 10px 20px;
+    width: 60em;
 }
 
 .details-character-nickname {
@@ -103,4 +123,59 @@
     font-family: "Mochiy Pop P One", sans-serif;
     font-size: 16px;
     box-shadow: rgb(101, 69, 3) 0 2px 4px;
+}
+
+
+/*@media screen and (max-width: 1050px) {*/
+/*    .left-and-right-container {*/
+/*        width: 50%;*/
+/*    }*/
+
+/*    .details-character-stats {*/
+/*        width: 7em !important;*/
+/*    }*/
+
+/*}*/
+
+@media screen and (max-width: 1100px) {
+    .details-character-main {
+        width: 30em;
+        height: 29em;
+    }
+
+    .details-char-custom-btns {
+        padding-left: 0 !important;
+    }
+
+    .character-info {
+        gap: 0;
+    }
+
+    .left-and-right-container {
+        width: 100% !important;
+        flex-direction: column;
+    }
+
+    .left, .left-2 {
+        max-width: 10em;
+        width: 100%;
+    }
+
+    .right {
+        font-size: 14px !important;
+        width: 116%;
+        background-image: none !important;
+        padding-left: 0 !important;
+        padding-right: 4.5625em !important;
+        padding-top: 1em !important;
+        padding-bottom: 3.5625em !important;
+    }
+
+    .details-character-stats {
+        width: 100%;
+    }
+
+    .char-img-hide {
+        display: none;
+    }
 }

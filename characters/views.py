@@ -20,7 +20,8 @@ class CharacterCreateView(LoginRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         has_character = Character.objects.filter(user=request.user).exists()
         if has_character:
-            return redirect('details_character', pk=Character.objects.get(user=request.user).pk)
+            # return redirect('details_character', pk=Character.objects.get(user=request.user).pk)
+            return redirect('index')
         form = CharacterCreationForm()
         return render(request, self.template_name, {'form': form})
 

@@ -38,6 +38,10 @@
     font-weight: bolder;
 }
 
+.signup-custom-button:active {
+    background-color: #a93434;
+}
+
 .signup-custom-card {
     width: 100%;
 }

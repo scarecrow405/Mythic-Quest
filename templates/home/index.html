@@ -33,7 +33,7 @@
                                 <p>Level:</p>
                                 <p>{{ character.level }}</p>
                             </div>
-                            <div class="px-2 d-flex justify-content-between index-character-level">
+                            <div class="px-2 d-flex justify-content-between index-character-level make-smaller-text">
                                 <p>Rating:</p>
                                 <p>{{ character_rating|get_character_rating }}</p>
                             </div>
@@ -47,20 +47,24 @@
                         {% endif %}
 
                         <div class="index-right">
-                            <div class="ml-auto ">
-                                <a href="{% url 'dungeon' %}">
-                                    <button class="details-character-edit-button">Dungeon</button>
-                                </a>
-                                <a href="{% url 'tavern' %}">
-                                    <button class=" details-character-edit-button">Tavern</button>
-                                </a>
-                                <a href="{% url 'items_potions' %}">
-                                    <button class=" details-character-edit-button">Potions Shop</button>
-                                </a>
-                                <a href="{% url 'details_character' pk=character.id %}">
-                                    <button class="details-character-edit-button">My Character</button>
-                                </a>
-                            </div>
+                            <a href="{% url 'details_character' pk=character.id %}" class="no-text-decor">
+                                <button class="idx-character-button" id="mc-button">My Character</button>
+                                <button class="idx-character-button hidden-class no-text-decor">MC</button>
+                            </a>
+                            <a href="{% url 'dungeon' %}" class="no-text-decor">
+                                <button class="idx-character-button">Dungeon</button>
+                                <button class="idx-character-button hidden-class no-text-decor">D</button>
+                            </a>
+                            <a href="{% url 'tavern' %}" class="no-text-decor">
+                                <button class="idx-character-button">Tavern</button>
+                                <button class="idx-character-button hidden-class">T</button>
+                            </a>
+                            <a href="{% url 'items_potions' %}" class="no-text-decor">
+                                <button class="idx-character-button">Potions Shop</button>
+                                <button class="idx-character-button hidden-class no-text-decor">PS</button>
+                            </a>
+
+
                         </div>
                     </div>
                 </div>
@@ -70,27 +74,46 @@
             <div class="index-enemy-characters text-white d-flex justify-content-between flex-column align-items-center">
 
                 {#  ---> Searchbar <--- #}
-                <form method="GET" action="{% url 'index' %}" class="form-inline my-2 my-lg-0 index-searchbar">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search by Nickname"
+                <form method="GET" action="{% url 'index' %}" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2 index-searchbar" type="search" placeholder="Search by Nickname"
                            aria-label="Search"
                            name="character_nickname" value="">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
 
-                <ul>
+                <ul class="m-0 p-0 d-flex flex-column gap-1 w-100 align-self-center">
                     ENEMY CHARACTERS:
                     {% for enemy in enemy_characters %}
                         <li class="index-each-enemy">
-                            Lvl{{ enemy.level }}:
-                            <a href="{% url 'details_character' pk=enemy.id %}">{{ enemy.nickname }}</a> -
-                            Rating: {{ enemy.rating|get_character_rating }}
-                            <form action="{% url 'fight_character' pk=character.id pk2=enemy.id %}" method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-primary">Fight</button>
+                            <span class="neshtosi2"> Lvl{{ enemy.level }}:</span>
+                            <span><a href="{% url 'details_character' pk=enemy.id %}">{{ enemy.nickname }}</a></span>
+                            <span>-</span>
+                            <span>Rating: {{ enemy.rating|get_character_rating }}</span>
 
-                            </form>
-                            <a href="{% url 'details_character' pk=enemy.id %}"
-                               class="btn btn-primary">Details</a>
+                            <div class="idx-fight-and-details-btns">
+                                <form action="{% url 'fight_character' pk=character.id pk2=enemy.id %}" method="post"
+                                      class="neshtosi">
+                                    {% csrf_token %}
+                                    <button type="submit"
+                                            class="btn idx-char-details-btn btn-on-click-custom">Fight
+                                    </button>
+                                </form>
+                                <form action="{% url 'fight_character' pk=character.id pk2=enemy.id %}" method="post"
+                                      class="hidden-class">
+                                    {% csrf_token %}
+                                    <button type="submit"
+                                            class="btn idx-char-details-btn neshtosi3 btn-on-click-custom">F
+                                    </button>
+                                </form>
+                                <a href="{% url 'details_character' pk=enemy.id %}">
+                                    <button class="btn idx-char-details-btn neshtosi btn-on-click-custom">
+                                        Details
+                                    </button>
+                                </a>
+                                <a href="{% url 'details_character' pk=enemy.id %}"
+                                   class="btn idx-char-details-btn hidden-class btn-on-click-custom">D</a>
+                            </div>
+
                         </li>
                     {% empty %}
                         <li>No characters found.</li>
@@ -98,7 +121,7 @@
                 </ul>
 
                 {# ---> Pagination <---- #}
-                <nav aria-label="Page navigation example" class="d-flex mt-auto">
+                <nav aria-label="Page navigation example" class="d-flex mt-5">
                     <ul class="pagination justify-content-center aaa">
                         <li class="page-item">
                             {% if enemy_characters.has_previous %}
@@ -152,6 +175,5 @@
     {% endif %}
 
     {# Pagination links #}
-
 
 {% endblock %}

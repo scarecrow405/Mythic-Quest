@@ -9,68 +9,85 @@
     {% if character %}
         <div class="container custom-color p-4 details-character-main d-flex">
         <div class="character-info text-white">
-        <div class="left">
-            <h5 class="details-character-nickname">{{ character.nickname }}</h5>
-            <img src="{% static character.image_path %}" alt="{{ character.nickname }} Image"
-                 class="img-fluid">
-            <div class="px-2 d-flex justify-content-between details-character-stats">
-                <p>Rating:</p>
-                <p>{{ character_rating|get_character_rating }}</p>
+
+        <div class="left-and-right-container">
+        {% if is_user_in_own_profile %}
+            <div class="left">
+                <h5 class="details-character-nickname">{{ character.nickname }}</h5>
+                <img src="{% static character.image_path %}" alt="{{ character.nickname }} Image"
+                     class="img-fluid char-img-hide">
+                <div class="px-2 d-flex justify-content-between details-character-stats">
+                    <p>Rating:</p>
+                    <p>{{ character_rating|get_character_rating }}</p>
+                </div>
             </div>
-        </div>
+        {% else %}
+            <div class="left-2">
+                <h5 class="details-character-nickname">{{ character.nickname }}</h5>
+                <img src="{% static character.image_path %}" alt="{{ character.nickname }} Image"
+                     class="img-fluid char-img-hide">
+                <div class="px-2 d-flex justify-content-between details-character-stats">
+                    <p>Rating:</p>
+                    <p>{{ character_rating|get_character_rating }}</p>
+                </div>
+            </div>
+        {% endif %}
 
         <div class="right">
 
-        {% for stat, value in character_stats.items %}
-            {% if is_user_in_own_profile %}
-                {% if stat != "max_health" %}
-                    {% if stat == "health" %}
-                        <div class="px-2 d-flex justify-content-between details-character-stats">
-                        <p>{{ stat|capfirst }}:</p>
-                        <p>{{ character.max_health|get_character_rating }} / {{ value }}</p>
-                    {% else %}
-                        {% if stat == "gold" %}
-                            <div class="px-2 d-flex justify-content-between details-make-red details-character-stats">
-                            <p>{{ stat|capfirst }}:</p>
-                            <p>{{ value }}</p>
-                        {% else %}
+            {% for stat, value in character_stats.items %}
+                {% if is_user_in_own_profile %}
+                    {% if stat != "max_health" %}
+                        {% if stat == "health" %}
                             <div class="px-2 d-flex justify-content-between details-character-stats">
                             <p>{{ stat|capfirst }}:</p>
-                            <p>{{ value }}</p>
+                            <p>{{ character.max_health|get_character_rating }} / {{ value }}</p>
+                        {% else %}
+                            {% if stat == "gold" %}
+                                <div class="px-2 d-flex justify-content-between details-make-red details-character-stats">
+                                <p>{{ stat|capfirst }}:</p>
+                                <p>{{ value }}</p>
+                            {% else %}
+                                <div class="px-2 d-flex justify-content-between details-character-stats">
+                                <p>{{ stat|capfirst }}:</p>
+                                <p>{{ value }}</p>
+                            {% endif %}
                         {% endif %}
+                    </div>
                     {% endif %}
-                </div>
-                {% endif %}
 
-            {% else %}
-                {% if stat != "max_health" %}
-                    {% if stat == "health" %}
-                        <div class="px-2 d-flex justify-content-between details-character-stats public-stats">
-                        <p>{{ stat|capfirst }}:</p>
-                        <p>{{ character.max_health|get_character_rating }} / {{ value }}</p>
-                    {% else %}
-                        {% if stat != "gold" %}
+                {% else %}
+                    {% if stat != "max_health" %}
+                        {% if stat == "health" %}
                             <div class="px-2 d-flex justify-content-between details-character-stats public-stats">
                             <p>{{ stat|capfirst }}:</p>
-                            <p>{{ value }}</p>
+                            <p>{{ character.max_health|get_character_rating }} / {{ value }}</p>
+                        {% else %}
+                            {% if stat != "gold" %}
+                                <div class="px-2 d-flex justify-content-between details-character-stats public-stats">
+                                <p>{{ stat|capfirst }}:</p>
+                                <p>{{ value }}</p>
+                            {% endif %}
                         {% endif %}
+                    </div>
                     {% endif %}
-                </div>
                 {% endif %}
-            {% endif %}
-        {% endfor %}
+            {% endfor %}
 
-    </div>
+            </div>
+            </div>
 
-    {# Character Buttons #}
-    {% if is_user_in_own_profile %}
-        {% include 'characters/character_buttons.html' %}
-    {% else %}
-        {% include 'characters/character_less_buttons.html' %}
-    {% endif %}
+            {# Character Buttons #}
+            <div class="details-char-custom-btns">
+                {% if is_user_in_own_profile %}
+                    {% include 'characters/character_buttons.html' %}
+                {% else %}
+                    {% include 'characters/character_less_buttons.html' %}
+                {% endif %}
+            </div>
 
-    </div>
-    </div>
+            </div>
+        </div>
     {% else %}
         <p>No character found.</p>
     {% endif %}
