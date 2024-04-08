@@ -23,54 +23,57 @@
                     <img src="/media/{{ profile_image }}"
                          alt="Profile Image"
                          width="100px"
-                         class="profile-image custom-color custom-border-golden">
+                         class="profile-image custom-color edit-profile-custom-border-golden">
                 </div>
             {% else %}
                 <div class="profile-edit-image-container">
                     <img src="https://static.vecteezy.com/system/resources/previews/028/569/170/original/single-man-icon-people-icon-user-profile-symbol-person-symbol-businessman-stock-vector.jpg"
                          alt="Stock Profile Image"
                          width="100px" style="border-radius: 50%"
-                         class="profile-image custom-color custom-border-golden">
+                         class="profile-image custom-color edit-profile-custom-border-golden">
                 </div>
             {% endif %}
 
             <div class="profile-edit-form-fields">
                 {# ALL FORM FIELDS #}
-                <div class="form-group">
+                <div class="">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username"
-                           class="form-control custom-color custom-border-golden"
+                           class="form-control custom-color edit-profile-custom-border-golden"
                            placeholder="Enter username."
                            value="{{ username }}">
                 </div>
-                <div class="form-group">
+                <div class="m-1">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" class="form-control custom-color custom-border-golden"
+                    <input type="email" id="email" name="email"
+                           class="form-control custom-color edit-profile-custom-border-golden"
                            placeholder="Enter email."
                            value="{{ email }}">
                 </div>
 
-                <div class="form-group">
+                <div class="m-1">
                     <label for="profile_image">Profile Image:</label>
                     <input type="file" id="profile_image" name="profile_image"
-                           class="form-control custom-color custom-border-golden">
+                           class="form-control custom-color edit-profile-custom-border-golden">
                 </div>
 
                 {% if about %}
-                    <div class="form-group">
+                    <div class="m-1">
                         <label for="about">About:</label>
-                        <textarea id="about" name="about" class="form-control custom-color custom-border-golden"
+                        <textarea id="about" name="about"
+                                  class="form-control custom-color edit-profile-custom-border-golden"
                                   placeholder="Write about yourself.">{{ about }}</textarea>
                     </div>
                 {% else %}
-                    <div class="form-group">
+                    <div class="m-1">
                         <label for="about">About:</label>
-                        <textarea id="about" name="about" class="form-control custom-color custom-border-golden"
+                        <textarea id="about" name="about"
+                                  class="form-control custom-color edit-profile-custom-border-golden"
                                   placeholder="Write about yourself."></textarea>
                     </div>
                 {% endif %}
 
-                <button class="details-character-edit-button">Save Changes</button>
+                <button class="details-character-edit-button mt-3">Save Changes</button>
             </div>
 
         </form>

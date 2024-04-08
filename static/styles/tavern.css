@@ -1,14 +1,16 @@
-.tavern-buttons-main {
-    background: rgb(255, 172, 5);
-    background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
-    padding: 3em;
-    border-radius: 60px;
+.tavern-main-container {
+    display: flex;
+    justify-content: center;
+    width: 50em;
+    background: transparent !important;
+    backdrop-filter: blur(20px) contrast(2.5) brightness(20%);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .tavern-home-button {
     padding: 15px;
     border: 3px solid black;
-    border-radius: 30px;
+    border-radius: 2.875em;
     background-color: #936100;
     color: whitesmoke;
     box-shadow: rgb(72, 49, 2) 0 5px 15px;
@@ -25,16 +27,22 @@
     color: black;
 }
 
+.tavern-buttons-main {
+    display: flex;
+    justify-content: center;
+    height: 13em;
+    padding-top: 2em;
+}
 
 .tavern-heal-button {
     padding: 15px;
     border: 3px solid black;
-    border-radius: 30px;
+    border-radius: 3.875em;
     background-color: #936100;
     color: whitesmoke;
     box-shadow: rgb(72, 49, 2) 0 5px 15px;
-    width: 190px;
-    height: 100px;
+    width: 11.875em;
+    height: 5.625em;
     font-size: 16px;
 }
 
@@ -44,4 +52,81 @@
     transition: 0.1s;
     transform: scale(1.05);
     color: black;
+}
+
+.tavern-error-message {
+    color: red;
+    background-color: transparent;
+}
+
+.tavern-tool-tip {
+    position: absolute;
+    display: inline-block;
+    right: 2%;
+    bottom: 5%;
+
+    padding-top: 3px;
+    border: 3px solid black;
+    border-radius: 100%;
+    background-color: #936100;
+    color: whitesmoke;
+    box-shadow: rgb(72, 49, 2) 0 5px 15px;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+}
+
+.tooltip-text {
+    display: flex;
+    align-self: flex-end;
+    background-color: black;
+    width: 13em;
+    font-size: 18px;
+    border: 1px solid #81713d;
+    padding: 15px !important;
+}
+
+.tavern-tool-tip:hover {
+    font-weight: bold;
+    background-color: #96e397;
+    color: black;
+    cursor: help;
+}
+
+.tavern-tool-tip .tooltip-text {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -120px;
+}
+
+.tavern-tool-tip:after {
+    content: '';
+    position: absolute;
+    visibility: hidden;
+    top: -50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 1.125em solid transparent;
+
+    border-top-color: rgba(0, 0, 0, 0.51);
+    border-bottom: 0;
+    margin-left: -1.125em;
+    margin-bottom: -1.125em;
+}
+
+.tavern-tool-tip:hover:after {
+    visibility: visible;
+}
+
+.tavern-tool-tip:hover .tooltip-text {
+    visibility: visible;
 }

@@ -36,18 +36,18 @@
             <div class="profile-edit-form-fields">
 
                 {# ALL FORM FIELDS #}
-                <div class="form-group">
+                <div class="">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username"
                            class="form-control custom-color custom-border-golden" value="{{ username }}"
                            disabled>
                 </div>
-                <div class="form-group">
+                <div class="m-1">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" class="form-control custom-color custom-border-golden"
                            value="{{ email }}" disabled>
                 </div>
-                <div class="form-group">
+                <div class="m-1">
                     {% if about %}
                         <label for="about">About:</label>
                         <textarea id="about" name="about" class="form-control custom-color custom-border-golden"
@@ -59,7 +59,7 @@
                     {% endif %}
                 </div>
                 <a href="{% url 'confirm_profile_delete' %}">
-                    <button class="details-character-edit-button">Delete Profile</button>
+                    <button class="details-character-edit-button mt-3">Delete Profile</button>
                 </a>
             </div>
         </form>
@@ -76,14 +76,15 @@
         }
 
         #username, #email, #about {
-            width: 350px;
+            width: 18.875em;
+            height: 1.8em;
+            border-radius: 10px;
             opacity: 75%;
         }
 
         .profile-edit-form {
-            width: 500px;
+            width: 29.25em;
             margin-bottom: 20px;
-        {#margin-top: 20px;#}
 
         }
 
@@ -101,8 +102,8 @@
         }
 
         .profile-image {
-            width: 90px;
-            height: 90px;
+            width: 4.625em;
+            height: 4.625em;
             overflow: hidden;
             border-radius: 50%;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;

@@ -5,7 +5,7 @@
 {% block title %}Mythic Quest - Player Died{% endblock %}
 
 {% block main_content %}
-    <div class="card bg-dark character-fight-custom-main">
+    <div class="card bg-dark character-fight-custom-main dead-screen-bg">
         <div class="card text-white character-fight-custom-header">
             <h4 class="card-header index-custom-font home-header">YOU DIED.</h4>
         </div>
@@ -15,5 +15,20 @@
             <a href="{% url 'tavern' %}" class="btn btn-block mt-3 custom-button">Go to Tavern</a>
         </div>
     </div>
+
+    <style>
+        .dead-screen-bg {
+            width: 35%;
+            background: transparent !important;
+            backdrop-filter: blur(30px) contrast(2.5) brightness(10%);
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+
+        @media screen and (max-width: 700px) {
+            .dead-screen-bg {
+                width: 50%;
+            }
+        }
+    </style>
 
 {% endblock %}

@@ -86,7 +86,7 @@
 
     </div>
     {% if messages %}
-        <ul class="messages list-unstyled h2">
+        <ul class="messages list-unstyled h2 bg-dark fade show">
             {% for message in messages %}
                 <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
                     {{ message }}

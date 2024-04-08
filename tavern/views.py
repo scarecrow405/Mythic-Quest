@@ -59,7 +59,7 @@ def check_character_has_enough_gold(character_gold, gold_cost):
 
 def check_for_errors(request, character, gold_cost, character_max_hp):
     if not check_character_has_enough_gold(character.gold, gold_cost):
-        messages.error(request, "You don't have enough gold to heal.")
+        messages.error(request, "You don't have enough gold to heal!")
         return True
     if character.health == character_max_hp:
         messages.error(request, "You are already at full health.")

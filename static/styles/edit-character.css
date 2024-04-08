@@ -58,3 +58,13 @@
 .edit-character-container div ul li {
     color: red !important;
 }
+
+@media screen and (max-width: 850px) {
+    .edit-character-gender-selector {
+        gap: 20px;
+    }
+
+    .edit-character-container {
+        width: 450px;
+    }
+}

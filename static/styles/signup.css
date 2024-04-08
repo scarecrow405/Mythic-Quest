@@ -70,24 +70,22 @@
     border: 3.5px solid rgb(128, 198, 255) !important;
 }
 
+@media screen and (max-width: 1200px) {
+    .signup-container {
+        width: 40%;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .signup-container {
-        width: 70%;
+        width: 45%;
     }
 
 }
-
 
 @media screen and (max-width: 800px) {
     .signup-container {
-        width: 60%;
-    }
-
-}
-
-@media screen and (max-width: 1200px) {
-    .signup-container {
-        width: 50%;
+        width: 70%;
     }
 
 }

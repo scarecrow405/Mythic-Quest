@@ -12,44 +12,67 @@
 {% endblock %}
 
 {% block main_content %}
-    <a href="{% url 'index' %}" class="mb-4">
-        <button class="m-2 tavern-home-button">Back to Home</button>
-    </a>
-    <br>
-    {# Error Messages #}
-    {% if messages %}
-        <ul class="messages alert-warning alert-dismissible fade show">
-            {% for message in messages %}
-                <li {% if message.tags %}
-                    class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
 
-    <div class="tavern-buttons-main d-flex flex-row">
-        <form method="post" action="{% url 'heal_for_10_percent' %}" class="p-2 text-white">
-            {% csrf_token %}
-            <button type="submit" class="m-2 tavern-heal-button">
-                Heal 10% <br>
-                Cost: {{ gold_costs.heal_10_percent }} gold
-            </button>
-        </form>
-        <br>
-        <form method="post" action="{% url 'heal_for_50_percent' %}" class="p-2 text-white">
-            {% csrf_token %}
-            <button type="submit" class="m-2 tavern-heal-button">
-                Heal 50% <br>
-                Cost: {{ gold_costs.heal_50_percent }} gold
-            </button>
-        </form>
-        <br>
-        <form method="post" action="{% url 'heal_for_100_percent' %}" class="p-2 text-white">
-            {% csrf_token %}
-            <button type="submit" class="m-2 tavern-heal-button">
-                Heal 100% <br>
-                Cost: {{ gold_costs.heal_100_percent }} gold
-            </button>
-        </form>
+    <div class="tavern-main-container flex-column">
+        <div class="card text-white dungeon-custom-header">
+            <h4 class="card-header dungeon-custom-font home-header text-center">Tavern</h4>
+        </div>
+
+        <div class="tavern-buttons-main d-flex flex-row">
+            <form method="post" action="{% url 'heal_for_10_percent' %}" class="p-2 text-white">
+                {% csrf_token %}
+                <button type="submit" class="m-2 tavern-heal-button">
+                    Heal 10% <br>
+                    Cost: {{ gold_costs.heal_10_percent }} gold
+                </button>
+            </form>
+            <br>
+            <form method="post" action="{% url 'heal_for_50_percent' %}" class="p-2 text-white">
+                {% csrf_token %}
+                <button type="submit" class="m-2 tavern-heal-button">
+                    Heal 50% <br>
+                    Cost: {{ gold_costs.heal_50_percent }} gold
+                </button>
+            </form>
+            <br>
+            <form method="post" action="{% url 'heal_for_100_percent' %}" class="p-2 text-white">
+                {% csrf_token %}
+                <button type="submit" class="m-2 tavern-heal-button">
+                    Heal 100% <br>
+                    Cost: {{ gold_costs.heal_100_percent }} gold
+                </button>
+            </form>
+
+
+        </div>
+
+        <a href="{% url 'index' %}" class="mb-4 align-self-center">
+            <button class="m-2 tavern-home-button">Back to Home</button>
+        </a>
+
+        <div class="tavern-tool-tip text-center">
+            <div class="question-mark">?</div>
+            <p class="tooltip-text">Each option heals the player by the percentage of their max health or fully restores
+                their health.</p>
+        </div>
+
+        {# Error Messages #}
+        {% if messages %}
+            <ul class="messages bg-dark fade show list-unstyled h2 text-center">
+                {% for message in messages %}
+                    <li {% if message.tags %}
+                        class="{{ message.tags }} tavern-error-message"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% if messages %}
+            <script>
+                setTimeout(function () {
+                    window.location.href = "{% url 'index' %}";
+                }, 3000);
+            </script>
+        {% endif %}
+
+
     </div>
-
 {% endblock %}

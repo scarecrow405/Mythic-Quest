@@ -82,8 +82,9 @@
 }
 
 .details-character-stats {
-    border: 2px solid grey;
     box-shadow: rgb(72, 49, 2) 0 0 3px;
+    border: 3px solid #706262;
+    border-radius: 2px;
 }
 
 .details-character-edit-button {
@@ -125,18 +126,6 @@
     box-shadow: rgb(101, 69, 3) 0 2px 4px;
 }
 
-
-/*@media screen and (max-width: 1050px) {*/
-/*    .left-and-right-container {*/
-/*        width: 50%;*/
-/*    }*/
-
-/*    .details-character-stats {*/
-/*        width: 7em !important;*/
-/*    }*/
-
-/*}*/
-
 @media screen and (max-width: 1100px) {
     .details-character-main {
         width: 30em;
@@ -173,6 +162,9 @@
 
     .details-character-stats {
         width: 100%;
+        box-shadow: rgb(72, 49, 2) 0 0 3px;
+        border: 3px solid #443b3b;
+        border-radius: 2px;
     }
 
     .char-img-hide {

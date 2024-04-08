@@ -12,6 +12,16 @@
     padding: 0.2em;
 }
 
+.index-rankings {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.index-custom-font {
+    margin-top: 0;
+}
+
 .btn-on-click-custom:active {
     /*border: 3px solid #ffffff !important;*/
     background-color: #eca905 !important;
@@ -35,6 +45,10 @@
     color: white !important;
 }
 
+.underline-border {
+    justify-content: center;
+    padding-bottom: 2.25em;
+}
 
 .index-searchbar {
     color: black !important;
@@ -58,7 +72,8 @@
 }
 
 .index-character-level {
-    border: 2px solid grey;
+    border: 2px solid #1e1d1d;
+    border-radius: 5px;
     box-shadow: rgb(72, 49, 2) 0 0 3px;
 }
 
@@ -136,11 +151,18 @@
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
+.index-content-enemies {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25em;
+}
+
 .index-enemy-characters {
     /*display: flex;*/
     /*justify-content: center;*/
     /*border: 3px black solid;*/
-    padding: 1.25em !important;
+    border-radius: 0.25rem;
+    /*padding: 1.25em !important;*/
     width: 45% !important;
     height: auto;
     background-color: transparent !important;
@@ -151,8 +173,9 @@
 
 .index-each-enemy {
     list-style: decimal;
-    border: 2px grey solid;
-    /*padding: 3px;*/
+    border: 2px solid #3b3838 !important;
+    border-radius: 5px;
+    box-shadow: rgb(72, 49, 2) 0 0 3px;
     display: flex;
 }
 
