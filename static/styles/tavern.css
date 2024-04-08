@@ -1,9 +1,12 @@
 .tavern-main-container {
     display: flex;
     justify-content: center;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
     width: 50em;
+    border: 1px rgba(0, 0, 0, 0.24) solid;
     background: transparent !important;
-    backdrop-filter: blur(20px) contrast(2.5) brightness(20%);
+    backdrop-filter: blur(30px) contrast(2) brightness(20%);
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
@@ -27,10 +30,14 @@
     color: black;
 }
 
+.tavern-custom-bottom-top {
+    border-bottom: 1.5px rgba(206, 165, 15, 0.21) solid;
+}
+
 .tavern-buttons-main {
     display: flex;
     justify-content: center;
-    height: 13em;
+    height: 12em;
     padding-top: 2em;
 }
 
@@ -57,6 +64,85 @@
 .tavern-error-message {
     color: red;
     background-color: transparent;
+}
+
+.tavern-keeper-tip {
+    position: absolute;
+    display: inline-block;
+    left: 2%;
+    bottom: 6%;
+
+    background-color: transparent;
+    color: whitesmoke;
+    font-size: 25px;
+
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid #936100;
+}
+
+.tavern-keeper-tip:hover {
+    font-weight: bold;
+    background-color: rgba(173, 93, 93, 0);
+    scale: 111.2%;
+    color: black;
+    cursor: pointer;
+}
+
+.inn-keeper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 9px;
+}
+
+.inn-keeper-container {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    width: 13em;
+    border: 1px solid #81713d;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    height: 230px;
+    left: 50%;
+    margin-left: -160px;
+}
+
+.keeper-name {
+    font-size: 17px;
+}
+
+.keeper-image {
+    background-position: right 96% bottom 45%;
+    background-size: 80px 100px;
+    background-repeat: no-repeat;
+    position: relative;
+    align-self: center;
+    width: 130px;
+    height: 130px;
+    background-image: url("static/img/in-keeper-tavern.png");
+    border: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.keeper-short-bio {
+    margin-top: 9px;
+    padding-top: 3px;
+    border-top: 1px solid rgba(222, 172, 6, 0.32);
+    font-size: 11px;
+}
+
+.tavern-keeper-tip:hover .inn-keeper-container {
+    visibility: visible;
 }
 
 .tavern-tool-tip {
@@ -129,4 +215,62 @@
 
 .tavern-tool-tip:hover .tooltip-text {
     visibility: visible;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .tavern-main-container {
+        width: 40em;
+    }
+
+    .tooltip-text {
+        width: 10em;
+    }
+
+    .inn-keeper-container {
+        width: 10em;
+        height: 200px;
+        margin-left: -60px;
+    }
+
+    .remove-padding {
+        padding: 0 !important;
+    }
+
+    .keeper-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .tooltip-text {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .tavern-tool-tip {
+        right: 12% !important;
+    }
+
+    .tavern-keeper-tip {
+        left: 12% !important;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .tavern-main-container {
+        width: 30em;
+    }
+
+    .tavern-buttons-main {
+        height: 9em;
+    }
+
+    .tavern-heal-button {
+        font-size: 12px;
+    }
+
+    .tooltip-text {
+        font-size: 15px;
+    }
 }

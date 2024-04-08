@@ -81,6 +81,15 @@
     background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
 }
 
+.rating-custom-height {
+    height: 2.15em;
+}
+
+.left-and-right-container .left img,
+.left-and-right-container .left-2 img {
+    margin-bottom: 0.3em;
+}
+
 .details-character-stats {
     box-shadow: rgb(72, 49, 2) 0 0 3px;
     border: 3px solid #706262;

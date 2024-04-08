@@ -67,7 +67,7 @@ class Command(BaseCommand):
                 'effect': 'All Stats Boost',
                 'boost_amount_percentage': 2,
                 'image_path': 'img/potions/ultra-potion.png',
-                'price': 10000
+                'price': 9999
             },
 
         ]

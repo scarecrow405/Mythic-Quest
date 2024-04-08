@@ -162,29 +162,18 @@
 
         {# TODO: Move this to another template and redirect there if no characters #}
     {% else %}
-        <h4 class="card-header index-custom-font home-header">Welcome to Mythic Quest</h4>
-        <div class="card-body text-white index-custom-card-body">
-            <h5 class="card-title">Create Your Character</h5>
-            <p class="card-text">You haven't created a character yet. Create one now to start your
-                adventure!</p>
-            <a href="{% url 'create_character' %}" class="btn btn-block mt-3 custom-button">Create
-                Character</a>
-        </div>
-        <div class="index-enemy-characters text-white">
-            <ul>
-                ENEMY CHARACTERS:
-                {% for character in all_characters %}
-                    <li class="index-each-enemy">
-                        Lvl{{ character.level }}: {{ character.nickname }} -
-                        Rating: {{ character.rating|floatformat:0 }}
-                        <a href="{% url 'details_character' pk=character.id %}"
-                           class="btn btn-primary">Details</a>
-                    </li>
-                {% endfor %}
-            </ul>
+        <div class="index-border-no-char">
+            <div class="title-index-no-char">
+                <h2 class="card-header index-custom-font home-header text-white">Welcome to Mythic Quest</h2>
+            </div>
+            <div class="card-body text-white index-custom-card-body index-create-char-new-background">
+                <h5 class="card-title">Create Your Character</h5>
+                <p class="card-text">You haven't created a character yet. Create one now to start your
+                    adventure!</p>
+                <a href="{% url 'create_character' %}" class="btn btn-block mt-3 custom-button">Create
+                    Character</a>
+            </div>
         </div>
     {% endif %}
-
-    {# Pagination links #}
 
 {% endblock %}

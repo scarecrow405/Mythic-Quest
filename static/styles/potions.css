@@ -1,0 +1,256 @@
+.messages {
+    color: red;
+}
+
+.potions-card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+    align-items: center;
+}
+
+.potions-container {
+    border: 3px solid #0c4128;
+    border-radius: 8px;
+    width: 80%;
+    height: 29em;
+    justify-content: center;
+    background: rgb(255, 172, 5);
+    background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
+}
+
+.potions-card {
+    background: #af642c;
+    margin: 1em;
+    border: 3px solid rgba(231, 181, 11, 0.93);
+}
+
+#tooltip {
+    position: relative;
+    cursor: pointer;
+    border-bottom: solid;
+}
+
+#tooltipText {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    color: red;
+    background-color: black;
+    white-space: nowrap;
+    padding: 10px 15px;
+    border-radius: 7px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#tooltipText::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    border: 15px solid;
+    border-color: #000 #0000 #0000 #0000;
+}
+
+#tooltip:hover #tooltipText {
+    top: -15%;
+    visibility: visible;
+    opacity: 1;
+}
+
+.potions-description {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.88) !important;
+    padding-bottom: 6px;
+}
+
+.potions-name {
+    font-size: 23px;
+    color: #110e01;
+    font-weight: bold;
+    margin: 0px 0px 8px 0px;
+    padding: 0 0 8px 0;
+    border-bottom: rgba(255, 255, 255, 0.37) 2px solid;
+}
+
+.potions-card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0.68rem;
+}
+
+.potions-custom-button {
+    align-items: center;
+    background-color: #670d94;
+    color: rgba(204, 204, 204, 0.96);
+    font-size: 13px;
+    width: 10em;
+    height: 5.3em;
+    border: 3px solid rgba(0, 0, 0, 0.13);
+}
+
+
+.potions-custom-button:hover {
+    background-color: #9423cc;
+    transition: 0.1s;
+    border-radius: 14px;
+    color: white;
+}
+
+.potions-custom-button:active {
+    background-color: #36074f;
+    transition: 0.1s;
+    transform: scale(1.07);
+    color: rgba(255, 255, 255, 0.87);
+    border-radius: 14px;
+}
+
+.potions-home-button {
+    position: absolute;
+    right: 0;
+    font-size: 11px;
+}
+
+@media screen and (max-width: 1400px) {
+    .potions-name {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .potions-custom-button {
+        width: 8.4em !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .potions-description {
+        font-size: 13px;
+    }
+
+    .potions-custom-button {
+        width: 8em !important;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .potions-custom-button {
+        width: 7em !important;
+    }
+
+    .potions-card {
+        margin: 0.5em;
+    }
+
+    .potions-name {
+        font-size: 17px;
+    }
+
+    .potions-description {
+        font-size: 11px;
+    }
+
+    .potions-container {
+        height: 25em;
+    }
+}
+
+@media screen and (max-width: 1140px) {
+    .potions-custom-button {
+        width: 7em !important;
+    }
+
+    .potions-name {
+        display: none;
+    }
+
+    .potions-description {
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 917px) {
+    .potions-custom-button {
+        width: 6em !important;
+        height: 10em;
+    }
+
+    .potions-home-button {
+        position: absolute;
+        right: 0;
+        bottom: 14%;
+    }
+
+    .potions-description {
+        font-size: 11px;
+    }
+
+    .potions-card {
+        margin: 0.2em;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .potions-custom-button {
+        width: 5.5em !important;
+        height: 10em;
+    }
+
+    .potions-description {
+        font-size: 10px;
+    }
+
+    .potions-card {
+        margin: 0.1em;
+    }
+
+    #tooltip:hover #tooltipText {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 690px) {
+    .potions-custom-button {
+        width: 4em !important;
+        height: 10em;
+    }
+
+    .potions-description {
+        font-size: 10px;
+    }
+
+}
+
+@media screen and (max-width: 608px) {
+    .potions-custom-button {
+        width: 3.8em !important;
+        height: 11em;
+    }
+
+    .potions-description {
+        font-size: 8px;
+    }
+
+    .potions-home-button {
+        position: absolute;
+        right: 0;
+        bottom: 12%;
+    }
+
+    .potions-smaller-error {
+        font-size: 20px;
+    }
+
+}

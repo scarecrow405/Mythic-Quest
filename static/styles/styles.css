@@ -36,6 +36,9 @@
 /*Contact-Form*/
 @import url('contact-form.css');
 
+/*Items*/
+@import url('potions.css');
+
 /*Main Buttons*/
 .custom-button {
     background-color: #E6B57D;

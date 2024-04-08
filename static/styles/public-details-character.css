@@ -87,6 +87,10 @@
     width: 60em;
 }
 
+.public-left-and-right-container .public-left img {
+    margin-bottom: 0.3em;
+}
+
 .public-left-and-right-container {
     display: flex;
     flex-direction: row;

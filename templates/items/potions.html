@@ -12,18 +12,19 @@
 {% endblock %}
 
 {% block main_content %}
-    <div class="potions-everything-container d-flex">
-        <div class="d-flex potions-container" style="border: 3px solid #0c4128; width: 100%;">
+    <div class="potions-everything-container d-flex justify-content-center flex-row">
+        <div class="d-flex potions-container align-self-center">
+
             {% for item in all_items %}
-                <div class="card d-flex potions-card" style="border: 3px solid #e7b50b;">
+                <div class="potions-card d-flex potions-card">
                     <div id="tooltip">
                         <span id="tooltipText">BUY ME OR SUFFER!</span>
                         <img class="card-img-top" src="{% static item.image_path %}" alt="Card image cap">
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ item.name }}</h5>
+                    <div class="potions-card-body">
+                        <h5 class="card-title potions-name">{{ item.name }}</h5>
 
-                        <p class="card-text text-white">{{ item.description }}</p>
+                        <p class="card-text text-white potions-description">{{ item.description }}</p>
                     </div>
 
                     <form method="post">
@@ -32,43 +33,43 @@
                         <input type="hidden" name="buy_item" value="1">
 
                         {% if item.effect == 'EXP Boost' %}
-                            <button type="submit" name="experience_potion" class="btn-primary btn m-2">
+                            <button type="submit" name="experience_potion" class="potions-custom-button btn m-2">
                                 Buy Now <br> Price: {{ item.price }} Gold
                             </button>
                         {% endif %}
 
                         {% if item.effect == "Max Health Boost" %}
-                            <button type="submit" name="max_health_potion" class="btn-primary btn m-2">
+                            <button type="submit" name="max_health_potion" class="potions-custom-button btn m-2">
                                 Buy Now <br> Price: {{ item.price }} Gold
                             </button>
                         {% endif %}
 
                         {% if item.effect == "Strength Boost" %}
-                            <button type="submit" name="strength_potion" class="btn-primary btn m-2">
+                            <button type="submit" name="strength_potion" class="potions-custom-button btn m-2">
                                 Buy Now <br> Price: {{ item.price }} Gold
                             </button>
                         {% endif %}
 
                         {% if item.effect == "Agility Boost" %}
-                            <button type="submit" name="agility_potion" class="btn-primary btn m-2">
+                            <button type="submit" name="agility_potion" class="potions-custom-button btn m-2">
                                 Buy Now <br> Price: {{ item.price }} Gold
                             </button>
                         {% endif %}
 
                         {% if item.effect == "Damage Boost" %}
-                            <button type="submit" name="damage_potion" class="btn-primary btn m-2">
+                            <button type="submit" name="damage_potion" class="potions-custom-button btn m-2">
                                 Buy Now <br> Price: {{ item.price }} Gold
                             </button>
                         {% endif %}
 
                         {% if item.effect == "Armor Boost" %}
-                            <button type="submit" name="armor_potion" class="btn-primary btn m-2">
+                            <button type="submit" name="armor_potion" class="potions-custom-button btn m-2">
                                 Buy Now <br> Price: {{ item.price }} Gold
                             </button>
                         {% endif %}
 
                         {% if item.effect == "All Stats Boost" %}
-                            <button type="submit" name="ultra_potion" class="btn-primary btn m-2">
+                            <button type="submit" name="ultra_potion" class="potions-custom-button btn m-2">
                                 Buy Now <br> Price: {{ item.price }} Gold
                             </button>
                         {% endif %}
@@ -77,18 +78,19 @@
 
                 </div>
             {% endfor %}
-        </div>
 
+        </div>
         {# Buttons #}
-        <div class="mt-5 p-3">
+        <div class="mb-1 p-2 potions-home-button">
             {% include 'items/items_buttons.html' %}
         </div>
+
 
     </div>
     {% if messages %}
         <ul class="messages list-unstyled h2 bg-dark fade show">
             {% for message in messages %}
-                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                <li {% if message.tags %} class="{{ message.tags }} potions-smaller-error" {% endif %}>
                     {{ message }}
                 </li>
             {% endfor %}
@@ -103,57 +105,26 @@
         </script>
     {% endif %}
 
+    <script>
+        const potionButtons = document.querySelectorAll('.potions-custom-button');
 
-    <style>
-        .messages {
-            color: red;
-        }
+        potionButtons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                const potionsCard = button.closest('.potions-card');
+                potionsCard.style.backgroundColor = '#c77a3d';
+                potionsCard.style.transform = 'scale(1.11)';
+                potionsCard.style.transition = 'transform 0.3s ease';
+                potionsCard.style.border = '3px solid rgba(248, 226, 149, 0.93)';
+            });
 
-        .potions-container {
-            background: rgb(255, 172, 5);
-            background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
-        }
+            button.addEventListener('mouseleave', () => {
+                const potionsCard = button.closest('.potions-card');
+                potionsCard.style.backgroundColor = '';
+                potionsCard.style.transform = '';
+                potionsCard.style.transition = 'transform 0.3s ease';
+                potionsCard.style.border = '3px solid rgba(231, 181, 11, 0.93)';
+            });
+        });
+    </script>
 
-        .potions-card {
-            background: #af642c;
-            margin: 0.7em;
-        }
-
-        #tooltip {
-            position: relative;
-            cursor: pointer;
-            border-bottom: solid;
-        }
-
-        #tooltipText {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-            color: red;
-            background-color: black;
-            white-space: nowrap;
-            padding: 10px 15px;
-            border-radius: 7px;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        #tooltipText::before {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 100%;
-            transform: translateX(-50%);
-            border: 15px solid;
-            border-color: #000 #0000 #0000 #0000;
-        }
-
-        #tooltip:hover #tooltipText {
-            top: -15%;
-            visibility: visible;
-            opacity: 1;
-        }
-    </style>
 {% endblock %}

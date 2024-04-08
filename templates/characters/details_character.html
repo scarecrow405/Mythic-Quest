@@ -16,7 +16,7 @@
                 <h5 class="details-character-nickname">{{ character.nickname }}</h5>
                 <img src="{% static character.image_path %}" alt="{{ character.nickname }} Image"
                      class="img-fluid char-img-hide">
-                <div class="px-2 d-flex justify-content-between details-character-stats">
+                <div class="px-2 d-flex justify-content-between details-character-stats rating-custom-height">
                     <p>Rating:</p>
                     <p>{{ character_rating|get_character_rating }}</p>
                 </div>
@@ -26,7 +26,7 @@
                 <h5 class="details-character-nickname">{{ character.nickname }}</h5>
                 <img src="{% static character.image_path %}" alt="{{ character.nickname }} Image"
                      class="img-fluid char-img-hide">
-                <div class="px-2 d-flex justify-content-between details-character-stats">
+                <div class="px-2 d-flex justify-content-between details-character-stats rating-custom-height">
                     <p>Rating:</p>
                     <p>{{ character_rating|get_character_rating }}</p>
                 </div>

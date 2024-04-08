@@ -5,15 +5,15 @@
 {% block title %}Mythic Quest - Character Select{% endblock %}
 
 {% block main_content %}
-    <div class="container create-character-container">
+    <div class="create-character-container">
         <div class="row justify-content-center align-items-center">
-            <div class="col-md-6">
+            <div class="col-md-6 remove-col-md-6">
                 <div class="card bg-dark">
                     <div class="card text-white custom-header">
                         <h4 class="card-header custom-font create-character-h4">Select Your
                             Character</h4>
                     </div>
-                    <div class="card-body text-white custom-card-body">
+                    <div class="text-white custom-card-body">
                         <form method="post" action="{% url 'create_character' %}">
                             {% csrf_token %}
                             <div class="character-images create-character-chr-container">
@@ -21,16 +21,16 @@
                                 <a class="make-hover" href="#" onclick="selectCharacter('male', event)">
                                     <img src="{% static 'img/male-warrior.jpg' %}"
                                          alt="Male Character"
-                                         class="character-image" id="male-character">
+                                         class="create-character-image" id="male-character">
                                 </a>
 
                                 <a class="make-hover" href="#" onclick="selectCharacter('female', event)">
                                     <img src="{% static 'img/female-warrior.jpg' %}"
                                          alt="Female Character"
-                                         class="character-image" id="female-character">
+                                         class="create-character-image" id="female-character">
                                 </a>
                             </div>
-                        
+
                             {% if messages %}
                                 <ul class="messages">
                                     {% for message in messages %}
@@ -61,11 +61,11 @@
     <script>
         function selectCharacter(characterType, event) {
             event.preventDefault();
-            const selectedImage = event.target.closest('.character-image');
+            const selectedImage = event.target.closest('.create-character-image');
             const isSelected = selectedImage.classList.contains('selected');
 
             // Remove the 'selected' class from all images
-            const images = document.querySelectorAll('.character-image');
+            const images = document.querySelectorAll('.create-character-image');
             images.forEach(function (image) {
                 image.classList.remove('selected');
                 image.style.opacity = '0.5'; // Set opacity to 60%

@@ -1,3 +1,4 @@
+{% load custom_tags %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-navigation-color navbar-main-color">
     <div class="container navbar-custom-height">
 
@@ -36,8 +37,14 @@
                                     Profile</a>
                             </div>
                         </div>
+
                     </li>
                 </ul>
+                <div class="nav-player-gold pl-5">
+                    {% if user.character.gold %}
+                        Gold: {{ user.character.gold|get_character_gold }}
+                    {% endif %}
+                </div>
 
             {% else %}
                 <ul class="navbar-nav ml-auto">

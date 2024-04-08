@@ -5,6 +5,7 @@
 
 .custom-card-body {
     background-color: rgb(0, 0, 0);
+    padding: 1.2em 3em 1.2em 3em;
 }
 
 .custom-font {
@@ -28,10 +29,17 @@
     height: 280px;
 }
 
+.create-character-image {
+    opacity: 0.5;
+    transition: opacity 0.1s ease-in-out;
+    width: 180px;
+    height: 280px;
+}
+
 .create-character-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 65em;
     height: auto;
     z-index: 2000;
 }
@@ -56,3 +64,54 @@
     color: red !important;
 
 }
+
+@media screen and (max-width: 1090px) {
+    .create-character-image {
+        width: 130px;
+        height: 220px;
+    }
+
+    .create-character-container {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .create-character-container {
+        width: 90%;
+    }
+
+    .create-character-chr-container {
+        gap: 2em;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .create-character-container {
+        max-width: 90%;
+    }
+
+    .remove-col-md-6 {
+        width: 70%;
+    }
+
+    .create-character-chr-container {
+        gap: 1.1em;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .create-character-container {
+    }
+
+    .create-character-chr-container {
+        gap: 1em;
+    }
+
+
+    .remove-col-md-6 {
+        width: 80%;
+    }
+}
+

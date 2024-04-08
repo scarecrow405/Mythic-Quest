@@ -2,7 +2,7 @@
 
 .navbar-custom-height {
     height: 2.5rem;
-    max-width: 69%;
+    max-width: 80%;
 }
 
 /*.navigation-move-items-right {*/
@@ -19,6 +19,10 @@
 .custom-navigation-color {
     width: 100%;
     z-index: 1;
+}
+
+.nav-player-gold {
+    color: goldenrod;
 }
 
 .icon-dropdown:hover {
@@ -49,6 +53,13 @@
     margin-top: 5px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 991.98px) {
+    .nav-player-gold {
+        display: none;
+    }
+}
+
 
 @media only screen and (max-width: 991.30px) {
     .navigation-move-items-right {
