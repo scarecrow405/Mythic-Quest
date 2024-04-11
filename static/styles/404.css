@@ -1,0 +1,16 @@
+.error-404-main-container {
+    width: 36em;
+    background: transparent !important;
+    backdrop-filter: blur(20px) contrast(2.5) brightness(20%);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.error-404-custom-header {
+    background-color: #C73F19 !important;
+}
+
+@media screen and (max-width: 820px) {
+    .error-404-main-container {
+        width: 28em;
+    }
+}

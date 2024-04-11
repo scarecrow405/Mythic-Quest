@@ -15,54 +15,76 @@
 {% endblock %}
 
 {% block main_content %}
-    <div class="potions-everything-container d-flex">
-        <div class="dungeon-main-container flex-row text-center">
+    <div class="dungeon-main-container">
 
-            <div class="card text-white dungeon-custom-header">
-                <h4 class="card-header dungeon-custom-font home-header">Dungeon</h4>
-            </div>
+        <div class="card text-white dungeon-custom-header text-center">
+            <h4 class="card-header dungeon-custom-font home-header">Dungeon</h4>
+        </div>
 
-            <div class="card-body text-white dungeon-custom-card-body">
-                <div class="monster-info">
-                    {% for monster in monsters %}
-                        <div class="dungeon-img-container m-3 d-flex flex-column text-white">
-                            <h5 class="dungeon-monster-nickname text-center">{{ monster.name }}</h5>
+        <div class="text-white dungeon-custom-card-body">
+            <div class="monster-info">
+                {% for monster in monsters %}
+                    <div class="dungeon-img-container d-flex flex-column text-white">
+                        <h5 class="dungeon-monster-nickname text-center">{{ monster.name }}</h5>
 
-                            <img src="{% static monster.image_path %}" width="200px" alt="{{ scarab_beetle.name }}">
+                        <img class="dungeon-monsters-img" src="{% static monster.image_path %}"
+                             alt="{{ scarab_beetle.name }}">
 
-                            <div class="px-2 d-flex justify-content-between dungeon-monster-level">
-                                <p>Level:</p>
-                                <p>{{ monster.level }}</p>
-                            </div>
-                            <div class="px-2 d-flex justify-content-between dungeon-monster-level">
-                                <p>Rating:</p>
-                                <p>{{ monster.rating|floatformat:0 }}</p>
-                            </div>
+                        <div class="px-2 d-flex justify-content-between dungeon-monster-level">
+                            <p>Level:</p>
+                            <p>{{ monster.level }}</p>
+                        </div>
+                        <div class="px-2 d-flex justify-content-between dungeon-monster-level">
+                            <p>Rating:</p>
+                            <p>{{ monster.rating|floatformat:0 }}</p>
+                        </div>
 
-                            <form action="{% url 'fight_monster' slug=monster.name|first_word %}" method="post">
-                                {% csrf_token %}
-                                <input type="hidden" name="monster_name" value="{{ monster.name }}">
-                                {#                                <button type="submit" class="btn dungeon-attack-button w-100">Attack</button>#}
+                        <form class="dungeon-attack-button-container"
+                              action="{% url 'fight_monster' slug=monster.name|first_word %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="monster_name" value="{{ monster.name }}">
+                            {#                                <button type="submit" class="btn dungeon-attack-button w-100">Attack</button>#}
 
-                                <button class="dungeon-attack-button-pushable w-100 pt-2" role="button">
-                                    <span class="dungeon-attack-button-shadow"></span>
-                                    <span class="dungeon-attack-button-edge"></span>
-                                    <span class="dungeon-attack-button-front text">
+                            <button class="dungeon-attack-button-pushable w-100 pt-2" role="button">
+                                <span class="dungeon-attack-button-shadow"></span>
+                                <span class="dungeon-attack-button-edge"></span>
+                                <span class="dungeon-attack-button-front text">
                                 Attack
                                 </span>
-                                </button>
+                            </button>
 
-                            </form>
-                        </div>
-                    {% endfor %}
-                </div>
+                        </form>
+                    </div>
+                {% endfor %}
             </div>
         </div>
 
         {# Buttons #}
-        <div class="mt-5 p-3">
+        <div class="dungeon-buttons-container">
             {% include 'monsters/dungeon_buttons.html' %}
         </div>
     </div>
+
+    <script>
+        const potionButtons = document.querySelectorAll('.dungeon-attack-button-container');
+
+        potionButtons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                const dungeonCard = button.closest('.dungeon-img-container');
+                dungeonCard.style.backgroundColor = 'rgba(63, 63, 63, 0.84)';
+                dungeonCard.style.transform = 'scale(1.05)';
+                dungeonCard.style.transition = 'transform 0.3s ease';
+                dungeonCard.style.border = '3px solid rgba(243, 204, 69, 0.66)';
+            });
+
+            button.addEventListener('mouseleave', () => {
+                const dungeonCard = button.closest('.dungeon-img-container');
+                dungeonCard.style.backgroundColor = '';
+                dungeonCard.style.transform = '';
+                dungeonCard.style.transition = 'transform 0.3s ease';
+                dungeonCard.style.border = '';
+            });
+        });
+    </script>
 
 {% endblock %}

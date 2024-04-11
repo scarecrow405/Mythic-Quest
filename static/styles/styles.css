@@ -6,6 +6,8 @@
 @import url('signup.css');
 @import url('signin.css');
 @import url('profile-edit.css');
+@import url('profile-delete.css');
+@import url('confirm-profile-delete.css');
 
 /*Character*/
 @import url('create-character.css');
@@ -38,6 +40,10 @@
 
 /*Items*/
 @import url('potions.css');
+
+/*Errors*/
+@import url('404.css');
+
 
 /*Main Buttons*/
 .custom-button {

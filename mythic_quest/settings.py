@@ -11,7 +11,11 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'your_domain.com',
+    '127.0.0.1',
+    'localhost'
+]
 
 INSTALLED_APPS = [
     # Django Apps:
@@ -98,7 +102,7 @@ USE_TZ = True
 
 # Static Files
 STATIC_URL = '/static/'
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     join(BASE_DIR, 'static'),
 )

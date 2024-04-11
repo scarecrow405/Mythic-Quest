@@ -23,4 +23,7 @@ urlpatterns = [
 
                   # Items
                   path("items/", include("items.urls")),
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL,
+                                                                                         document_root=settings.STATIC_ROOT)
+
+# handler404 = 'characters.error_handling.handle_404'

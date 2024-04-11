@@ -15,7 +15,7 @@
                 <input type="hidden" name="access_key" value="a83b4459-ef3a-4f97-a17d-315a4c2bb764">
 
                 {#                {# Anti-Spam #}
-                <div class="h-captcha" data-captcha="true"></div>
+                <div class="h-captcha contact-form-anti-spam" data-captcha="true"></div>
 
                 <div class="contact-form-content">
                     <div class="name-and-email">
@@ -24,14 +24,22 @@
                         <input type="email" name="email" placeholder="Your Email *" class="contact-inputs"
                                value="{{ user_email }}" required>
 
-                        <button type="submit">Submit <img class="contact-arrow"
-                                                          src="{% static 'img/right-arrow.png' %}">
-                        </button>
-                    </div>
+                        <div class="contact-form-button-to-hide">
+                            <button type="submit">Submit <img class="contact-arrow "
+                                                              src="{% static 'img/right-arrow.png' %}">
+                            </button>
+                        </div>
 
+                    </div>
                     <div class="text-area">
                         <textarea name="message" placeholder="Your Message *" class="contact-inputs"
                                   required></textarea>
+                    </div>
+
+                    <div class="contact-form-button-to-un-hide">
+                        <button type="submit">Submit <img class="contact-arrow "
+                                                          src="{% static 'img/right-arrow.png' %}">
+                        </button>
                     </div>
                 </div>
             </form>

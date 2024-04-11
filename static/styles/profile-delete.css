@@ -2,47 +2,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
     background: transparent;
-    border: 2px solid rgb(89, 64, 6);
-    border-radius: 40px;
-    backdrop-filter: blur(50px);
-    box-shadow: 0 0 40px rgba(0, 0, 0, .5);
+    color: white;
     padding-top: 20px;
-
 }
 
-.profile-edit-form-fields #username,
-.profile-edit-form-fields #email,
-    /*.profile-edit-form-fields #about,*/
-.profile-edit-form-fields #profile_image {
+#username, #email, #about {
     width: 18.875em;
     height: 1.8em;
     border-radius: 10px;
-}
-
-.profile-edit-form-fields #about {
-    width: 18.875em;
-    height: 5em;
-    max-height: 5.3em;
-    min-height: 4.3em;
-    border-radius: 10px;
-}
-
-.profile-edit-form-fields #profile_image {
-    cursor: pointer;
-    height: 45px !important;
+    opacity: 75%;
 }
 
 .profile-edit-form {
     width: 29.25em;
     margin-bottom: 20px;
+
 }
 
 .profile-edit-image-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 .profile-edit-form-fields {
@@ -59,12 +41,6 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.edit-profile-custom-border-golden {
-    color: black;
-    border: 2.5px solid #d39908;
-    font-weight: bold;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
 
 @media screen and (max-width: 1000px) {
     .profile-edit-form {

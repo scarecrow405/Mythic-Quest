@@ -1,3 +1,44 @@
+.dungeon-main-container {
+    width: 53em;
+}
+
+.dungeon-custom-card-body {
+    display: flex;
+    justify-content: center;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.dungeon-img-container {
+    width: 12.7em;
+    margin: 0.2em;
+    gap: 0.1em;
+    padding: 0.5em;
+    background-color: rgba(63, 63, 63, 0.34);
+    border-radius: 15px;
+    border: 3px solid rgba(243, 204, 69, 0.11)
+}
+
+.dungeon-attack-button-container {
+    padding-top: 0.2em;
+}
+
+.dungeon-buttons-custom {
+    display: flex;
+    flex-direction: column;
+}
+
+.dungeon-buttons-container {
+    position: absolute;
+    right: 10%;
+    top: 25%;
+    font-size: 13px;
+}
+
+.dungeon-monsters-img {
+    width: 100%;
+}
+
 .dungeon-custom-header {
     background-color: #C73F19 !important;
 }
@@ -17,12 +58,15 @@
 }
 
 .dungeon-monster-level {
-    border: 2px solid grey;
+    border: 2px solid rgba(231, 181, 11, 0.34);
     box-shadow: rgb(72, 49, 2) 0 0 3px;
+    height: 2.2em;
+    border-radius: 2px;
 }
 
 .dungeon-monster-nickname {
     padding: 10px;
+    width: 100%;
     margin-bottom: 10px;
     border-top: 3.5px solid black;
     border-bottom: 3.5px solid black;
@@ -30,7 +74,7 @@
     background-color: #e1b239;
     color: black;
     font-family: "Mochiy Pop P One", sans-serif;
-    font-size: 16px;
+    font-size: 13px;
     box-shadow: rgb(101, 69, 3) 0 2px 4px;
 }
 
@@ -91,15 +135,9 @@
     transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
 }
 
-@media (min-width: 768px) {
-    .dungeon-attack-button-front {
-        font-size: 1.25rem;
-        padding: 12px 42px;
-    }
-}
 
 .dungeon-attack-button-pushable:hover {
-    filter: brightness(110%);
+    filter: brightness(180%) !important;
     -webkit-filter: brightness(110%);
 
 }
@@ -127,4 +165,87 @@
 
 .dungeon-attack-button-pushable:focus:not(:focus-visible) {
     outline: none;
+}
+
+
+@media screen and (max-width: 1465px) {
+    .dungeon-buttons-custom {
+        flex-direction: row;
+    }
+
+    .dungeon-buttons-container {
+        top: 86%;
+        right: 30%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .dungeon-buttons-container {
+        top: 80%;
+        right: 30%;
+    }
+
+    .dungeon-main-container {
+        width: 42em;
+    }
+
+    .dungeon-img-container {
+        width: 10em;
+        gap: 0.1em;
+        padding: 0.5em;
+    }
+
+    .dungeon-monster-nickname {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .dungeon-buttons-container {
+        top: 70%;
+        right: 15%;
+    }
+
+    .dungeon-main-container {
+        width: 32em;
+    }
+
+    .dungeon-img-container {
+        width: 7.5em;
+        gap: 0.1em;
+        padding: 0.3em;
+    }
+
+    .dungeon-monster-nickname {
+        font-size: 6px;
+    }
+
+    .dungeon-monster-level {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .dungeon-buttons-container {
+        top: 70%;
+        right: 1%;
+    }
+
+    .dungeon-main-container {
+        width: 28em;
+    }
+
+    .dungeon-img-container {
+        width: 6.5em;
+        gap: 0.1em;
+        padding: 0.05em;
+    }
+
+    .dungeon-monster-nickname {
+        font-size: 6px;
+    }
+
+    .dungeon-monster-level {
+        font-size: 10px;
+    }
 }
