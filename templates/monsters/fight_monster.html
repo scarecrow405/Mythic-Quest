@@ -13,11 +13,12 @@
                 <h4 class="card-header monster-fight-custom-font home-header">Dungeon Fight</h4>
             </div>
             <div class="card-body text-white monster-fight-custom-card-body">
-                <div class="monster-info">
+                <div class="fight-monster-info">
+
                     <div class="monster-fight-left">
                         <h5 class="monster-fight-monster-nickname">{{ character.nickname }}</h5>
                         <img src="{% static character.image_path %}" alt="{{ character.nickname }} Image"
-                             class="img-fluid">
+                             class="fight-monster-char-img">
 
                         <div class="px-2 d-flex justify-content-between monster-fight-monster-level">
                             <p>Level:</p>
@@ -30,7 +31,7 @@
                     </div>
 
                     <div class="monster-fight-center">
-                        <div class="ml-auto ">
+                        <div class="mt-2">
                             {% if winner == character %}
                                 <p>Winner: {{ winner }}!<br>
                                     Gold Gained: {{ gained_gold|floatformat:0 }}<br>
@@ -46,22 +47,24 @@
                                 </p>
                             {% endif %}
 
-                            <a href="{% url 'dungeon' %}" class="mb-2">
-                                <button class="monster-fight-edit-button">Dungeon</button>
-                            </a>
-                            <a href="{% url 'tavern' %}" class="mb-2">
-                                <button class=" monster-fight-edit-button">Tavern</button>
-                            </a>
-                            <a href="{% url 'items_potions' %}" class="mb-2">
-                                <button class="monster-fight-edit-button">Potions Shop</button>
-                            </a>
-                            <a href="{% url 'index' %}" class="mb-2">
-                                <button class="details-monster-edit-button">Back to Home</button>
-                            </a>
+                            <div class="fight_monster-btn-container">
+                                <a href="{% url 'dungeon' %}" class="mt-3">
+                                    <button class="monster-fight-edit-button">Dungeon</button>
+                                </a>
+                                <a href="{% url 'tavern' %}" class="">
+                                    <button class=" monster-fight-edit-button">Tavern</button>
+                                </a>
+                                <a href="{% url 'items_potions' %}" class="">
+                                    <button class="monster-fight-edit-button">Potions Shop</button>
+                                </a>
+                                <a href="{% url 'index' %}" class="">
+                                    <button class="details-monster-edit-button">Back to Home</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="monster-fight-left">
+                    <div class="monster-fight-right">
                         <h5 class="monster-fight-monster-nickname">{{ monster.name }}</h5>
                         <img src="{% static monster.image_path %}" alt="{{ monster.nickname }} Image"
                              class="img-fluid">

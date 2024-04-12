@@ -7,7 +7,9 @@
     padding-top: 20px;
 }
 
-#username, #email, #about {
+.profile-delete-field #username,
+.profile-delete-field #email,
+.profile-delete-field #about {
     width: 18.875em;
     height: 1.8em;
     border-radius: 10px;

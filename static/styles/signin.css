@@ -7,6 +7,21 @@
     justify-content: center;
 }
 
+.sing-in-custom-border-golden {
+    color: black;
+    border: 3.5px solid darkgoldenrod;
+    font-weight: bold;
+}
+
+.sing-in-custom-border-golden:focus {
+    color: black !important;
+}
+
+.sign-in-custom-color {
+    background: rgb(255, 172, 5);
+    background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
+}
+
 .signin-container {
     display: flex;
     flex-direction: column;

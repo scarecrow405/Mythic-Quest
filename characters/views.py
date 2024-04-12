@@ -96,6 +96,12 @@ class CharacterEditView(LoginRequiredMixin, UpdateView):
     def get(self, request, *args, **kwargs):
         try:
             character = Character.objects.get(pk=kwargs.get('pk'))
+            is_user_gm = self.request.user.groups.filter(name='Game Master').exists() or self.request.user.is_superuser
+            is_user_in_own_profile = self.request.user == character.user
+
+            if not is_user_gm and not is_user_in_own_profile:
+                return redirect('error_404')
+
         except Character.DoesNotExist:
             return redirect('error_404')
         return super().get(request, *args, **kwargs)
@@ -143,7 +149,7 @@ class CharacterDeleteView(LoginRequiredMixin, DeleteView):
 class CharacterFightView(LoginRequiredMixin, View):
 
     def get(self, request, pk, pk2):
-        return redirect('index')
+        return redirect('error_404')
         # try:
         #     character = Character.objects.get(pk=pk)
         #     enemy = Character.objects.get(pk=pk2)
@@ -189,14 +195,10 @@ class CharacterFightView(LoginRequiredMixin, View):
             # Check if the user is viewing their own character
             is_own_character = character.user == request.user
 
-            # Render index page based on whether the user has a character or not
-            if is_own_character:
-                index_template = 'home/index.html'
-            else:
-                index_template = 'home/index-without-character.html'
+            if not is_own_character:
+                return redirect('error_404')
 
         except Character.DoesNotExist:
-            # Render a custom error page if characters are not found
             return redirect('error_404')
 
         # Return character to Tavern to heal.

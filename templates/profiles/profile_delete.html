@@ -36,24 +36,24 @@
             <div class="profile-edit-form-fields">
 
                 {# ALL FORM FIELDS #}
-                <div class="">
+                <div class="profile-delete-field">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username"
                            class="form-control custom-color custom-border-golden" value="{{ username }}"
                            disabled>
                 </div>
-                <div class="m-1">
+                <div class="m-1 profile-delete-field">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" class="form-control custom-color custom-border-golden"
                            value="{{ email }}" disabled>
                 </div>
-                <div class="m-1">
+                <div class="m-1 profile-delete-field">
                     {% if about %}
                         <label for="about">About:</label>
                         <textarea id="about" name="about" class="form-control custom-color custom-border-golden"
                                   disabled>{{ about }}</textarea>
                     {% else %}
-                        <label for="about">About:</label>
+                        <label class="profile-delete-field" for="about">About:</label>
                         <textarea id="about" name="about" class="form-control custom-color custom-border-golden"
                                   disabled>Nothing to see here...</textarea>
                     {% endif %}
