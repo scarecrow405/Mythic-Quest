@@ -10,13 +10,13 @@ Welcome to my GitHub repository for a dynamic browser game reminiscent of Gladia
 2. Navigate to the project directory:
     - cd project-directory
 
-3. Install dependencies:
+3. Install dependencies (if you have a virtual environment):
     - pip install -r requirements.txt
 
 4. Create media directory:
     - in your project at manage.py level, create a directory called "media".
 
-5. Apply migrations:
+5. Apply migrations (connect your db in settings.py):
     - python manage.py migrate
 
 6. Seed the database with initial data:
