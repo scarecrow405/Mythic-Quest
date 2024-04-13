@@ -30,4 +30,4 @@ Welcome to my GitHub repository for a dynamic browser game reminiscent of Gladia
     - http://localhost:8000
 
 <h3> Additional Notes:</h3>
-Include any additional notes or instructions here.
+Be sure to set up your database and make other adjustments on your set up to run this project.
