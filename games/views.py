@@ -28,6 +28,7 @@ def earn_gold_by_clicking_game(request):
         if game:
             if user_character.current_clicks + COUNT_PER_CLICK >= MAX_CLICKS:
                 user_character.current_clicks = 0
+
             user_character.current_clicks += COUNT_PER_CLICK
             if user_character.current_clicks % CLICK_TIMES == 0:
                 user_character.gold += EARN_GOLD_REWARD

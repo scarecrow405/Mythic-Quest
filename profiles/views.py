@@ -28,7 +28,7 @@ def signup_user(request):
             return redirect("create_character")
     else:
         form = SignupForm()
-
+    
     context = {
         'form': form,
     }

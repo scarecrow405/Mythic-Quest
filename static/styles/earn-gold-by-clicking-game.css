@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     width: 35em;
-    height: 25em;
+    height: 24.5em;
     gap: 0.8em;
     background: linear-gradient(54deg, rgba(255, 172, 5, 1) 0%, rgba(89, 79, 7, 1) 98%, rgba(59, 53, 12, 1) 100%);
     border-radius: 15px;
@@ -86,6 +86,10 @@
 
 .earn-gold-header {
     border-bottom: 2px rgba(0, 0, 0, 0.51) solid;
+    border-top: 2px rgba(0, 0, 0, 0.51) solid;
+    background-color: #C73F19 !important;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .earn-gold-success-msg {
