@@ -15,6 +15,14 @@
             </a>
 
         </div>
+
+    {% elif is_user_admin %}
+        <div class="mb-1">
+            <a href="{% url 'edit_character' pk=object.id %}">
+                <button class="details-character-edit-button">Edit Character</button>
+            </a>
+
+        </div>
         <div class="mb-1">
             <a href="{% url 'delete_character' pk=object.id %}">
                 <button class="details-character-edit-button">Delete Character</button>

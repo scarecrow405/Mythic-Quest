@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'monsters',
     'profiles',
     'tavern',
+    'games',
 ]
 
 MIDDLEWARE = [

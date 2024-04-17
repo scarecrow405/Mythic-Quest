@@ -15,3 +15,7 @@ class CharacterAdmin(admin.ModelAdmin):
         'damage',
         'armor',
     )
+
+    list_filter = ["nickname", "level"]
+    search_fields = ["nickname", "level"]
+    ordering = ["level"]

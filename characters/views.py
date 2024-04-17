@@ -20,7 +20,6 @@ class CharacterCreateView(LoginRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         has_character = Character.objects.filter(user=request.user).exists()
         if has_character:
-            # return redirect('details_character', pk=Character.objects.get(user=request.user).pk)
             return redirect('index')
         form = CharacterCreationForm()
         return render(request, self.template_name, {'form': form})
@@ -44,7 +43,6 @@ class CharacterDetailsBaseView(DetailView):
     template_name = 'characters/details_character.html'
     context_object_name = 'character'
 
-    # TODO: NEED TO HANDLE EXCEPTIONS WHEN TYPING STRINGS TOO!
     def get(self, request, *args, **kwargs):
         try:
             character = Character.objects.get(pk=kwargs.get('pk'))
@@ -57,7 +55,8 @@ class CharacterDetailsBaseView(DetailView):
 
         character = self.get_object()
 
-        is_user_gm = self.request.user.groups.filter(name='Game Master').exists() or self.request.user.is_superuser
+        is_user_gm = self.request.user.groups.filter(name='Game Master').exists()
+        is_user_admin = self.request.user.is_superuser
         is_user_in_own_profile = self.request.user == character.user
 
         # Add hero stats to the context
@@ -75,6 +74,7 @@ class CharacterDetailsBaseView(DetailView):
 
         context["character_rating"] = character.rating
         context["is_user_gm"] = is_user_gm
+        context["is_user_admin"] = is_user_admin
         context["is_user_in_own_profile"] = is_user_in_own_profile
 
         return context
@@ -145,47 +145,24 @@ class CharacterDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'characters/delete_character.html'
     success_url = reverse_lazy('create_character')
 
+    def get(self, request, *args, **kwargs):
+        try:
+            character = Character.objects.get(pk=kwargs.get('pk'))
+            is_user_admin = self.request.user.is_superuser
+            is_user_in_own_profile = self.request.user == character.user
+
+            if not is_user_admin and not is_user_in_own_profile:
+                return redirect('error_404')
+
+        except Character.DoesNotExist:
+            return redirect('error_404')
+        return super().get(request, *args, **kwargs)
+
 
 class CharacterFightView(LoginRequiredMixin, View):
 
     def get(self, request, pk, pk2):
         return redirect('error_404')
-        # try:
-        #     character = Character.objects.get(pk=pk)
-        #     enemy = Character.objects.get(pk=pk2)
-        #
-        #     # Check if the user is viewing their own character
-        #     is_own_character = character.user == request.user
-        #
-        #     # Render index page based on whether the user has a character or not
-        #     if is_own_character:
-        #         index_template = 'home/index.html'
-        #     else:
-        #         index_template = 'home/index-without-character.html'
-        #
-        # except Character.DoesNotExist:
-        #     # Render a custom error page if characters are not found
-        #     return redirect('error_404')
-        #
-        # # Return character to Tavern to heal.
-        # if character.health == 0:
-        #     return redirect("character_has_died")
-        #
-        # # Resolve Fight
-        # winner, gained_exp, gained_gold, stolen_gold, win_chance = resolve_fight(character, enemy)
-        #
-        # context = {
-        #     'character': character,
-        #     'enemy': enemy,
-        #     'winner': winner,
-        #     'gained_gold': gained_gold,
-        #     'gained_exp': gained_exp,
-        #     'stolen_gold': stolen_gold,
-        #     'win_chance': win_chance
-        # }
-        #
-        # return render(request, 'characters/character_fight.html', context) if character.health > 0 else redirect(
-        #     "character_has_died")
 
     def post(self, request, pk, pk2):
         try:

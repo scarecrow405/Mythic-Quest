@@ -39,30 +39,6 @@ class MonsterFightView(LoginRequiredMixin, View):
 
     def get(self, request, slug):
         return redirect('dungeon')
-        # character = request.user.character
-        # monster = self.get_monster(slug)
-        #
-        # if monster is None:
-        #     return redirect('error_404')
-        #
-        # if character.health == 0:
-        #     return redirect("character_has_died")
-        #
-        # # Perform the battle logic
-        # winner, gained_exp, gained_gold, win_chance, damage_taken = self.perform_battle(character, monster)
-        #
-        # # Prepare the context for rendering the template
-        # context = {
-        #     'character': character,
-        #     'monster': monster,
-        #     'winner': winner,
-        #     'gained_gold': gained_gold,
-        #     'gained_exp': gained_exp,
-        #     'win_chance': win_chance,
-        #     'damage_taken': damage_taken
-        # }
-        #
-        # return render(request, 'monsters/fight_monster.html', context)
 
     def post(self, request, slug):
         character = request.user.character

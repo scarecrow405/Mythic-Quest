@@ -41,6 +41,9 @@
 /*Items*/
 @import url('potions.css');
 
+/*Games*/
+@import url('earn-gold-by-clicking-game.css');
+
 /*Errors*/
 @import url('404.css');
 

@@ -11,6 +11,8 @@ STARTING_ARMOR = 5
 STARTING_GOLD = 1000
 STARTING_RATING = 0
 
+CURRENT_CLICKS = 0
+
 
 class Character(models.Model):
     MAX_NICKNAME_LENGTH = 10
@@ -32,6 +34,12 @@ class Character(models.Model):
         max_length=MAX_IMAGE_PATH_LENGTH,
         null=False,
         blank=False,
+    )
+
+    current_clicks = models.IntegerField(
+        default=0,
+        null=True,
+        blank=True,
     )
 
     # Character Stats

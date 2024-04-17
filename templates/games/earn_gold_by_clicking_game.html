@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Mythic Quest - Gold Game{% endblock %}
+
+{% block background_image %}
+    <style>
+        .background-image {
+            background-image: url('{% static 'img/games/games-background-image1.jpeg' %} ');
+            height: 100vh;
+        }
+    </style>
+{% endblock %}
+
+{% block main_content %}
+    <div class="earn-gold-main-container">
+
+        <div class="text-white earn-gold-header">
+            <h4 class="card-header dungeon-custom-font text-center">Gold Game</h4>
+        </div>
+
+        <div class="earn-gold-description">
+            {% if game_message %}
+                {{ game_message }}
+            {% else %}
+                No message to display.
+            {% endif %}
+        </div>
+
+        <div class="earn-gold-counter-container">
+            <div class="earn-gold-counter" id="click-counter">
+                {{ clicks_to_string }}
+            </div>
+        </div>
+        <div class="earn-gold-click-times-container">
+            <form action="{% url 'earn_gold_by_clicking' %}" method="POST" id="click-form">
+                {% csrf_token %}
+                <button class="earn-gold-button earn-gold-click-btn">CLICK ME</button>
+            </form>
+        </div>
+    </div>
+
+    {% if success_message %}
+        <div class="earn-gold-success-msg">
+            {{ success_message }}
+        </div>
+    {% endif %}
+
+
+{% endblock %}

@@ -110,9 +110,6 @@ def user_profile_delete(request):
     user = request.user
 
     if request.method == "POST":
-        # profile.delete()
-        # user.is_active = False
-        # user.save()
         return redirect("confirm_profile_delete")
 
     form = UserProfileEditForm(instance=profile)
